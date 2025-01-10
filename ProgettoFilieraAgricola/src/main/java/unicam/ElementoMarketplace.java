@@ -1,5 +1,5 @@
 package unicam;
 
-public abstract class ElementoMarketplace {
+public class ElementoMarketplace {
 
 }
