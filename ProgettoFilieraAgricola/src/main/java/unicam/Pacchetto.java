@@ -6,14 +6,14 @@ import java.util.List;
 public class Pacchetto extends Item{
     private List<Prodotto> listaProdotti;
 
-    public Pacchetto(float prezzo, String nomeItem, String descrizione) {
+    public Pacchetto(float prezzo, String nomeItem, String descrizione, List<Prodotto> listaProdotti) {
         super(prezzo, nomeItem, descrizione);
-        this.listaProdotti = new ArrayList<Prodotto>();
+        this.listaProdotti = listaProdotti;
     }
 
-    public Pacchetto(float prezzo, String nomeItem, String descrizione, int quantita) {
+    public Pacchetto(float prezzo, String nomeItem, String descrizione,List<Prodotto> listaProdotti,int quantita) {
         super(prezzo, nomeItem, descrizione, quantita);
-        this.listaProdotti = new ArrayList<Prodotto>();
+        this.listaProdotti = listaProdotti;
     }
 
 

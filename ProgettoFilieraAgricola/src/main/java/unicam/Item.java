@@ -1,6 +1,6 @@
 package unicam;
 
-public abstract class Item {
+public abstract class Item extends InformazioniDaApprovare {
     private float prezzo;
     private String nomeItem;
     private String descrizione;
@@ -19,6 +19,7 @@ public abstract class Item {
         this.descrizione = descrizione;
         this.stock = new Stock(quantita);
     }
+
     public String getDescrizione() {
         return descrizione;
     }
@@ -44,11 +45,12 @@ public abstract class Item {
             throw new IllegalArgumentException("prezzo non valido");
         this.prezzo = prezzo;
     }
+
     public Stock getStock() {
         return stock;
     }
+
     public void addQuantitaStock(int quantitaStock) {
         this.stock.addQuantita(quantitaStock);
-
     }
 }

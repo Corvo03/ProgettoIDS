@@ -1,4 +1,7 @@
 package unicam;
 
-public class Produttore {
+public class Produttore extends Azienda {
+
+    public Produttore() {
+    }
 }

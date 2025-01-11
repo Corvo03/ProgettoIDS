@@ -1,4 +1,7 @@
 package unicam;
 
-public class Trasformatore {
+public class Trasformatore extends Azienda {
+
+    public Trasformatore() {
+    }
 }
