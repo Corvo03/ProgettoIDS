@@ -8,4 +8,12 @@ public class ElementoMarketplace {
         this.id = id;
         this.item = item;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public Item getItem() {
+        return item;
+    }
 }

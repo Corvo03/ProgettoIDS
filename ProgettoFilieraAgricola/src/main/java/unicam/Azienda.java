@@ -49,12 +49,12 @@ public abstract class Azienda extends UtenteAutenticato {
             this.codiceFiscale = codiceFiscale;
     }
 
-    public void ricaricaProdotto(Item prodotto, int quantita) {
-        if (prodotto == null)
+    public void ricaricaProdotto(Stock stock, int quantita) {
+        if (stock == null)
             throw new NullPointerException("prodotto null");
-        if (!listaItem.contains(prodotto))
+        if (!listaItem.contains(stock.getItem()))
             throw new IllegalArgumentException("prodotto non presente");
-        prodotto.getStock().addQuantita(quantita);
+        stock.addQuantita(quantita);
     }
 
     public void accettaInvito(Invito invito) {
