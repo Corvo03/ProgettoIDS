@@ -13,13 +13,6 @@ public class Prodotto extends Item{
         listaCertificati = new ArrayList<Certificato>();
     }
 
-    public Prodotto(float prezzo, String nomeItem, String descrizione, int quantita, Azienda aziendaProduttrice) {
-        super(prezzo, nomeItem, descrizione, quantita);
-        this.aziendaProduttrice = aziendaProduttrice;
-        listaCertificati = new ArrayList<Certificato>();
-    }
-
-
     public Azienda getAziendaProduttrice() {
         return aziendaProduttrice;
     }

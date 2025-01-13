@@ -1,4 +1,4 @@
 package unicam;
 
-public class AnimatoreFiliera {
+public class AnimatoreFiliera extends UtenteAutenticato {
 }

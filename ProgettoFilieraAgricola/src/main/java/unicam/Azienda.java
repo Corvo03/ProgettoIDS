@@ -64,7 +64,7 @@ public abstract class Azienda extends UtenteAutenticato {
             throw new IllegalArgumentException("invito non presente");
         invito.setAccettato(true);
         inviti.remove(invito);
-        partecipazioni.add(new Partecipazione()); //todo: passare i parametri
+        partecipazioni.add(new Partecipazione(this)); //todo: passare i parametri
     }
 
     public void rifiutaInvito(Invito invito) {

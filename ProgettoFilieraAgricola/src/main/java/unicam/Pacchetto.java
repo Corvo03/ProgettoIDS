@@ -11,11 +11,6 @@ public class Pacchetto extends Item{
         this.listaProdotti = listaProdotti;
     }
 
-    public Pacchetto(float prezzo, String nomeItem, String descrizione,List<Prodotto> listaProdotti,int quantita) {
-        super(prezzo, nomeItem, descrizione, quantita);
-        this.listaProdotti = listaProdotti;
-    }
-
 
     public List<Prodotto> getListaProdotti() {
         return listaProdotti;
