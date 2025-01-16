@@ -1,5 +1,6 @@
 package unicam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Azienda extends UtenteAutenticato {
@@ -13,20 +14,21 @@ public abstract class Azienda extends UtenteAutenticato {
     private List<Invito> inviti;
     private List<Partecipazione> partecipazioni;
     private List<Certificato> certificati;
-    private List<Item> listaItem;
+    private GestoreStock gestoreStock;
     private InformazioniDaApprovare informazioniDaApprovare;
 
     public Azienda() {
+        this.gestoreStock = new GestoreStock();
+        this.inviti = new ArrayList<>();
+        this.partecipazioni = new ArrayList<>();
+        this.certificati = new ArrayList<>();
     }
 
     public void creaItem(Item item) {
         if (item == null)
             throw new NullPointerException("item null");
-        if (listaItem.contains(item))
-            throw new IllegalArgumentException("item già presente");
 
-        //TODO: metodo di curatore per approvare l'item
-        listaItem.add(item);
+        this.gestoreStock.aggiungiNuovoItem(item);
     }
 
     public void creaProfilo(String nomeProfilo, String descrizione) {
@@ -37,7 +39,8 @@ public abstract class Azienda extends UtenteAutenticato {
         profilo = new Profilo(nomeProfilo, descrizione);
     }
 
-    public void modificaInformazioniAzienda(String sedeLegale, List<String> indirizzoSediProduttive, String pec,
+    public void modificaInformazioniAzienda(String sedeLegale, List<String> indirizzoSediProduttive, String pec, String codiceFiscale, Profilo profilo) {
+    /*
             String codiceFiscale) {
         if (sedeLegale != null)
             this.sedeLegale = sedeLegale;
@@ -47,14 +50,16 @@ public abstract class Azienda extends UtenteAutenticato {
             this.pec = pec;
         if (codiceFiscale != null)
             this.codiceFiscale = codiceFiscale;
+     */
+        //gestore informazioni da approvare
+
+
     }
 
     public void ricaricaProdotto(Stock stock, int quantita) {
         if (stock == null)
             throw new NullPointerException("prodotto null");
-        if (!listaItem.contains(stock.getItem()))
-            throw new IllegalArgumentException("prodotto non presente");
-        stock.addQuantita(quantita);
+        this.gestoreStock.ricaricaProdotto(stock, quantita);
     }
 
     public void accettaInvito(Invito invito) {

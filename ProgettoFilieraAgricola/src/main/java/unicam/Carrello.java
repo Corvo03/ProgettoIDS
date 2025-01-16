@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Carrello {
     private List<ElementoMarketplace> listaElementiMarketplace;
-    private int totalePrezzo;
+    private float totalePrezzo;
     private MetodoPagamento metodoPagamento;
 
     /**
@@ -20,7 +20,7 @@ public class Carrello {
      */
     public void calcolaTotalePrezzo() {
         for (ElementoMarketplace elem : listaElementiMarketplace) {
-            this.totalePrezzo += elem.getItem().getPrezzo();
+            this.totalePrezzo += elem.getStock().getItem().getPrezzo();
         }
     }
 
@@ -56,7 +56,7 @@ public class Carrello {
         return listaElementiMarketplace;
     }
 
-    public int getTotalePrezzo() {
+    public float getTotalePrezzo() {
         return totalePrezzo;
     }
 

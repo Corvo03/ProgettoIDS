@@ -38,7 +38,6 @@ public class Stock {
         if (quantita < 0)
             throw new IllegalArgumentException("Quantita negativo");
         setQuantita(getQuantita() + quantita);
-        marketplace.addElementoMarketplace(this.item, quantita);
         return quantita;
     }
 

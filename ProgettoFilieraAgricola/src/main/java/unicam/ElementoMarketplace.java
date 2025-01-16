@@ -1,19 +1,20 @@
 package unicam;
 
 public class ElementoMarketplace {
-    private int id;
-    private Item item;
 
-    public ElementoMarketplace(int id, Item item) {
+    private int id;
+    private Stock stock;
+
+    public ElementoMarketplace(int id, Stock stock) {
         this.id = id;
-        this.item = item;
+        this.stock = stock;
     }
 
     public int getId() {
         return id;
     }
 
-    public Item getItem() {
-        return item;
+    public Stock getStock() {
+        return this.stock;
     }
 }
