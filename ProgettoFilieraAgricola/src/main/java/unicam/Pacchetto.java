@@ -22,6 +22,14 @@ public class Pacchetto extends Item{
         this.listaProdotti = listaProdotti;
     }
 
+    /**
+     * Permette di aggiungere un Prodotto al pacchetto (già esistente)
+     *
+     * @param prodotto da aggiungere al pacchetto
+     *
+     * @throws NullPointerException se il prodotto è null
+     * @throws IllegalArgumentException se il prodotto è già presente nel pacchetto
+     */
     public void addProdotto(Prodotto prodotto){
         if(prodotto == null)
             throw new NullPointerException("Prodotto null");

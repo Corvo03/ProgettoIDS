@@ -17,7 +17,7 @@ public class DistributoreTipicita extends Azienda {
             throw new NullPointerException("lista item null");
 
         Pacchetto pacchetto = new Pacchetto(prezzo, nomePacchetto, descrizione, listaItem);
-        creaItem(pacchetto);
+        creaItem(new ItemDaApprovare(pacchetto));
         return pacchetto;
     }
 

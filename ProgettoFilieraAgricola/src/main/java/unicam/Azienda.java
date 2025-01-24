@@ -3,7 +3,7 @@ package unicam;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Azienda extends UtenteAutenticato {
+public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
     private String nomeAzienda;
     private String partitaIva;
     private String sedeLegale;
@@ -14,21 +14,26 @@ public abstract class Azienda extends UtenteAutenticato {
     private List<Invito> inviti;
     private List<Partecipazione> partecipazioni;
     private List<Certificato> certificati;
-    private GestoreStock gestoreStock;
+    private final GestoreStock gestoreStock;
     private InformazioniDaApprovare informazioniDaApprovare;
+    private final GestoreInformazioni gestoreInformazioni;
 
     public Azienda() {
         this.gestoreStock = new GestoreStock();
         this.inviti = new ArrayList<>();
         this.partecipazioni = new ArrayList<>();
         this.certificati = new ArrayList<>();
+        this.gestoreInformazioni = GestoreInformazioni.getInstance();
     }
 
-    public void creaItem(Item item) {
-        if (item == null)
-            throw new NullPointerException("item null");
-
-        this.gestoreStock.aggiungiNuovoItem(item);
+    /**
+     * Crea un Item, questo deve essere approvato dal curatore, pertanto si delega il tutto
+     * al gestoreInformazioni.
+     * @param item, Item creato che deve essere approvato.
+     *
+     */
+    public void creaItem(ItemDaApprovare item) {
+        this.gestoreInformazioni.aggiungiInformazioneDaApprovare(item);
     }
 
     public void creaProfilo(String nomeProfilo, String descrizione) {
@@ -39,22 +44,25 @@ public abstract class Azienda extends UtenteAutenticato {
         profilo = new Profilo(nomeProfilo, descrizione);
     }
 
-    public void modificaInformazioniAzienda(String sedeLegale, List<String> indirizzoSediProduttive, String pec, String codiceFiscale, Profilo profilo) {
-    /*
-            String codiceFiscale) {
-        if (sedeLegale != null)
-            this.sedeLegale = sedeLegale;
-        if (indirizzoSediProduttive != null)
-            this.indirizzoSediProduttive = indirizzoSediProduttive;
-        if (pec != null)
-            this.pec = pec;
-        if (codiceFiscale != null)
-            this.codiceFiscale = codiceFiscale;
+    /**
+     * Permette di modificare le informazioni sensibili dell'azienda, queste devono essere approvate dal curatore.
+     * @param sedeLegale dell'azienda da modificare
+     * @param pec dell'azienda da modificare
+     * @param nomeAzienda dell'azienda da modificare
+     * @param pIva dell'azienda da modificare
+     * @param codiceFiscale  dell'azienda da modificare
+     *
+     * @throws NullPointerException se una delle informazioni è nulla
      */
-        //gestore informazioni da approvare
+    public void modificaInformazioniAzienda(String sedeLegale, String pec, String nomeAzienda, String pIva, String codiceFiscale){
+        if (sedeLegale == null || nomeAzienda == null ||
+                pec == null || codiceFiscale==null || pIva == null)
+            throw new NullPointerException("informazioni null");
 
-
+        gestoreInformazioni.aggiungiInformazioneDaApprovare(
+                new ModificatoreAzienda(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
     }
+
 
     public void ricaricaProdotto(Stock stock, int quantita) {
         if (stock == null)
