@@ -17,10 +17,8 @@ public class Curatore extends UtenteAutenticato {
     /**
      * approva l'informazione data, la toglie dalla queue e setta il "da approvare" a false
      */
-    private void approvaInformazione(){
-        getListaInformazioniDaApprovare().getFirst().setDaApprovare(false);
-        getListaInformazioniDaApprovare().getFirst().setApprovata(true);
-        getListaInformazioniDaApprovare().removeFirst();
+    private void approvaInformazione(InformazioniDaApprovare informazioniDaApprovare){
+        
     }
     /**
      * boccia l'informazione data, la toglie dalla queue e setta il "da approvare" a true
