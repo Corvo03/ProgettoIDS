@@ -5,10 +5,10 @@ import java.util.List;
 
 public class GestoreInformazioni {
     private static GestoreInformazioni istanza;
-    private final List<InformazioniDaApprovare> listaInformazioniDaApprovare;
+    private final List<InformazioneDaApprovare> listaInformazioniDaApprovare;
 
     private GestoreInformazioni() {
-        listaInformazioniDaApprovare = new ArrayList<InformazioniDaApprovare>();
+        listaInformazioniDaApprovare = new ArrayList<InformazioneDaApprovare>();
     }
 
     /**
@@ -29,7 +29,7 @@ public class GestoreInformazioni {
      * //TODO chi può/deve chiamare il metodo, come gestirlo?
      * @return la lista delle informazioni da approvare
      */
-    public List<InformazioniDaApprovare> getListaInformazioniDaApprovare() {
+    public List<InformazioneDaApprovare> getListaInformazioniDaApprovare() {
         return listaInformazioniDaApprovare;
     }
 
@@ -42,7 +42,7 @@ public class GestoreInformazioni {
      * @throws NullPointerException se l'elemento inserito è nullo
      * @throws IllegalArgumentException se l'informazione è già stata inserita //TODO maniera ottimale per gestirla?
      */
-    public void aggiungiInformazioneDaApprovare(InformazioniDaApprovare informazione) {
+    public void aggiungiInformazioneDaApprovare(InformazioneDaApprovare informazione) {
         if(informazione == null)
             throw new NullPointerException("informazione null");
         if(listaInformazioniDaApprovare.contains(informazione))

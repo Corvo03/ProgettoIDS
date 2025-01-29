@@ -1,9 +1,8 @@
 package unicam;
 
-import java.util.List;
 
 public class GestoreMarketplace {
-    Marketplace marketplace;
+    public Marketplace marketplace;
     public GestoreMarketplace() {
         this.marketplace = new Marketplace();
     }
@@ -23,6 +22,4 @@ public class GestoreMarketplace {
     public void addElementoMarketplace(ElementoMarketplace elementoMarketplace) {
         this.marketplace.addElementoMarketplace(elementoMarketplace);
     }
-
-
 }

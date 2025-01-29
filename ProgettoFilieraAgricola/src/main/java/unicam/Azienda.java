@@ -15,7 +15,7 @@ public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
     private List<Partecipazione> partecipazioni;
     private List<Certificato> certificati;
     private final GestoreStock gestoreStock;
-    private InformazioniDaApprovare informazioniDaApprovare;
+    private InformazioneDaApprovare informazioniDaApprovare;
     private final GestoreInformazioni gestoreInformazioni;
 
     public Azienda() {
@@ -32,7 +32,7 @@ public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
      * @param item, Item creato che deve essere approvato.
      *
      */
-    public void creaItem(ItemDaApprovare item) {
+    public void creaItem(InformazioneDaApprovare item) {
         this.gestoreInformazioni.aggiungiInformazioneDaApprovare(item);
     }
 
@@ -60,9 +60,8 @@ public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
             throw new NullPointerException("informazioni null");
 
         gestoreInformazioni.aggiungiInformazioneDaApprovare(
-                new ModificatoreAzienda(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
+                new InformazioniSensibili(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
     }
-
 
     public void ricaricaProdotto(Stock stock, int quantita) {
         if (stock == null)

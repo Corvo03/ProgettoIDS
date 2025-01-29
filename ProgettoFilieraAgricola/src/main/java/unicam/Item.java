@@ -1,6 +1,6 @@
 package unicam;
 
-public abstract class Item {
+public abstract class Item implements InformazioneDaApprovare {
     private float prezzo;
     private String nomeItem;
     private String descrizione;

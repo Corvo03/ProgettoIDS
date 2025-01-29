@@ -1,5 +1,5 @@
 package unicam;
 
 public interface creatoreItem {
-    void creaItem(ItemDaApprovare item);
+    void creaItem(InformazioneDaApprovare item);
 }

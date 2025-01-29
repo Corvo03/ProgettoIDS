@@ -1,7 +1,5 @@
 package unicam;
 
-import static unicam.Main.marketplace;
-
 public class Stock {
     private int quantita;
     private final Item item;

@@ -1,8 +1,6 @@
 package unicam;
 
-import javax.sound.sampled.Line;
-
-public class ModificatoreDatiAzienda extends InformazioniDaApprovare {
+public class ModificatoreDatiAzienda extends InformazioneDaApprovare {
     private String nomeAzienda;
     private String pIva;
     private String sedeLegale;
