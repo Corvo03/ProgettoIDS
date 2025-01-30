@@ -3,7 +3,7 @@ package unicam;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
+public abstract non-sealed class Azienda extends UtenteAutenticato implements  RichiedenteVerificaInformazione{
     private String nomeAzienda;
     private String partitaIva;
     private String sedeLegale;
@@ -24,16 +24,6 @@ public abstract class Azienda extends UtenteAutenticato implements creatoreItem{
         this.partecipazioni = new ArrayList<>();
         this.certificati = new ArrayList<>();
         this.gestoreInformazioni = GestoreInformazioni.getInstance();
-    }
-
-    /**
-     * Crea un Item, questo deve essere approvato dal curatore, pertanto si delega il tutto
-     * al gestoreInformazioni.
-     * @param item, Item creato che deve essere approvato.
-     *
-     */
-    public void creaItem(InformazioneDaApprovare item) {
-        this.gestoreInformazioni.aggiungiInformazioneDaApprovare(item);
     }
 
     public void creaProfilo(String nomeProfilo, String descrizione) {

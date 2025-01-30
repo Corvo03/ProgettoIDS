@@ -1,5 +1,3 @@
 package unicam;
 
-public interface InformazioneDaApprovare {
-
-}
+public interface InformazioneDaApprovare { }

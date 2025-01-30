@@ -6,7 +6,7 @@ import java.util.List;
 public class Pacchetto extends Item{
     private List<Prodotto> listaProdotti;
 
-    public Pacchetto(float prezzo, String nomeItem, String descrizione, List<Prodotto> listaProdotti) {
+    public Pacchetto(float prezzo, String nomeItem, String descrizione, Azienda azienda, List<Prodotto> listaProdotti) {
         super(prezzo, nomeItem, descrizione);
         this.listaProdotti = listaProdotti;
     }

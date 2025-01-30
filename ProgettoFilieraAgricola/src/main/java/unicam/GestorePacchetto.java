@@ -28,27 +28,7 @@ public class GestorePacchetto {
         return gestoreMarketplace;
     }
 
-    /**
-     * Crea un pacchetto con le seguenti caratteristiche:
-     * @param prezzo, prezzo del pacchetto
-     * @param nomePacchetto, nome del pacchetto
-     * @param descrizione, descrizione del pacchetto
-     * @param listaItem, lista degli elementi del pacchetto
-     * @return il pacchetto appena creato
-     */
-    public Pacchetto creaPacchetto(float prezzo, String nomePacchetto, String descrizione, List<Prodotto> listaItem) {
-        if (prezzo <= 0)
-            throw new IllegalArgumentException("prezzo non valido");
-        if (nomePacchetto == null)
-            throw new NullPointerException("nome pacchetto null");
-        if (descrizione == null)
-            throw new NullPointerException("descrizione null");
-        if (listaItem == null)
-            throw new NullPointerException("lista item null");
 
-        this.pacchetto = new Pacchetto(prezzo, nomePacchetto, descrizione, listaItem);
-        return this.pacchetto;
-    }
 
     /**
      * Aggiunge il prodotto al pacchetto

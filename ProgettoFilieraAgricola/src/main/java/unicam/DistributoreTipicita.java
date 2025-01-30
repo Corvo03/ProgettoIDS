@@ -2,36 +2,52 @@ package unicam;
 
 import java.util.List;
 
-public class DistributoreTipicita extends Azienda {
-    private GestorePacchetto gestorePacchetto;
+public class DistributoreTipicita extends Azienda implements CreatoreProdotto, CreatorePacchetto {
+
     public DistributoreTipicita() {
-        this.gestorePacchetto = new GestorePacchetto();
+
     }
 
     /**
-     * Crea un nuovo pacchetto che deve essere approvato dal curatore
-     * @param prezzo, prezzo relativo al pacchetto
-     * @param nomePacchetto, nome rappresentativo del pacchetto
-     * @param descrizione, una descrizione associata al pacchetto,
-     *                     che ne descriva le caratteristiche di tali abbinamenti.
-     * @param listaItem, elementi interni al pacchetto
-     * @return il pacchetto da approvare
+     * Crea un pacchetto con le seguenti caratteristiche:
+     *
+     * @param prezzo,        prezzo del pacchetto
+     * @param nome, nome del pacchetto
+     * @param descrizione,   descrizione del pacchetto
+     * @param listaProdotti,     lista degli elementi del pacchetto
+     * @return il pacchetto appena creato
      */
-    public Pacchetto creaPacchetto(float prezzo, String nomePacchetto, String descrizione, List<Prodotto> listaItem) {
-        Pacchetto pacchetto = this.gestorePacchetto.creaPacchetto(prezzo, nomePacchetto, descrizione, listaItem);
-        creaItem(pacchetto);
+    @Override
+    public Pacchetto creaPacchetto(Float prezzo, String nome, String descrizione, List<Prodotto> listaProdotti) {
+        if (prezzo <= 0)
+            throw new IllegalArgumentException("prezzo non valido");
+        if (nome == null)
+            throw new NullPointerException("nome pacchetto null");
+        if (descrizione == null)
+            throw new NullPointerException("descrizione null");
+        if (listaProdotti == null)
+            throw new NullPointerException("lista item null");
+
+        Pacchetto pacchetto = new Pacchetto(prezzo, nome, descrizione, this, listaProdotti);
+
+        /*
+         * //TODO farlo come metodo a parte? così che il distributore lo chiama quando vuole
+         */
+        this.richiediVerificaInformazioni(pacchetto);
         return pacchetto;
     }
 
-    public Prodotto creaProdotto(float prezzo, String nomeProdotto, String descrizione ) {
+    @Override
+    public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, List<Certificato> listaCertificazioni) {
+        //TODO aggiungere certificazioni
         if (prezzo <= 0)
             throw new IllegalArgumentException("Prezzo non valido");
-        if(nomeProdotto == null || nomeProdotto.isEmpty())
+        if (nome == null || nome.isEmpty())
             throw new IllegalArgumentException("Nome prodotto non valido");
-        if(descrizione == null || descrizione.isEmpty())
+        if (descrizione == null || descrizione.isEmpty())
             throw new IllegalArgumentException("Descrizione non valida");
-        Prodotto prodotto = new Prodotto(prezzo, nomeProdotto,descrizione, this );
-        creaItem(prodotto);
+        Prodotto prodotto = new Prodotto(prezzo, nome, descrizione, this);
+        this.richiediVerificaInformazioni(prodotto);
         return prodotto;
     }
 
@@ -43,13 +59,11 @@ public class DistributoreTipicita extends Azienda {
         pacchetto.addProdotto(prodotto);
     }
 
-    public void aggiungiItemAPacchetto(Prodotto prodotto) {
-        if (prodotto == null)
-            throw new NullPointerException("prodotto null");
-        this.gestorePacchetto.addProdotto(prodotto);
-    }
 
-    public ElementoMarketplace getProdottoMarkeplace(){
+    // TODO metodo per ottenere i propri pacchetti dal marketplace
+    //TODO metodo per ottenere i propri prodotti dal marketplace
+
+    public ElementoMarketplace getProdottoMarkeplace() {
         //TODO gestione responsabilità e gestione marketplace
         return null;
     }
