@@ -1,17 +1,12 @@
 package unicam;
 
 public class Stock {
-    private int quantita;
     private final Item item;
-
-    public Stock(int quantita, Item item) {
-        this.quantita = quantita;
-        this.item = item;
-    }
+    private int quantita;
 
     public Stock(Item item) {
-        this.quantita = 0;
         this.item = item;
+        this.quantita = 0;
     }
 
     public int getQuantita() {

@@ -13,4 +13,8 @@ public class Biglietto extends Item{
     public Biglietto(float prezzo, String nomeItem, String descrizione) {
         super(prezzo, nomeItem, descrizione);
     }
+
+    public AnimatoreFiliera getAnimatore() {
+        return animatore;
+    }
 }

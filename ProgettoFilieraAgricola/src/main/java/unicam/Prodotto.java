@@ -32,4 +32,8 @@ public class Prodotto extends Item{
             listaCertificati.add(certificato);
         //se il certificato è già presente non viene inserito nuovamente
     }
+
+    public Azienda getAzienda() {
+        return aziendaProduttrice;
+    }
 }

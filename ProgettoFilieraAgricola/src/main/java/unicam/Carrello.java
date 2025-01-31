@@ -1,70 +1,53 @@
 package unicam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Carrello {
-    private List<ElementoMarketplace> listaElementiMarketplace;
+    private Map<ElementoMarketplace, Integer> elementiCarrello;
     private float totalePrezzo;
-    private MetodoPagamento metodoPagamento;
 
     /**
      * istanzia la lista degli elementi nel carrello
      */
     public Carrello() {
-        listaElementiMarketplace = new ArrayList<ElementoMarketplace>();
+        elementiCarrello = new HashMap<>();
     }
 
     /**
      * calcola totale del costo dei prodotti
      */
     public void calcolaTotalePrezzo() {
-        for (ElementoMarketplace elem : listaElementiMarketplace) {
-            this.totalePrezzo += elem.getStock().getItem().getPrezzo();
+        for (ElementoMarketplace elemento : elementiCarrello.keySet()) {
+            totalePrezzo += elemento.getStock().getItem().getPrezzo() * elementiCarrello.get(elemento);
         }
-    }
-
-    /**
-     * paga il costo dei prodotti
-     * notifica poi le aziende per comunicargli che hanno venduto dei prodotti
-     * svuota il carrello e azzera il totale
-     * @param metodoScelto
-     */
-    public void paga(MetodoPagamento metodoScelto){
-        calcolaTotalePrezzo();
-        setMetodoPagamento(metodoScelto);
-        svuotaCarrello();
-        notificaAziende();
     }
 
     /**
      * svuota carrello e azzera totale
      */
     public void svuotaCarrello(){
-        this.listaElementiMarketplace.clear();
+        this.elementiCarrello.clear();
         this.totalePrezzo = 0;
     }
 
-    /**
-     * in base agli oggetti venduti nell'ultimo pagamento di comunicano alle aziende
-     * i guadagni e quanti item hanno venduto
-     */
-    private void notificaAziende(){
-        //todo
+    public void aggiungiElementoAlCarrello(ElementoMarketplace elemento,int quantita){
+        if (quantita > elemento.getStock().getQuantita() || quantita < 0)
+            throw new IllegalArgumentException("Quantità non disponibile");
+        elementiCarrello.put(elemento, quantita);
     }
-    public List<ElementoMarketplace> getListaElementiMarketplace() {
-        return listaElementiMarketplace;
+
+    public void rimuoviElementoDalCarrello(ElementoMarketplace elemento, int quantita){
+        if (quantita > elementiCarrello.get(elemento) || quantita < 0)
+            throw new IllegalArgumentException("Quantità non disponibile");
+        elementiCarrello.remove(elemento);
+    }
+
+    public Map<ElementoMarketplace, Integer> getElementiCarrello() {
+        return elementiCarrello;
     }
 
     public float getTotalePrezzo() {
         return totalePrezzo;
-    }
-
-    public MetodoPagamento getMetodoPagamento() {
-        return metodoPagamento;
-    }
-
-    public void setMetodoPagamento(MetodoPagamento metodoPagamento) {
-        this.metodoPagamento = metodoPagamento;
     }
 }

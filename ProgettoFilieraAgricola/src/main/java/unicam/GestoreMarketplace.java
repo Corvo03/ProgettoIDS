@@ -1,25 +1,35 @@
 package unicam;
 
+import java.util.Map;
 
 public class GestoreMarketplace {
-    public Marketplace marketplace;
-    public GestoreMarketplace() {
-        this.marketplace = new Marketplace();
-    }
-    public Marketplace getMarketplace() {
-        return marketplace;
-    }
-    private int getNextId (){
-        return this.marketplace.getMaxId();
-    }
-    public void addElementoMarketplace(Stock stock, int quantitaDaAggiungere){
-        int id = this.getNextId();
-        for(int i = id+1; i<=id + quantitaDaAggiungere; i++) {
-            marketplace.addElementoMarketplace(new ElementoMarketplace(i, stock));
-        }
+    private static GestoreMarketplace istanza;
+    private Marketplace marketPlace;
+
+    private GestoreMarketplace() {
+        marketPlace = new Marketplace();
     }
 
-    public void addElementoMarketplace(ElementoMarketplace elementoMarketplace) {
-        this.marketplace.addElementoMarketplace(elementoMarketplace);
+    public static GestoreMarketplace getInstance() {
+        if (istanza == null)
+            istanza = new GestoreMarketplace();
+        return istanza;
+    }
+
+    public ElementoMarketplace creaElementoMarketPlace(Stock stock){
+        ElementoMarketplace elementoMarketplace = new ElementoMarketplace(marketPlace.getMaxId()+1, stock);
+        marketPlace.addElementoMarketplace(elementoMarketplace);
+        return elementoMarketplace;
+    }
+
+    public Marketplace getMarketPlace() {
+        return marketPlace;
+    }
+
+    public void aggiornaQuantitaElementi(Map<ElementoMarketplace, Integer> elementiCarrello) {
+        for (ElementoMarketplace elemento : elementiCarrello.keySet()) {
+            elemento.getStock().setQuantita(elemento.getStock().getQuantita() -
+                    elementiCarrello.get(elemento));
+        }
     }
 }

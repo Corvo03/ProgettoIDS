@@ -1,6 +1,7 @@
 package unicam;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Marketplace {
@@ -38,5 +39,9 @@ public class Marketplace {
 
     public void removeElementoMarketplace(List<ElementoMarketplace> listaElementoMarketplace) {
         this.listaElementiMarketplace.removeAll(listaElementoMarketplace);
+    }
+
+    public List<ElementoMarketplace> getListaElementi() {
+        return listaElementiMarketplace;
     }
 }

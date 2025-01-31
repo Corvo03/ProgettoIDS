@@ -1,9 +1,9 @@
 package unicam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Pacchetto extends Item{
+    private Azienda aziendaProduttrice;
     private List<Prodotto> listaProdotti;
 
     public Pacchetto(float prezzo, String nomeItem, String descrizione, Azienda azienda, List<Prodotto> listaProdotti) {
@@ -36,5 +36,9 @@ public class Pacchetto extends Item{
         if(this.listaProdotti.contains(prodotto))
             throw new IllegalArgumentException("Prodotto già presente nel pacchetto");
         this.listaProdotti.add(prodotto);
+    }
+
+    public Azienda getAzienda() {
+        return aziendaProduttrice;
     }
 }

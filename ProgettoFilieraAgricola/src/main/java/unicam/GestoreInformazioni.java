@@ -1,14 +1,13 @@
 package unicam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class GestoreInformazioni {
     private static GestoreInformazioni istanza;
-    private final List<InformazioneDaApprovare> listaInformazioniDaApprovare;
+    private final Map<InformazioneDaApprovare, RichiedenteVerificaInformazione> informazioniDaApprovare;
 
     private GestoreInformazioni() {
-        listaInformazioniDaApprovare = new ArrayList<InformazioneDaApprovare>();
+        this.informazioniDaApprovare = new HashMap<>();
     }
 
     /**
@@ -18,36 +17,59 @@ public class GestoreInformazioni {
      * @return l'unica istanza della classe
      */
     public static GestoreInformazioni getInstance() {
-        if(istanza == null)
+        if (istanza == null)
             istanza = new GestoreInformazioni();
         return istanza;
     }
 
-
     /**
-     * Metodo getter per la lista delle informazioni da approvare.
-     * //TODO chi può/deve chiamare il metodo, come gestirlo?
-     * @return la lista delle informazioni da approvare
+     * Aggiunge un'informazione da approvare alla lista delle informazioni da approvare.
+     * Se l'informazione è già presente, lancia un'eccezione.
+     *
+     * @param informazione l'informazione da approvare
+     * @param richiedente  il richiedente che ha richiesto la verifica dell'informazione
      */
-    public List<InformazioneDaApprovare> getListaInformazioniDaApprovare() {
-        return listaInformazioniDaApprovare;
+    public void aggiungiInformazioneDaApprovare(InformazioneDaApprovare informazione,
+                                                RichiedenteVerificaInformazione richiedente) {
+        if (informazione == null)
+            throw new NullPointerException("informazione null");
+        if (informazioniDaApprovare.containsKey(informazione))
+            throw new IllegalArgumentException("informazione già presente");
+        informazioniDaApprovare.put(informazione, richiedente);
     }
 
-    /**
-     * Aggiungi un Informazione da Approvare alla lista degli elementi del gestore Informazioni
-     * @param informazione di tipo InformazioneDaApprovare, rappresenta l'elemento (Item o Azienda) da
-     *                     aggiungere alla lista del GestoreInformazioni.
-     * @return //TODO
-     *
-     * @throws NullPointerException se l'elemento inserito è nullo
-     * @throws IllegalArgumentException se l'informazione è già stata inserita //TODO maniera ottimale per gestirla?
-     */
-    public void aggiungiInformazioneDaApprovare(InformazioneDaApprovare informazione) {
-        if(informazione == null)
-            throw new NullPointerException("informazione null");
-        if(listaInformazioniDaApprovare.contains(informazione))
-            //TODO cosa succede se l'elemento è già presente? un return secco?
-            throw new IllegalArgumentException("informazione duplicate");
-        listaInformazioniDaApprovare.add(informazione);
+    public List<InformazioneDaApprovare> getInformazioniDaApprovare() {
+        return new ArrayList<>(informazioniDaApprovare.keySet());
+    }
+
+    public void informazioneApprovata(InformazioneDaApprovare informazione) {
+        if (!informazioniDaApprovare.containsKey(informazione)) {
+            throw new IllegalArgumentException("informazione non presente");
+        }
+        if (informazione instanceof Prodotto prodotto) {
+            Azienda azienda = prodotto.getAzienda();
+            azienda.getGestoreStock().aggiungiStock(new Stock(prodotto));
+        }
+        else if (informazione instanceof Pacchetto pacchetto) {
+            Azienda azienda = pacchetto.getAzienda();
+            azienda.getGestoreStock().aggiungiStock(new Stock(pacchetto));
+        }
+        else if (informazione instanceof Biglietto biglietto){
+            AnimatoreFiliera animatore = biglietto.getAnimatore();
+            animatore.getGestoreStock().aggiungiStock(new Stock(biglietto));
+        }
+        else if (informazione instanceof InformazioniSensibili informazioniSensibili){
+            Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);
+            azienda.setInformazioniSensibili(informazioniSensibili);
+        }
+        informazioniDaApprovare.remove(informazione);
+    }
+
+    public void informazioneRifiutata(InformazioneDaApprovare informazione) {
+        if (!informazioniDaApprovare.containsKey(informazione)) {
+            throw new IllegalArgumentException("informazione non presente");
+        }
+        //todo aggiungere modo per arrivare al gestoreItemRifiutati
+        informazioniDaApprovare.remove(informazione);
     }
 }

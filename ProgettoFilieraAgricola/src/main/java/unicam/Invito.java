@@ -8,13 +8,13 @@ public class Invito {
 
     /**
      *
-     * @param organizzatoreEventi
+     * @param animatoreFiliera
      * @param evento
      * @param azienda
      */
 
-    public Invito(OrganizzatoreEventi organizzatoreEventi, Evento evento, Azienda azienda) {
-        this.animatoreFiliera = new AnimatoreFiliera();
+    public Invito(AnimatoreFiliera animatoreFiliera, Evento evento, Azienda azienda) {
+        this.animatoreFiliera = animatoreFiliera;
         this.evento = evento;
         this.azienda = azienda;
         this.accettato = false;

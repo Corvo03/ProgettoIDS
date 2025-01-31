@@ -12,9 +12,9 @@ public class DistributoreTipicita extends Azienda implements CreatoreProdotto, C
      * Crea un pacchetto con le seguenti caratteristiche:
      *
      * @param prezzo,        prezzo del pacchetto
-     * @param nome, nome del pacchetto
+     * @param nome,          nome del pacchetto
      * @param descrizione,   descrizione del pacchetto
-     * @param listaProdotti,     lista degli elementi del pacchetto
+     * @param listaProdotti, lista degli elementi del pacchetto
      * @return il pacchetto appena creato
      */
     @Override
@@ -38,8 +38,7 @@ public class DistributoreTipicita extends Azienda implements CreatoreProdotto, C
     }
 
     @Override
-    public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, List<Certificato> listaCertificazioni) {
-        //TODO aggiungere certificazioni
+    public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, List<Certificato> listaCertificati) {
         if (prezzo <= 0)
             throw new IllegalArgumentException("Prezzo non valido");
         if (nome == null || nome.isEmpty())
@@ -47,6 +46,8 @@ public class DistributoreTipicita extends Azienda implements CreatoreProdotto, C
         if (descrizione == null || descrizione.isEmpty())
             throw new IllegalArgumentException("Descrizione non valida");
         Prodotto prodotto = new Prodotto(prezzo, nome, descrizione, this);
+        if (listaCertificati != null)
+            prodotto.setListaCertificati(listaCertificati);
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;
     }
