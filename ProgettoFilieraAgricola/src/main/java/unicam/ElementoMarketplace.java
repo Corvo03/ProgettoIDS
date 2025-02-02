@@ -2,8 +2,8 @@ package unicam;
 
 public class ElementoMarketplace {
 
-    private int id;
-    private Stock stock;
+    private final int id;
+    private final Stock stock;
 
     public ElementoMarketplace(int id, Stock stock) {
         this.id = id;

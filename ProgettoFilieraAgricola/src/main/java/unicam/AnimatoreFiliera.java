@@ -13,4 +13,7 @@ public class AnimatoreFiliera extends UtenteAutenticato {
     public GestoreStock getGestoreStock() {
         return gestoreStock;
     }
+
+    //TODO crea biglietto passando come parametro l'evento, il biglietto deve essere verificato
+    //     il gestore info inserirà nello stock dell'animatore se approvato.
 }

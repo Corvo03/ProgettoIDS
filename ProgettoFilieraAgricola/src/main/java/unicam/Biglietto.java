@@ -2,19 +2,21 @@ package unicam;
 
 import java.util.Date;
 
-public class Biglietto extends Item{
+    public class Biglietto extends Item{
     private AnimatoreFiliera animatore;
-    private Date dataEvento;
-    private String luogo;
-    private String descrizione;
-    private int capienzaMassima;
+    private Evento evento;
 
+        public Biglietto(float prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatore, Evento evento) {
+            super(prezzo, nomeItem, descrizione);
+            this.animatore = animatore;
+            this.evento = evento;
+        }
 
-    public Biglietto(float prezzo, String nomeItem, String descrizione) {
-        super(prezzo, nomeItem, descrizione);
+        public AnimatoreFiliera getAnimatore() {
+            return animatore;
+        }
+
+        public Evento getEvento() {
+            return evento;
+        }
     }
-
-    public AnimatoreFiliera getAnimatore() {
-        return animatore;
-    }
-}

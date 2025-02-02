@@ -14,7 +14,7 @@ public class Evento {
     private int prezzoBiglietto;
 
     /**
-     * evento settato
+     * Evento settato
      * @param nome
      * @param data
      * @param luogo
@@ -35,10 +35,6 @@ public class Evento {
      */
     public Evento() {
 
-    }
-
-    public Biglietto creaBiglietto() {
-        return new Biglietto(prezzoBiglietto,nome,descrizione);
     }
 
     public String getNome() {
