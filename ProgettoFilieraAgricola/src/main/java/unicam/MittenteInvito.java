@@ -13,11 +13,8 @@ public class MittenteInvito {
 
     /**
      *
-     * @param mediator
      */
-    public MittenteInvito(Mediator mediator) {
-        this.mediator = mediator;
-    }
+    public MittenteInvito() {}
 
     /**
      * crea l'invito e lo manda al mediator

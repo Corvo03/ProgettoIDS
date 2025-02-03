@@ -9,11 +9,8 @@ public class AccettatoreInvito {
 
     /**
      *
-     * @param mediator
      */
-    public AccettatoreInvito(Mediator mediator) {
-        mediator = mediator;
-    }
+    public AccettatoreInvito() {}
 
     /**
      * delega al mediator il rifiuto invito
