@@ -1,54 +1,70 @@
 package unicam;
+import java.util.Date;
+
+/**
+ * L'invito concreto, con tutte le info necessarie non modificabili (occorre fare un invito nuovo)
+ */
 
 public class Invito {
+    /**
+     * animatore che ha creato invito
+     */
     private AnimatoreFiliera animatoreFiliera;
+    /**
+     * evento a cui si riferisce
+     */
     private Evento evento;
-    private Azienda azienda;
-    private boolean accettato;
+    /**
+     * invitato
+     */
+    private PartecipanteEvento partecipanteEvento;
+    /**
+     * data creazione
+     */
+    private Date dataCreazione;
+    /**
+     * data scadenza
+     */
+    private Date dataScadenza;
 
     /**
      *
-     * @param animatoreFiliera
+     * @param organizzatoreEvento
      * @param evento
-     * @param azienda
+     * @param partecipanteEvento
+     * @param dataCreazione
+     * @param dataScadenza
      */
-
-    public Invito(AnimatoreFiliera animatoreFiliera, Evento evento, Azienda azienda) {
-        this.animatoreFiliera = animatoreFiliera;
-        this.evento = evento;
-        this.azienda = azienda;
-        this.accettato = false;
-    }
-
-    public AnimatoreFiliera getAnimatoreFiliera() {
-        return animatoreFiliera;
+    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento,
+                  Date dataCreazione, Date dataScadenza) {
+        this.animatoreFiliera = organizzatoreEvento ;
+        this.evento = evento ;
+        this.partecipanteEvento = partecipanteEvento;
+        this.dataCreazione = dataCreazione ;
+        this.dataScadenza = dataScadenza ;
     }
 
     public Evento getEvento() {
         return evento;
     }
 
-    public Azienda getAzienda() {
-        return azienda;
+    public PartecipanteEvento getPartecipanteEvento() {
+        return partecipanteEvento;
     }
 
-    public boolean isAccettato() {
-        return accettato;
+    public AnimatoreFiliera getOrganizzatoreEvento() {
+        return animatoreFiliera;
     }
 
-    public void setAccettato(boolean accettato) {
-        this.accettato = accettato;
+    public Date getDataScadenza() {
+        return dataScadenza;
     }
 
-    public void setAnimatoreFiliera(AnimatoreFiliera animatoreFiliera) {
-        this.animatoreFiliera = animatoreFiliera;
+    public Date getDataCreazione() {
+        return dataCreazione;
     }
 
-    public void setAzienda(Azienda azienda) {
-        this.azienda = azienda;
-    }
-
-    public void setEvento(Evento evento) {
-        this.evento = evento;
+    public AnimatoreFiliera getAnimatoreFiliera() {
+        return animatoreFiliera;
     }
 }

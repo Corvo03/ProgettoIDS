@@ -4,17 +4,22 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * specifica cosa deve avere un evento
+ */
 public class Evento {
     private String nome;
     private LocalDate data;
     private String luogo;
     private String descrizione;
     private int capienzaMassima;
+    /**
+     * lista partecipanti che hanno accettato l'invito
+     */
     private List<Partecipazione> listaPartecipanti;
-    private int prezzoBiglietto;
 
     /**
-     * Evento settato
+     *
      * @param nome
      * @param data
      * @param luogo
@@ -28,13 +33,6 @@ public class Evento {
         this.descrizione = descrizione;
         this.capienzaMassima = capienzaMassima;
         this.listaPartecipanti = new ArrayList<Partecipazione>();
-    }
-
-    /**
-     * evento vuoto
-     */
-    public Evento() {
-
     }
 
     public String getNome() {
@@ -83,9 +81,5 @@ public class Evento {
 
     public void setData(LocalDate data) {
         this.data = data;
-    }
-
-    public void setPrezzoBiglietto(int prezzoBiglietto) {
-        this.prezzoBiglietto = prezzoBiglietto;
     }
 }
