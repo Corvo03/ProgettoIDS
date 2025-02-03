@@ -11,7 +11,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     private AccettatoreInvito accettatoreInvito;
 
     public Azienda() {
-        //todo mettere altro costruttore di Autenticato
+        //TODO mettere altro costruttore di Autenticato
         super();
         this.gestoreStock = new GestoreStock();
         this.certificati = new ArrayList<>();
@@ -29,12 +29,12 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
         this.indirizzoSediProduttive = indirizzoSediProduttive;
     }
 
-    public void accettaInvito(Invito invito) {
-        //todo: claudio
+    public void accettaInvito(Invito invitoDaAccettare) {
+        this.accettatoreInvito.accettaInvito(invitoDaAccettare);
     }
 
-    public void rifiutaInvito(Invito invito) {
-        //todo: claudio
+    public void rifiutaInvito(Invito invitoDaRifiutare) {
+            this.accettatoreInvito.rifiutaInvito(invitoDaRifiutare);
     }
 
     /**
