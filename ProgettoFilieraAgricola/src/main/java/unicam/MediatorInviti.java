@@ -1,5 +1,6 @@
 package unicam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,14 +54,34 @@ public class MediatorInviti implements Mediator {
         //TODO aggiungiPartecipanteEvento.add(invito.getPartecipante());
     }
 
+    /**
+     * mette l'invito nella lista degli inviti mandati
+     * @param invito
+     */
     private void addInvito(Invito invito) {
         this.listaInviti.add(invito);
     }
 
-
+    //TODO prendere tutti gli inviti forse non dovremmo lasciarlo
     @Override
     public List<Invito> getListInviti() {
         return this.listaInviti;
+    }
+
+    //TODO lo facciamo metodo statico? perche azienda delega all'accettatore e passa già l' invito da rifiutare/accettare nei parametri
+    /**
+     * ricevo la lista inviti dell'azienda specifica
+     * @param azienda
+     * @return
+     */
+    public List<Invito> getListInvitiAzienda(Azienda azienda) {
+        List<Invito> listaInviti = new ArrayList<Invito>();
+        for(Invito invito : this.listaInviti) {
+            if(invito.getPartecipanteEvento().equals(azienda)) {
+                listaInviti.add(invito);
+            }
+        }
+        return listaInviti;
     }
 
     public AccettatoreInvito getInvitato() {

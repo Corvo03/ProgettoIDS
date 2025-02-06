@@ -3,7 +3,7 @@ package unicam;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract non-sealed class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione {
+public abstract non-sealed class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione,PartecipanteEvento {
     private List<String> indirizzoSediProduttive;
     private List<Certificato> certificati;
     private final GestoreStock gestoreStock;
@@ -22,17 +22,27 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
             throw new NullPointerException("nome profilo null");
         if (descrizione == null)
             throw new NullPointerException("descrizione null");
+
         //TODO: Claudio
+        //todo bisogna mettere i metodi dentro sezione profili per aggiungere profili
     }
 
     public void setIndirizzoSediProduttive(List<String> indirizzoSediProduttive) {
         this.indirizzoSediProduttive = indirizzoSediProduttive;
     }
 
+    /**
+     * delega l'accettazione all'accettatore
+     * @param invitoDaAccettare
+     */
     public void accettaInvito(Invito invitoDaAccettare) {
         this.accettatoreInvito.accettaInvito(invitoDaAccettare);
     }
 
+    /**
+     * delega il rifiuto  invito all'accettatore
+     * @param invitoDaRifiutare
+     */
     public void rifiutaInvito(Invito invitoDaRifiutare) {
             this.accettatoreInvito.rifiutaInvito(invitoDaRifiutare);
     }

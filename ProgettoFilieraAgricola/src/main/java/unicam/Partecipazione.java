@@ -1,7 +1,6 @@
 package unicam;
 
 import java.util.ArrayList;
-
 public class Partecipazione {
 
     private Azienda aziendaChePartecipa;

@@ -27,6 +27,9 @@ public class Evento {
      * @param capienzaMassima
      */
     public Evento(String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
+        if(nome == null || data == null || luogo == null || descrizione == null || capienzaMassima < 1){
+            throw new IllegalArgumentException();
+        }
         this.nome = nome;
         this.data = data;
         this.luogo = luogo;

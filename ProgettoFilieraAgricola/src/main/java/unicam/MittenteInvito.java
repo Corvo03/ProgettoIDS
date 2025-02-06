@@ -23,6 +23,7 @@ public class MittenteInvito {
      * @param dataCreazione
      * @param dataScadenza
      */
+    //todo qua ho messo tutta la roba che sta nel costruttore invito
     public void inviaInvito(AnimatoreFiliera animatoreFiliera,Evento evento, PartecipanteEvento partecipante, Date dataCreazione, Date dataScadenza) {
         Invito invito = new Invito(animatoreFiliera,evento,partecipante,dataCreazione,dataScadenza);
         mediator.inviaInvito(invito);
