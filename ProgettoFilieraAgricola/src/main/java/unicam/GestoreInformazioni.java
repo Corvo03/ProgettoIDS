@@ -42,6 +42,7 @@ public class GestoreInformazioni {
         return new ArrayList<>(informazioniDaApprovare.keySet());
     }
 
+    //TODO switch case
     public void informazioneApprovata(InformazioneDaApprovare informazione) {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");
