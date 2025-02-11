@@ -16,7 +16,7 @@ public class Evento {
     /**
      * lista partecipanti che hanno accettato l'invito
      */
-    private List<Partecipazione> listaPartecipanti;
+    private List<PartecipanteEvento> listaPartecipanti;
 
     /**
      *
@@ -35,7 +35,7 @@ public class Evento {
         this.luogo = luogo;
         this.descrizione = descrizione;
         this.capienzaMassima = capienzaMassima;
-        this.listaPartecipanti = new ArrayList<Partecipazione>();
+        this.listaPartecipanti = new ArrayList<PartecipanteEvento>();
     }
 
     public String getNome() {
@@ -46,11 +46,11 @@ public class Evento {
         this.nome = nome;
     }
 
-    public List<Partecipazione> getListaPartecipanti() {
+    public List<PartecipanteEvento> getListaPartecipanti() {
         return listaPartecipanti;
     }
 
-    public void setListaPartecipanti(List<Partecipazione> listaPartecipanti) {
+    public void setListaPartecipanti(List<PartecipanteEvento> listaPartecipanti) {
         this.listaPartecipanti = listaPartecipanti;
     }
 
@@ -84,5 +84,13 @@ public class Evento {
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    /**
+     * Aggiunge un partecipente all'evento
+     * @param partecipanteEvento, partecipante da aggiungere.
+     */
+    public void addPartecipante(PartecipanteEvento partecipanteEvento) {
+        this.listaPartecipanti.add(partecipanteEvento);
     }
 }

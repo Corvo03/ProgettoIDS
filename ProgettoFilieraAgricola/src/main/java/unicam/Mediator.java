@@ -9,6 +9,6 @@ public interface Mediator
     public void accettaInvito(Invito invito);
     public void rifiutaInvito(Invito invito);
     //todo specifichiamo questo get che è importante o no?
-    public List<Invito> getListInviti();
+    public List<Invito> getListInviti(Azienda azienda);
 
 }

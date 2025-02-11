@@ -13,21 +13,18 @@ public class MediatorInviti implements Mediator {
     private List<Invito> listaInviti;
     private AccettatoreInvito invitato;
     private MittenteInvito invitante;
-    private AggiungiPartecipanteEvento aggiungiPartecipanteEvento;
+
 
     /**
      *
      * @param listaInviti
      * @param invitato
      * @param invitante
-     * @param aggiungiPartecipanteEvento
      */
-    public MediatorInviti(List<Invito> listaInviti, AccettatoreInvito invitato, MittenteInvito invitante,
-                          AggiungiPartecipanteEvento aggiungiPartecipanteEvento) {
+    public MediatorInviti(List<Invito> listaInviti, AccettatoreInvito invitato, MittenteInvito invitante) {
         this.listaInviti = listaInviti;
         this.invitato = invitato;
         this.invitante = invitante;
-        this.aggiungiPartecipanteEvento = aggiungiPartecipanteEvento;
     }
 
     @Override
@@ -47,34 +44,27 @@ public class MediatorInviti implements Mediator {
     }
 
     /**
-     * metodo chiamato da AccettatoreInvito per accettare invito
+     * Metodo chiamato da AccettatoreInvito per accettare invito
      * @param invito
      */
     public void accettaInvito(Invito invito) {
-        //TODO aggiungiPartecipanteEvento.add(invito.getPartecipante());
+        invito.getEvento().addPartecipante(invito.getPartecipanteEvento());
     }
 
     /**
-     * mette l'invito nella lista degli inviti mandati
+     * Mette l'invito nella lista degli inviti mandati
      * @param invito
      */
     private void addInvito(Invito invito) {
         this.listaInviti.add(invito);
     }
 
-    //TODO prendere tutti gli inviti forse non dovremmo lasciarlo
-    @Override
-    public List<Invito> getListInviti() {
-        return this.listaInviti;
-    }
-
-    //TODO lo facciamo metodo statico? perche azienda delega all'accettatore e passa già l' invito da rifiutare/accettare nei parametri
     /**
-     * ricevo la lista inviti dell'azienda specifica
-     * @param azienda
-     * @return
+     * Ritorna la lista inviti dell'azienda specifica
+     * @param azienda, azienda di cui si vuole ottenere la lista degli Inviti.
+     * @return la lista degli inviti dell'Azienda.
      */
-    public List<Invito> getListInvitiAzienda(Azienda azienda) {
+    public List<Invito> getListInviti(Azienda azienda) {
         List<Invito> listaInviti = new ArrayList<Invito>();
         for(Invito invito : this.listaInviti) {
             if(invito.getPartecipanteEvento().equals(azienda)) {

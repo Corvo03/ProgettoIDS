@@ -1,7 +1,9 @@
 package unicam;
 
+import java.util.List;
+
 /**
- * si occupa di accettare o rifiutare gli inviti
+ * Si occupa di accettare o rifiutare gli inviti
  */
 
 public class AccettatoreInvito {
@@ -13,7 +15,7 @@ public class AccettatoreInvito {
     public AccettatoreInvito() {}
 
     /**
-     * delega al mediator il rifiuto invito
+     * Delega al mediator il rifiuto invito
      * @param invito
      */
     public void rifiutaInvito(Invito invito) {
@@ -21,7 +23,7 @@ public class AccettatoreInvito {
     }
 
     /**
-     * delega al mediator l'accettazione invito
+     * Delega al mediator l'accettazione invito
      * @param invito
      */
     public void accettaInvito(Invito invito){
@@ -29,4 +31,8 @@ public class AccettatoreInvito {
     }
 
     public Mediator getMediator() {return mediator;}
+
+    public List<Invito> getListInvitiAzienda(Azienda azienda){
+        return mediator.getListInviti(azienda);
+    }
 }

@@ -43,10 +43,6 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Cr
         richiediVerificaInformazioni(bigliettoCreato);
 
     }
-    //TODO non è specificata nel vpp
-    public Partecipazione creaPartecipazione(){
-        return null;
-    }
     public void aggiungiBiglietti(Evento evento) {
         //todo
     }

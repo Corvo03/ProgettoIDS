@@ -23,7 +23,6 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
         if (descrizione == null)
             throw new NullPointerException("descrizione null");
 
-        //TODO: Claudio
         //todo bisogna mettere i metodi dentro sezione profili per aggiungere profili
     }
 
@@ -32,7 +31,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     }
 
     /**
-     * delega l'accettazione all'accettatore
+     * Delega l'accettazione all'accettatore
      * @param invitoDaAccettare
      */
     public void accettaInvito(Invito invitoDaAccettare) {
@@ -40,7 +39,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     }
 
     /**
-     * delega il rifiuto  invito all'accettatore
+     * Delega il rifiuto invito all'accettatore
      * @param invitoDaRifiutare
      */
     public void rifiutaInvito(Invito invitoDaRifiutare) {
