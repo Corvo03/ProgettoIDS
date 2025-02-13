@@ -6,11 +6,13 @@ import java.util.List;
 public class Prodotto extends Item{
     private final Azienda aziendaProduttrice;
     private List<Certificato> listaCertificati;
+    private InformazioneAggiuntiva informazioneAggiuntiva;
 
-    public Prodotto(float prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice) {
+    public Prodotto(float prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione) {
         super(prezzo, nomeItem, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
+        informazioneAggiuntiva = informazione;
     }
 
     public Azienda getAziendaProduttrice() {
@@ -25,6 +27,11 @@ public class Prodotto extends Item{
         this.listaCertificati = listaCertificati;
     }
 
+    /**
+     * Permette di aggiungere un certificato al prodotto.
+     * @param certificato da aggiungere al prodotto.
+     * @throws NullPointerException se il certificato non è valido.
+     */
     public void addCertificato(Certificato certificato){
         if(certificato == null)
             throw new NullPointerException("Certificato non trovato");

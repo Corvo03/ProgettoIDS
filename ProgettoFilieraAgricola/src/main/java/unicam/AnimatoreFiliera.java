@@ -9,7 +9,7 @@ import java.util.List;
  * si occupa di delegare le operazioni per
  * creare gli eventi, mandare inviti e mettere biglietti sul Market
  */
-public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements CreatoreBiglietto,RichiedenteVerificaInformazione {
+public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
     /**
      * lista di tutti gli eventi creati dall'animatore
      */
@@ -36,12 +36,21 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Cr
     }
 
 
-    //TODO la interfaccia dovrebbe chiedere anche prezzo, descrizione e nome
-    @Override
-    public void creaBiglietto(float prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
-        Biglietto bigliettoCreato = new Biglietto(prezzo, nomeItem, descrizione, animatoreFiliera, evento);
-        richiediVerificaInformazioni(bigliettoCreato);
-
+    /**
+     * Crea un biglietto con le seguenti caratteristiche:
+     *
+     * @param prezzo del biglietto.
+     * @param nome del biglietto.
+     * @param descrizione del biglietto.
+     * @param animatoreFiliera che crea il biglietto, lo stesso che crea l'evento.
+     * @param evento a cui è collegato il biglietto.
+     * @return il biglietto appena creato.
+     */
+    public Biglietto creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
+        ItemFactory fact = new CreatorBiglietto(nome, descrizione, prezzo, this, evento);
+        Biglietto biglietto = (Biglietto) fact.createItem();
+        this.richiediVerificaInformazioni(biglietto);
+        return biglietto;
     }
     public void aggiungiBiglietti(Evento evento) {
         //todo
