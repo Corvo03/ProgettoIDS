@@ -1,5 +1,5 @@
 package unicam;
 
 public interface PartecipanteEvento {
-    //TODO
+    public RiceventeInvito getRiceventeInvito();
 }

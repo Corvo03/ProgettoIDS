@@ -41,6 +41,7 @@ public class DistributoreTipicita extends Azienda  {
             throw new NullPointerException("prodotto null");
         pacchetto.addProdotto(prodotto);
     }
+    public RiceventeInvito getRiceventeInvito() {return this.getRiceventeInvito();}
 
     // TODO metodo per ottenere i propri pacchetti dal marketplace
     //TODO metodo per ottenere i propri prodotti dal marketplace

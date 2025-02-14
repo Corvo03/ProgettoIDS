@@ -15,11 +15,11 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
      */
     private List<Evento> listaEventi;
     /**
-     * il mittente realtivo a questo animatore
+     * il gestore di tutti gli stock di ogni biglietto creato
      */
     private GestoreStock gestoreStock;
     /**
-     * il mittente realtivo a questo animatore
+     * il mittente relativo a questo animatore
      */
     private MittenteInvito mittenteInvito;
 
@@ -37,7 +37,7 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
 
 
     /**
-     * Crea un biglietto con le seguenti caratteristiche:
+     * Crea un biglietto con le seguenti caratteristiche e lo manda in verifica:
      *
      * @param prezzo del biglietto.
      * @param nome del biglietto.
@@ -46,14 +46,23 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
      * @param evento a cui è collegato il biglietto.
      * @return il biglietto appena creato.
      */
-    public Biglietto creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
+    public Biglietto  creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
         ItemFactory fact = new CreatorBiglietto(nome, descrizione, prezzo, this, evento);
         Biglietto biglietto = (Biglietto) fact.createItem();
         this.richiediVerificaInformazioni(biglietto);
-        return biglietto;
+        return biglietto; //TODO è necessario che ritorni un biglietto? dove lo uso?
     }
-    public void aggiungiBiglietti(Evento evento) {
-        //todo
+
+    /**
+     * riempie lo stock di biglietti
+     * @param biglietto
+     */
+    public void aggiungiBiglietti(Biglietto biglietto, int quantita) {
+        if(this.gestoreStock.getListaStock().contains(biglietto)){
+            int index = this.gestoreStock.getListaStock().indexOf(biglietto);
+            this.gestoreStock.getListaStock().get(index).addQuantita(quantita);
+        }
+
     }
 
     /**
@@ -63,8 +72,8 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
      * @param dataCreazione
      * @param dataScadenza
      */
-    public void invitaAzienda(Evento evento, Azienda azienda, Date dataCreazione, Date dataScadenza){
-        this.mittenteInvito.inviaInvito(this,evento,(PartecipanteEvento) azienda, dataCreazione,dataScadenza);
+    public void invitaAzienda(Evento evento, Azienda azienda, LocalDate dataCreazione, LocalDate dataScadenza){
+        this.mittenteInvito.inviaInvito(this,evento,(PartecipanteEvento) azienda, LocalDate.now(),dataScadenza);
     }
 
     /**
@@ -87,7 +96,11 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
         return gestoreStock;
     }
 
+    public List<Evento> getListaEventi() {
+        return listaEventi;
+    }
 
-    //TODO crea biglietto passando come parametro l'evento, il biglietto deve essere verificato
-    //     il gestore info inserirà nello stock dell'animatore se approvato.
+    public MittenteInvito getMittenteInvito() {
+        return mittenteInvito;
+    }
 }

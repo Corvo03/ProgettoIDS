@@ -8,7 +8,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     private List<Certificato> certificati;
     private final GestoreStock gestoreStock;
     private InformazioniSensibili informazioniSensibili;
-    private AccettatoreInvito accettatoreInvito;
+    private RiceventeInvito riceventeInvito;
 
     public Azienda() {
         //TODO mettere altro costruttore di Autenticato
@@ -40,7 +40,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
      * @param invitoDaAccettare
      */
     public void accettaInvito(Invito invitoDaAccettare) {
-        this.accettatoreInvito.accettaInvito(invitoDaAccettare);
+        this.riceventeInvito.accettaInvito(invitoDaAccettare);
     }
 
     /**
@@ -48,7 +48,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
      * @param invitoDaRifiutare
      */
     public void rifiutaInvito(Invito invitoDaRifiutare) {
-            this.accettatoreInvito.rifiutaInvito(invitoDaRifiutare);
+            this.riceventeInvito.rifiutaInvito(invitoDaRifiutare);
     }
 
     /**
@@ -69,6 +69,10 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
 
     public GestoreStock getGestoreStock() {
         return gestoreStock;
+    }
+
+    public RiceventeInvito getRiceventeInvito() {
+        return riceventeInvito;
     }
 
     public void setInformazioniSensibili(InformazioniSensibili informazioniSensibili) {

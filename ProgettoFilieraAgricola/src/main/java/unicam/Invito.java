@@ -1,4 +1,5 @@
 package unicam;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -21,11 +22,11 @@ public class Invito {
     /**
      * data creazione
      */
-    private Date dataCreazione;
+    private LocalDate dataCreazione;
     /**
      * data scadenza
      */
-    private Date dataScadenza;
+    private LocalDate dataScadenza;
 
     /**
      *
@@ -36,7 +37,7 @@ public class Invito {
      * @param dataScadenza
      */
     public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento,
-                  Date dataCreazione, Date dataScadenza) {
+                  LocalDate dataCreazione, LocalDate dataScadenza) {
         this.animatoreFiliera = organizzatoreEvento ;
         this.evento = evento ;
         this.partecipanteEvento = partecipanteEvento;
@@ -56,11 +57,11 @@ public class Invito {
         return animatoreFiliera;
     }
 
-    public Date getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public Date getDataCreazione() {
+    public LocalDate getDataCreazione() {
         return dataCreazione;
     }
 

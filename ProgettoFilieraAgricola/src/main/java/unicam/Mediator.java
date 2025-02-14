@@ -5,10 +5,17 @@ import java.util.List;
 public interface Mediator
 {
 
+    /**
+     * invia uno specifico invito
+     * @param invito
+     */
     public void inviaInvito(Invito invito);
-    public void accettaInvito(Invito invito);
-    public void rifiutaInvito(Invito invito);
-    //todo specifichiamo questo get che è importante o no?
-    public List<Invito> getListInviti(Azienda azienda);
+    /**
+     * accetta uno specifico invito
+     * @param invito
+     * @param risposta
+     */
+   public boolean inviaRisposta(Invito invito, boolean risposta);
+
 
 }
