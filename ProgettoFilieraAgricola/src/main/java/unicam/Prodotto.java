@@ -8,11 +8,17 @@ public class Prodotto extends Item{
     private List<Certificato> listaCertificati;
     private InformazioneAggiuntiva informazioneAggiuntiva;
 
-    public Prodotto(float prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione) {
+    public Prodotto(double prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione) {
         super(prezzo, nomeItem, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
         informazioneAggiuntiva = informazione;
+    }
+
+    public Prodotto(double prezzo, String nome, String descrizione, Azienda aziendaProduttrice) {
+        super(prezzo, nome, descrizione);
+        this.aziendaProduttrice = aziendaProduttrice;
+        listaCertificati = new ArrayList<Certificato>();;
     }
 
     public Azienda getAziendaProduttrice() {
@@ -21,6 +27,10 @@ public class Prodotto extends Item{
 
     public List<Certificato> getListaCertificati() {
         return listaCertificati;
+    }
+
+    public InformazioneAggiuntiva getInformazioneAggiuntiva() {
+        return informazioneAggiuntiva;
     }
 
     public void setListaCertificati(List<Certificato> listaCertificati) {

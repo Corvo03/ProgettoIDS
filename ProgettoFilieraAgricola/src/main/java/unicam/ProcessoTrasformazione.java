@@ -26,7 +26,7 @@ public class ProcessoTrasformazione implements InformazioneAggiuntiva {
     public void AddFaseProduzione(String fase){
         if(fase.isEmpty())
             throw new IllegalArgumentException("Fase non può essere vuoto");
-        fasiTrasformazione += "\n" + fase;
+        fasiTrasformazione += fase+ '\n';
     }
 
     public String getNome() {

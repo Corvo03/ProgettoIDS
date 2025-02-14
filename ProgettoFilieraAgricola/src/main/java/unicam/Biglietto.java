@@ -6,7 +6,7 @@ import java.util.Date;
     private AnimatoreFiliera animatore;
     private Evento evento;
 
-        public Biglietto(float prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatore, Evento evento) {
+        public Biglietto(double prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatore, Evento evento) {
             super(prezzo, nomeItem, descrizione);
             this.animatore = animatore;
             this.evento = evento;

@@ -1,10 +1,10 @@
 package unicam;
 
 public abstract class Item implements InformazioneDaApprovare {
-    private float prezzo;
+    private double prezzo;
     private String nomeItem;
     private String descrizione;
-    public Item(float prezzo, String nomeItem, String descrizione) {
+    public Item(double prezzo, String nomeItem, String descrizione) {
         this.prezzo = prezzo;
         this.nomeItem = nomeItem;
         this.descrizione = descrizione;
@@ -26,7 +26,7 @@ public abstract class Item implements InformazioneDaApprovare {
         this.nomeItem = nomeItem;
     }
 
-    public float getPrezzo() {
+    public double getPrezzo() {
         return prezzo;
     }
 
