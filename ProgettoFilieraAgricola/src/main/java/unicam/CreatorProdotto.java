@@ -35,10 +35,17 @@ public class CreatorProdotto extends ItemFactory{
      * @param informazioneAggiuntiva del prodotto Rappresenta un Metodo di Produzione o un Processo di Trasformazione.
      * @param aziendaProduttrice del prodotto.
      */
-    public CreatorProdotto(String nome, String descrizione, Float prezzo,
+    public CreatorProdotto(String nome, String descrizione, double prezzo,
                            InformazioneAggiuntiva informazioneAggiuntiva, Azienda aziendaProduttrice) {
         super(nome, descrizione, prezzo);
         this.informazioneAggiuntiva = informazioneAggiuntiva;
+        this.aziendaProduttrice = aziendaProduttrice;
+        this.certificati = new ArrayList<Certificato>();
+    }
+
+    public CreatorProdotto(String nome, String descrizione, double prezzo, Azienda aziendaProduttrice) {
+        super(nome, descrizione, prezzo);
+        this.informazioneAggiuntiva = null;
         this.aziendaProduttrice = aziendaProduttrice;
         this.certificati = new ArrayList<Certificato>();
     }
@@ -49,6 +56,8 @@ public class CreatorProdotto extends ItemFactory{
      */
     @Override
     public Item createItem() {
-        return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva);
+        if(informazioneAggiuntiva != null)
+            return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva);
+        return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice);
     }
 }

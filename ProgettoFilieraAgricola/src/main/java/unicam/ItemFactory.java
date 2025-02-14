@@ -3,7 +3,7 @@ package unicam;
 public abstract class ItemFactory {
     protected String nome;
     protected String descrizione;
-    protected Float prezzo;
+    protected double prezzo;
 
     /**
      * Costruttore del Factory dell'Item, permette di creare un Item a partire dagli elementi passati nel costruttore.
@@ -13,7 +13,7 @@ public abstract class ItemFactory {
      *
      * @throws IllegalArgumentException se il prezzo, il nome o la descrizione non sono validi.
      */
-    public ItemFactory(String nome, String descrizione, Float prezzo) {
+    public ItemFactory(String nome, String descrizione, double prezzo) {
         if (prezzo <= 0)
             throw new IllegalArgumentException("Prezzo non valido");
         if (nome == null || nome.isEmpty())

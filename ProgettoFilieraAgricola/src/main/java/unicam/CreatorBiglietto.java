@@ -15,7 +15,7 @@ public class CreatorBiglietto extends ItemFactory {
      *
      * @throws NullPointerException se l'Evento o l'Animatore non sono validi (cioè se sono null).
      */
-    public CreatorBiglietto(String nome, String descrizione, Float prezzo, AnimatoreFiliera animatoreFiliera, Evento evento) {
+    public CreatorBiglietto(String nome, String descrizione, double prezzo, AnimatoreFiliera animatoreFiliera, Evento evento) {
         super(nome, descrizione, prezzo);
         if (animatoreFiliera == null) {
             throw new NullPointerException("animatoreFiliera");

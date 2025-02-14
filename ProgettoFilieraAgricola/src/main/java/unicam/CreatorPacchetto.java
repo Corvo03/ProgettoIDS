@@ -19,7 +19,7 @@ public class CreatorPacchetto extends ItemFactory{
      *
      * @throws NullPointerException se la lista è nulla
      */
-    public CreatorPacchetto(String nome, String descrizione, Float prezzo, List<Prodotto> listaProdotti, Azienda azienda) {
+    public CreatorPacchetto(String nome, String descrizione, double prezzo, List<Prodotto> listaProdotti, Azienda azienda) {
         super(nome, descrizione, prezzo);
         if (listaProdotti == null)
             throw new NullPointerException("lista item null");
@@ -28,7 +28,7 @@ public class CreatorPacchetto extends ItemFactory{
         this.aziendaProduttrice = azienda;
     }
 
-    public CreatorPacchetto(String nome, String descrizione, Float prezzo, Azienda azienda) {
+    public CreatorPacchetto(String nome, String descrizione, double prezzo, Azienda azienda) {
         super(nome, descrizione, prezzo);
         this.aziendaProduttrice = azienda;
         this.listaProdotti = new ArrayList<Prodotto>();
