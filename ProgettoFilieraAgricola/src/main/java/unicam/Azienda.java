@@ -17,13 +17,18 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
         this.certificati = new ArrayList<>();
     }
 
+    /**
+     *
+     *
+     * @param nomeProfilo
+     * @param descrizione
+     */
     public void creaProfilo(String nomeProfilo, String descrizione) {
         if (nomeProfilo == null)
             throw new NullPointerException("nome profilo null");
         if (descrizione == null)
             throw new NullPointerException("descrizione null");
-
-        //todo bisogna mettere i metodi dentro sezione profili per aggiungere profili
+        GestoreSistema.getInstance().aggiungiProfilo(new Profilo(nomeProfilo, descrizione, this));
     }
 
     public void setIndirizzoSediProduttive(List<String> indirizzoSediProduttive) {
@@ -47,7 +52,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     }
 
     /**
-     * Richiede la verifica delle informazioni sensibili.
+     * Richiede la verifica delle informazioni sensibili al curatore.
      *
      *
      * @param sedeLegale la sede legale dell'azienda
@@ -68,5 +73,9 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
 
     public void setInformazioniSensibili(InformazioniSensibili informazioniSensibili) {
         this.informazioniSensibili = informazioniSensibili;
+    }
+
+    public void aggiungiCertificatoProdotto(Certificato certificato, Prodotto prodotto) {
+        prodotto.addCertificato(certificato);
     }
 }

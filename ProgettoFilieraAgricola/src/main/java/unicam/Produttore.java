@@ -19,8 +19,6 @@ public class Produttore extends Azienda   {
     public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, String nomeMetodo, String descrizioneMetodo) {
         ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, this.creaMetodoProduzione(nomeMetodo,descrizioneMetodo), this);
         Prodotto prodotto = (Prodotto) fact.createItem();
-
-         //TODO Certificati
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;
     }
@@ -36,8 +34,6 @@ public class Produttore extends Azienda   {
     public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, MetodoProduzione metodo) {
         ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, metodo, this);
         Prodotto prodotto = (Prodotto) fact.createItem();
-
-        //TODO Certificati
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;
     }

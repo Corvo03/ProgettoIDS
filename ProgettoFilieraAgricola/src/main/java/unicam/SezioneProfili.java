@@ -8,20 +8,19 @@ import java.util.List;
  * contiene tutti i profili della piattaforma
  */
 public class SezioneProfili {
-    private static SezioneProfili istanzaSezioneProfili;
+    private SezioneProfili istanzaSezioneProfili;
     private List<Profilo> listaProfili;
 
 
-    private SezioneProfili() {
+    public SezioneProfili() {
         listaProfili = new ArrayList<Profilo>();
-    }
-
-    public static SezioneProfili getInstance() {
-        if(istanzaSezioneProfili == null) istanzaSezioneProfili = new SezioneProfili();
-        return istanzaSezioneProfili;
     }
 
     public List<Profilo> getListaProfili() {
         return listaProfili;
+    }
+
+    public void addProfilo(Profilo profilo) {
+        listaProfili.add(profilo);
     }
 }

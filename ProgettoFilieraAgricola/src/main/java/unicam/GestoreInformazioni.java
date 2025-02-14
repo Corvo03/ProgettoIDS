@@ -38,34 +38,55 @@ public class GestoreInformazioni {
         informazioniDaApprovare.put(informazione, richiedente);
     }
 
+    /**
+     * Ritorna la lista delle informazioni da approvare.
+     *
+     * @return la lista delle informazioni da approvare
+     */
     public List<InformazioneDaApprovare> getInformazioniDaApprovare() {
         return new ArrayList<>(informazioniDaApprovare.keySet());
     }
 
-    //TODO switch case
+    /**
+     * Data un informazione approvata, la rimuove dalla lista delle informazioni da approvare
+     * e crea lo Stock corrispondente.
+     *
+     * @param informazione
+     */
     public void informazioneApprovata(InformazioneDaApprovare informazione) {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");
         }
-        if (informazione instanceof Prodotto prodotto) {
-            Azienda azienda = prodotto.getAzienda();
-            azienda.getGestoreStock().aggiungiStock(new Stock(prodotto));
+
+        switch (informazione) {
+            case Prodotto prodotto -> {
+                Azienda azienda = prodotto.getAzienda();
+                azienda.getGestoreStock().aggiungiStock(new Stock(prodotto));
+            }
+            case Pacchetto pacchetto -> {
+                Azienda azienda = pacchetto.getAzienda();
+                azienda.getGestoreStock().aggiungiStock(new Stock(pacchetto));
+            }
+            case Biglietto biglietto -> {
+                AnimatoreFiliera animatore = biglietto.getAnimatore();
+                animatore.getGestoreStock().aggiungiStock(new Stock(biglietto));
+            }
+            case InformazioniSensibili informazioniSensibili -> {
+                Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);
+                azienda.setInformazioniSensibili(informazioniSensibili);
+            }
+            default -> throw new IllegalArgumentException("Tipo di informazione non supportato");
         }
-        else if (informazione instanceof Pacchetto pacchetto) {
-            Azienda azienda = pacchetto.getAzienda();
-            azienda.getGestoreStock().aggiungiStock(new Stock(pacchetto));
-        }
-        else if (informazione instanceof Biglietto biglietto){
-            AnimatoreFiliera animatore = biglietto.getAnimatore();
-            animatore.getGestoreStock().aggiungiStock(new Stock(biglietto));
-        }
-        else if (informazione instanceof InformazioniSensibili informazioniSensibili){
-            Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);
-            azienda.setInformazioniSensibili(informazioniSensibili);
-        }
+
         informazioniDaApprovare.remove(informazione);
     }
 
+
+    /**
+     * Data un informazione rifiutata, la rimuove dalla lista delle informazioni da approvare.
+     * E se è un prodotto o pacchetto, viene aggiunto alla lista degli item rifiutati.
+     * @param informazione
+     */
     public void informazioneRifiutata(InformazioneDaApprovare informazione) {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");

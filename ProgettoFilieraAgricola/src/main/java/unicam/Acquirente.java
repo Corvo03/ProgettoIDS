@@ -1,45 +1,53 @@
 package unicam;
 
-/**
- * descrive elementi dell'acquirente
- */
-public class Acquirente extends UtenteAutenticato{
-    private GestoreCarrello gestoreCarrello;
+import java.util.List;
 
-    /**
-     *
-     * @param email
-     * @param password
-     * @param nomeUtente
-     */
+/**
+ * Classe che rappresenta un acquirente che può aggiungere elementi al carrello e acquistarli
+ */
+public class Acquirente extends UtenteAutenticato {
+    private final GestoreCarrello gestoreCarrello;
+
     public Acquirente(String email, String password, String nomeUtente) {
         super(email, password, nomeUtente);
         this.gestoreCarrello = new GestoreCarrello();
     }
 
     /**
-     * delega al gestore il completamento acquisto del carrello
-     * @param metodoPagamento
+     * Delega al gestore il completamento acquisto del carrello
+     *
+     * @param metodoPagamento metodo di pagamento selezionato
      */
     public void completaAcquisto(MetodoPagamento metodoPagamento) {
         gestoreCarrello.completaAcquisto(metodoPagamento);
     }
 
     /**
-     * delega al gestore l'aggiunta di elementi del marketplacec nel carrello
-     * @param elemento
-     * @param quantita
+     * Delega al gestore l'aggiunta di elementi del marketplacec nel carrello
+     *
+     * @param elemento elemento selezionato
+     * @param quantita quantità da aggiungere
      */
     public void aggiungiElementoAlCarrello(ElementoMarketplace elemento, int quantita) {
         gestoreCarrello.aggiungiElementoAlCarrello(elemento, quantita);
     }
 
     /**
-     * delega al gestore l'eliminazione di un elemento dal carrello
-     * @param elemento
-     * @param quantita
+     * Delega al gestore l'eliminazione di un elemento dal carrello
+     *
+     * @param elemento elemento selezionato
+     * @param quantita quantità da eliminare
      */
     public void eliminaElementoDalCarrello(ElementoMarketplace elemento, int quantita) {
         gestoreCarrello.getCarrello().rimuoviElementoDalCarrello(elemento, quantita);
+    }
+
+    /**
+     * Ottiene la lista di tutti gli elementi disponibili nel marketplace.
+     *
+     * @return lista di elementi nel marketplace
+     */
+    public List<ElementoMarketplace> getListaMarketplace(){
+        return GestoreSistema.getInstance().getElementiDisponibiliMarketplace();
     }
 }

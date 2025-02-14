@@ -1,7 +1,6 @@
 package unicam;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Marketplace {
@@ -11,14 +10,26 @@ public class Marketplace {
         this.listaElementiMarketplace = new ArrayList<ElementoMarketplace>();
     }
 
-    public List<ElementoMarketplace> getListaElementiMarketplace() {
-        return listaElementiMarketplace;
+
+    /**
+     * Ritorna la lista di tutti gli elementi del marketplace.
+     *
+     * @return lista di tutti gli elementi del marketplace
+     */
+    public List<ElementoMarketplace> getElementiDisponibiliMarketplace() {
+        List<ElementoMarketplace> elementiDisponibili = new ArrayList<>();
+        for (ElementoMarketplace e : listaElementiMarketplace) {
+            if (e.getStock().getQuantita() != 0) {
+                elementiDisponibili.add(e);
+            }
+        }
+        return elementiDisponibili;
     }
 
-    public int getMaxId(){
+    public int getMaxId() {
         int maxId = 0;
         for (ElementoMarketplace elementoMarketplace : this.listaElementiMarketplace) {
-            if (elementoMarketplace.getId()>maxId)
+            if (elementoMarketplace.getId() > maxId)
                 maxId = elementoMarketplace.getId();
         }
         return maxId;

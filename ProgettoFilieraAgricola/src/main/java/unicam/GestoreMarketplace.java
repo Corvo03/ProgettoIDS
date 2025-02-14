@@ -1,19 +1,13 @@
 package unicam;
 
+import java.util.List;
 import java.util.Map;
 
 public class GestoreMarketplace {
-    private static GestoreMarketplace istanza;
     private Marketplace marketPlace;
 
-    private GestoreMarketplace() {
+    public GestoreMarketplace() {
         marketPlace = new Marketplace();
-    }
-
-    public static GestoreMarketplace getInstance() {
-        if (istanza == null)
-            istanza = new GestoreMarketplace();
-        return istanza;
     }
 
     public ElementoMarketplace creaElementoMarketPlace(Stock stock){
@@ -31,5 +25,9 @@ public class GestoreMarketplace {
             elemento.getStock().setQuantita(elemento.getStock().getQuantita() -
                     elementiCarrello.get(elemento));
         }
+    }
+
+    public List<ElementoMarketplace> getElementiDisponibiliMarketplace() {
+        return marketPlace.getElementiDisponibiliMarketplace();
     }
 }

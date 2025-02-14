@@ -18,7 +18,7 @@ public class GestoreCarrello {
     public void completaAcquisto(MetodoPagamento metodoPagamento) {
         carrello.calcolaTotalePrezzo();
         metodoPagamento.pagamento(carrello.getTotalePrezzo());
-        GestoreMarketplace.getInstance().aggiornaQuantitaElementi(carrello.getElementiCarrello());
+        GestoreSistema.getInstance().aggiornaQuantitaElementi(carrello.getElementiCarrello());
         carrello.svuotaCarrello();
         notificaAziende();
     }

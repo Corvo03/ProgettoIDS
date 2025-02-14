@@ -8,7 +8,6 @@ public class GestoreStock {
 
     public GestoreStock() {
         listaStock = new ArrayList<Stock>();
-        //todo fare in modo che il marketplace e il gestoreMarketplace siano Singleton
     }
 
     public List<Stock> getListaStock() {
@@ -17,7 +16,7 @@ public class GestoreStock {
 
     public void aggiungiStock(Stock stock) {
         listaStock.add(stock);
-        GestoreMarketplace.getInstance().creaElementoMarketPlace(stock);
+        GestoreSistema.getInstance().creaElementoMarketPlace(stock);
     }
 
     public void ricaricaProdotto(Stock stock, int quantita) {

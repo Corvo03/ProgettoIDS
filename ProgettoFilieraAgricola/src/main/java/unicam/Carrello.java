@@ -3,19 +3,19 @@ package unicam;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Classe che rappresenta il carrello dell'utente nel quale si possono inserire e rimuoere elementi del marketplace
+ */
 public class Carrello {
     private Map<ElementoMarketplace, Integer> elementiCarrello;
     private float totalePrezzo;
 
-    /**
-     * istanzia la lista degli elementi nel carrello
-     */
     public Carrello() {
         elementiCarrello = new HashMap<>();
     }
 
     /**
-     * calcola totale del costo dei prodotti
+     * Calcola il totale del prezzo del carrello
      */
     public void calcolaTotalePrezzo() {
         for (ElementoMarketplace elemento : elementiCarrello.keySet()) {
@@ -24,7 +24,7 @@ public class Carrello {
     }
 
     /**
-     * svuota carrello e azzera totale
+     * Svuota il carrello
      */
     public void svuotaCarrello(){
         this.elementiCarrello.clear();

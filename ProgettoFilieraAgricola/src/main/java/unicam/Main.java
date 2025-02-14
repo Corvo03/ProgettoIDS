@@ -6,6 +6,7 @@ public class Main {
         Produttore produttore = new Produttore();
         produttore.creaProdotto(10.0f, "Prodotto1", "Descrizione1", null);
         produttore.creaProdotto(20.0f, "Prodotto2", "Descrizione2", null);
+        System.out.println("Prodotti creati:");
         for (InformazioneDaApprovare info : GestoreInformazioni.getInstance().getInformazioniDaApprovare()) {
             System.out.println(info);
         }
@@ -14,7 +15,11 @@ public class Main {
         Curatore curatore = new Curatore();
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
-        for (ElementoMarketplace elemento : GestoreMarketplace.getInstance().getMarketPlace().getListaElementi()) {
+        //ricarica elementi e diventano disponibili nel marketplace
+        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().get(0), 2);
+        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().get(1), 10);
+        System.out.println("Elementi disponibili nel marketplace:");
+        for (ElementoMarketplace elemento : GestoreSistema.getInstance().getElementiDisponibiliMarketplace()) {
             System.out.println(elemento.getId());
             System.out.println(elemento.getStock().getItem().getNomeItem());
             System.out.println(elemento.getStock().getItem().getPrezzo());
@@ -22,14 +27,13 @@ public class Main {
             System.out.println("\n");
         }
 
-        //produttore ricarica prodotti, acquirente compra e verifico che siano stati aggiornati i prodotti in marketplace
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().get(0), 1);
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().get(1), 10);
+        //acquirente compra e verifico che siano stati aggiornati i prodotti in marketplace
         Acquirente acquirente = new Acquirente("email", "password", "nomeUtente");
-        acquirente.aggiungiElementoAlCarrello(GestoreMarketplace.getInstance().getMarketPlace().getListaElementi().getFirst(),1);
-        acquirente.aggiungiElementoAlCarrello(GestoreMarketplace.getInstance().getMarketPlace().getListaElementi().get(1),3);
+        acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().getFirst(),1);
+        acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().get(1),3);
         acquirente.completaAcquisto(new MetodoPagamento());
-        for (ElementoMarketplace elemento : GestoreMarketplace.getInstance().getMarketPlace().getListaElementi()) {
+        System.out.println("Dopo acquisto");
+        for (ElementoMarketplace elemento : GestoreSistema.getInstance().getElementiDisponibiliMarketplace()) {
             System.out.println(elemento.getId());
             System.out.println(elemento.getStock().getItem().getNomeItem());
             System.out.println(elemento.getStock().getItem().getPrezzo());

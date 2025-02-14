@@ -1,7 +1,5 @@
 package unicam;
 
-import java.util.List;
-
 public class Curatore extends UtenteAutenticato {
     public Curatore(){}
 

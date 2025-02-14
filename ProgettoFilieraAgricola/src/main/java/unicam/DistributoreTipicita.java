@@ -31,7 +31,6 @@ public class DistributoreTipicita extends Azienda  {
     public Prodotto creaProdotto(Float prezzo, String nome, String descrizione) {
         ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, null, this);
         Prodotto prodotto = (Prodotto) fact.createItem();
-        //TODO aggiungere certificati.
         return prodotto;
     }
 
