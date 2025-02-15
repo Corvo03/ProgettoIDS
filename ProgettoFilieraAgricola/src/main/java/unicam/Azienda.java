@@ -10,18 +10,22 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     private InformazioniSensibili informazioniSensibili;
     private RiceventeInvito riceventeInvito;
 
-    public Azienda() {
-        //TODO mettere altro costruttore di Autenticato
-        super();
+
+    /**
+     * Crea un azienda con una determinata mail e nomeUtente
+     * @param email
+     * @param nomeUtente
+     */
+    public Azienda(String email, String nomeUtente) {
+        super(email, nomeUtente);
         this.gestoreStock = new GestoreStock();
         this.certificati = new ArrayList<>();
     }
 
     /**
-     *
-     *
-     * @param nomeProfilo
-     * @param descrizione
+     * Crea un profilo per l'azienda, visualizzabile nella sezione profili.
+     * @param nomeProfilo del profilo relativo all'azienda.
+     * @param descrizione del profilo aziendale.
      */
     public void creaProfilo(String nomeProfilo, String descrizione) {
         if (nomeProfilo == null)

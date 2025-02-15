@@ -28,6 +28,6 @@ public class GestoreCarrello {
      * i guadagni e quanti item hanno venduto
      */
     private void notificaAziende() {
-        //todo
+        //todo, anche no
     }
 }

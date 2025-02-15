@@ -7,10 +7,10 @@ public class CreatorPacchetto extends ItemFactory{
     private List<Prodotto> listaProdotti;
     private Azienda aziendaProduttrice;
 
-
     /**
      * Permette di creare la classe che contiene la logica di creazione del Pacchetto.
      * I parametri necessari per al pacchetto devono essere passati nel costruttore.
+     * Questo metodo crea un pacchetto con una lista di prodotti già definita.
      * @param nome del pacchetto.
      * @param descrizione del pacchetto.
      * @param prezzo del pacchetto.
@@ -28,6 +28,17 @@ public class CreatorPacchetto extends ItemFactory{
         this.aziendaProduttrice = azienda;
     }
 
+    /**
+     * Permette di creare la classe che contiene la logica di creazione del Pacchetto.
+     * I parametri necessari per al pacchetto devono essere passati nel costruttore.
+     * Questo metodo crea un pacchetto con una lista vuota.
+     * @param nome del pacchetto.
+     * @param descrizione del pacchetto.
+     * @param prezzo del pacchetto.
+     * @param azienda che crea il pacchetto.
+     *
+     * @throws NullPointerException se la lista è nulla
+     */
     public CreatorPacchetto(String nome, String descrizione, double prezzo, Azienda azienda) {
         super(nome, descrizione, prezzo);
         this.aziendaProduttrice = azienda;

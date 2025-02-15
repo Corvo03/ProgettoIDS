@@ -37,4 +37,8 @@ public class Stock {
     public Item getItem() {
         return item;
     }
+
+    public String getNomeItem() {
+        return item.getNomeItem();
+    }
 }

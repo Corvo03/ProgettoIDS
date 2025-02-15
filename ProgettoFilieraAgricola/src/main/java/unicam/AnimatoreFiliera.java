@@ -1,38 +1,41 @@
 package unicam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * contiene la lista degli eventi
- * si occupa di delegare le operazioni per
+ * Contiene la lista degli eventi.
+ * Si occupa di delegare le operazioni per
  * creare gli eventi, mandare inviti e mettere biglietti sul Market
  */
 public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
     /**
-     * lista di tutti gli eventi creati dall'animatore
+     * Lista di tutti gli eventi creati dall'animatore
      */
     private List<Evento> listaEventi;
+
     /**
-     * il gestore di tutti gli stock di ogni biglietto creato
+     * Il gestore di tutti gli stock di ogni biglietto creato
      */
     private GestoreStock gestoreStock;
-    /**
-     * il mittente relativo a questo animatore
-     */
-    private MittenteInvito mittenteInvito;
-
 
     /**
-     *
-     * @param email
-     * @param password
-     * @param nomeUtente
+     * Gestore degli Inviti che l'animatore ha inviato.
      */
-    public AnimatoreFiliera(String email, String password, String nomeUtente) {
-        super(email, password, nomeUtente);
-        this.mittenteInvito = new MittenteInvito();
+    private GestoreInvitiInviati gestoreInvitiInviati;
+
+    /**
+     * Crea un nuovo Animatore della Filiera
+     * @param email dell'animatore.
+     * @param nomeUtente associato all'animatore
+     */
+    public AnimatoreFiliera(String email, String nomeUtente) {
+        super(email, nomeUtente);
+        this.gestoreInvitiInviati = new GestoreInvitiInviati();
+        this.gestoreStock = new GestoreStock();
+        this.listaEventi = new ArrayList<Evento>();
     }
 
 
@@ -46,27 +49,23 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
      * @param evento a cui è collegato il biglietto.
      * @return il biglietto appena creato.
      */
-    public Biglietto  creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
+    public Biglietto creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
         ItemFactory fact = new CreatorBiglietto(nome, descrizione, prezzo, this, evento);
         Biglietto biglietto = (Biglietto) fact.createItem();
         this.richiediVerificaInformazioni(biglietto);
-        return biglietto; //TODO è necessario che ritorni un biglietto? dove lo uso?
+        return biglietto;
     }
 
     /**
-     * riempie lo stock di biglietti
-     * @param biglietto
+     * Riempie lo stock di biglietti
+     * @param stock da ricaricare.
      */
-    public void aggiungiBiglietti(Biglietto biglietto, int quantita) {
-        if(this.gestoreStock.getListaStock().contains(biglietto)){
-            int index = this.gestoreStock.getListaStock().indexOf(biglietto);
-            this.gestoreStock.getListaStock().get(index).addQuantita(quantita);
-        }
-
+    public void aggiungiBiglietti(Stock stock, int quantita) {
+        this.gestoreStock.ricaricaProdotto(stock, quantita);
     }
 
     /**
-     * delega l'invito di un'azienda al mittente
+     * Delega l'invito di un'azienda al mittente
      * @param evento
      * @param azienda
      * @param dataCreazione
@@ -77,7 +76,7 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
     }
 
     /**
-     * crea l'evento e lo mette nella lista, se l'evento non è valido richiede i dati
+     * Crea l'evento e lo mette nella lista, se l'evento non è valido richiede i dati
      * @param nome
      * @param data
      * @param luogo
@@ -100,7 +99,7 @@ public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements Ri
         return listaEventi;
     }
 
-    public MittenteInvito getMittenteInvito() {
-        return mittenteInvito;
+    public GestoreInvitiInviati getGestoreInvitiInviati() {
+        return gestoreInvitiInviati;
     }
 }

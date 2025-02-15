@@ -8,8 +8,8 @@ import java.util.List;
 public class Acquirente extends UtenteAutenticato {
     private final GestoreCarrello gestoreCarrello;
 
-    public Acquirente(String email, String password, String nomeUtente) {
-        super(email, password, nomeUtente);
+    public Acquirente(String email, String nomeUtente) {
+        super(email, nomeUtente);
         this.gestoreCarrello = new GestoreCarrello();
     }
 
