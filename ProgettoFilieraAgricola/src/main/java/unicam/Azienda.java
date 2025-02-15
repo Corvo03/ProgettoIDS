@@ -9,6 +9,7 @@ public abstract non-sealed class Azienda extends UtenteAutenticato implements Ri
     private final GestoreStock gestoreStock;
     private InformazioniSensibili informazioniSensibili;
     private RiceventeInvito riceventeInvito;
+    private Profilo profilo;
 
 
     /**
