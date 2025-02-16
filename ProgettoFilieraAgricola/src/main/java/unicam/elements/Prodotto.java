@@ -1,5 +1,6 @@
 package unicam.elements;
 
+import unicam.gestori.GestoreSistema;
 import unicam.gestori.certificato.Certificato;
 import unicam.informazioniAggiuntive.InformazioneAggiuntiva;
 import unicam.actors.azienda.Azienda;
@@ -45,10 +46,13 @@ public class Prodotto extends Item {
      * Permette di aggiungere un certificato al prodotto.
      * @param certificato da aggiungere al prodotto.
      * @throws NullPointerException se il certificato non è valido.
+     * @throws IllegalArgumentException se il certificato non è presente nella lista dei certificati disponibili.
      */
     public void addCertificato(Certificato certificato){
         if(certificato == null)
             throw new NullPointerException("Certificato non trovato");
+        if(!GestoreSistema.getInstance().containsCertificato(certificato))
+            throw new IllegalArgumentException("Certificato non esistente");
         if(!listaCertificati.contains(certificato))
             listaCertificati.add(certificato);
         //se il certificato è già presente non viene inserito nuovamente

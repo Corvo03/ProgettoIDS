@@ -20,7 +20,7 @@ import java.util.List;
  * Si occupa di delegare le operazioni per
  * creare gli eventi, mandare inviti e mettere biglietti sul Market
  */
-public non-sealed class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
+public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
     /**
      * Lista di tutti gli eventi creati dall'animatore
      */

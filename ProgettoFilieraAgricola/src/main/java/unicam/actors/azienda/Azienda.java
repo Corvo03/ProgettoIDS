@@ -13,7 +13,7 @@ import unicam.marketplace.RichiedenteVerificaInformazione;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract non-sealed class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione, PartecipanteEvento {
+public abstract class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione, PartecipanteEvento {
     private List<String> indirizzoSediProduttive;
     private List<Certificato> certificati;
     private final GestoreStock gestoreStock;

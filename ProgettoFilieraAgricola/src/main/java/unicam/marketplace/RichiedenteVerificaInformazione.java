@@ -6,7 +6,7 @@ import unicam.actors.AnimatoreFiliera;
 import unicam.actors.azienda.Azienda;
 import unicam.gestori.GestoreInformazioni;
 
-public sealed interface RichiedenteVerificaInformazione permits Azienda, AnimatoreFiliera {
+public  interface RichiedenteVerificaInformazione {
     default void richiediVerificaInformazioni(InformazioneDaApprovare info){
         GestoreInformazioni.getInstance().aggiungiInformazioneDaApprovare(info, this);
     }
