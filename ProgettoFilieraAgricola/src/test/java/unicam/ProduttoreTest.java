@@ -1,13 +1,16 @@
 package unicam;
 
-import org.junit.Assert;
+import unicam.actors.Produttore;
+import unicam.creators.CreatorProdotto;
+import unicam.informazioniAggiuntive.MetodoProduzione;
+import unicam.elements.Prodotto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
 class ProduttoreTest {
 
-    Produttore produttore = new Produttore();
+    Produttore produttore = new Produttore("produttore", "Prod@prod.te");
     @org.junit.jupiter.api.Test
     void creaProdotto() {
         MetodoProduzione info =  produttore.creaMetodoProduzione("Metodo1", "DescMetodo1");

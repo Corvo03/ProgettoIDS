@@ -1,12 +1,17 @@
 package unicam;
 
 import org.junit.jupiter.api.Test;
+import unicam.actors.Trasformatore;
+import unicam.creators.CreatorProdotto;
+import unicam.elements.Prodotto;
+import unicam.informazioniAggiuntive.Fase;
+import unicam.informazioniAggiuntive.ProcessoTrasformazione;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrasformatoreTest {
 
-    Trasformatore trasformatore = new Trasformatore();
+    Trasformatore trasformatore = new Trasformatore("T1", "T1@something.com");
     @Test
     void testCreaProdotto() {
 
@@ -35,10 +40,11 @@ class TrasformatoreTest {
     @Test
     void testAggiungiStepAlProcesso() {
         ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
-        info.AddFaseProduzione("Fase1");
-        assertEquals( "Fase1\n", info.getFasiTrasformazione());
+        info.AddFaseProduzione(new Fase("Fase1"));
+        assertEquals( "Fase1", info.getFasiTrasformazione().getFirst().getDescrizione());
 
-        info.AddFaseProduzione("Fase2");
-        assertEquals( "Fase1\nFase2\n", info.getFasiTrasformazione());
+        info.AddFaseProduzione(new Fase("Fase2"));
+        assertEquals( "Fase1 Fase2", info.getFasiTrasformazione().getFirst().getDescrizione() +
+                " "+ info.getFasiTrasformazione().getLast().getDescrizione());
     }
 }
