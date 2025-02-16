@@ -6,9 +6,7 @@ import unicam.creators.ItemFactory;
 import unicam.elements.Biglietto;
 import unicam.elements.Stock;
 import unicam.gestori.GestoreStock;
-import unicam.inviti.Evento;
-import unicam.inviti.GestoreInvitiInviati;
-import unicam.inviti.PartecipanteEvento;
+import unicam.inviti.*;
 import unicam.marketplace.RichiedenteVerificaInformazione;
 
 import java.time.LocalDate;
@@ -43,7 +41,7 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
      */
     public AnimatoreFiliera(String email, String nomeUtente) {
         super(email, nomeUtente);
-        this.gestoreInvitiInviati = new GestoreInvitiInviati();
+        this.gestoreInvitiInviati = new GestoreInvitiInviati(MediatorInviti.getInstance());
         this.gestoreStock = new GestoreStock();
         this.listaEventi = new ArrayList<Evento>();
     }
@@ -77,12 +75,16 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
     /**
      * Delega l'invito di un'azienda al mittente
      * @param evento
-     * @param azienda
+     * @param partecipanteEvento
      * @param dataCreazione
      * @param dataScadenza
      */
-    public void invitaAzienda(Evento evento, Azienda azienda, LocalDate dataCreazione, LocalDate dataScadenza){
-        //this.mittenteInvito.inviaInvito(this,evento,(PartecipanteEvento) azienda, LocalDate.now(),dataScadenza);
+    public void invitaAzienda(Evento evento, PartecipanteEvento partecipanteEvento, LocalDate dataCreazione, LocalDate dataScadenza, String messaggio) {
+        Invito invito = new Invito(this, evento, partecipanteEvento, dataCreazione, dataScadenza, messaggio);
+        this.gestoreInvitiInviati.InviaInvito(invito);
+    }
+    public void invitaAzienda(Invito invito){
+        this.gestoreInvitiInviati.InviaInvito(invito);
     }
 
     /**

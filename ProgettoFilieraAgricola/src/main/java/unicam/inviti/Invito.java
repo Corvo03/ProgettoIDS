@@ -28,6 +28,8 @@ public class Invito {
      * data scadenza
      */
     private LocalDate dataScadenza;
+    private boolean accettato;
+    private String messaggio;
 
     /**
      *
@@ -38,12 +40,14 @@ public class Invito {
      * @param dataScadenza
      */
     public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento,
-                  LocalDate dataCreazione, LocalDate dataScadenza) {
+                  LocalDate dataCreazione, LocalDate dataScadenza, String messaggio) {
         this.animatoreFiliera = organizzatoreEvento ;
         this.evento = evento ;
         this.partecipanteEvento = partecipanteEvento;
         this.dataCreazione = dataCreazione ;
         this.dataScadenza = dataScadenza ;
+        this.messaggio = messaggio ;
+        this.accettato = false;
     }
 
     public Evento getEvento() {
@@ -54,9 +58,6 @@ public class Invito {
         return partecipanteEvento;
     }
 
-    public AnimatoreFiliera getOrganizzatoreEvento() {
-        return animatoreFiliera;
-    }
 
     public LocalDate getDataScadenza() {
         return dataScadenza;
@@ -68,5 +69,17 @@ public class Invito {
 
     public AnimatoreFiliera getAnimatoreFiliera() {
         return animatoreFiliera;
+    }
+
+    public boolean isAccettato() {
+        return accettato;
+    }
+
+    public String getMessaggio() {
+        return messaggio;
+    }
+
+    public void setAccettato(boolean accettato) {
+        this.accettato = accettato;
     }
 }

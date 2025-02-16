@@ -86,8 +86,6 @@ public class Evento {
         this.data = data;
     }
 
-    //todo non è il massimo che l'evento si faccia da solo queste operazioni
-    //visto da cambiare
     /**
      * Aggiunge un partecipente all'evento
      * @param partecipanteEvento, partecipante da aggiungere.

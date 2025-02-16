@@ -5,9 +5,7 @@ import unicam.elements.Prodotto;
 import unicam.gestori.GestoreSistema;
 import unicam.gestori.GestoreStock;
 import unicam.gestori.certificato.Certificato;
-import unicam.inviti.Invito;
-import unicam.inviti.PartecipanteEvento;
-import unicam.inviti.RiceventeInvito;
+import unicam.inviti.*;
 import unicam.marketplace.RichiedenteVerificaInformazione;
 
 import java.util.ArrayList;
@@ -17,8 +15,8 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
     private List<String> indirizzoSediProduttive;
     private List<Certificato> certificati;
     private final GestoreStock gestoreStock;
+    private final GestoreInvitiRicevuti gestoreInvitiRicevuti;
     private InformazioniSensibili informazioniSensibili;
-    private RiceventeInvito riceventeInvito;
     private Profilo profilo;
 
 
@@ -30,6 +28,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
     public Azienda(String email, String nomeUtente) {
         super(email, nomeUtente);
         this.gestoreStock = new GestoreStock();
+        this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.certificati = new ArrayList<>();
     }
 
@@ -64,7 +63,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      * @param invitoDaAccettare
      */
     public void accettaInvito(Invito invitoDaAccettare) {
-        this.riceventeInvito.accettaInvito(invitoDaAccettare);
+        this.gestoreInvitiRicevuti.accettaInvito(invitoDaAccettare);
     }
 
     /**
@@ -72,7 +71,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      * @param invitoDaRifiutare
      */
     public void rifiutaInvito(Invito invitoDaRifiutare) {
-            this.riceventeInvito.rifiutaInvito(invitoDaRifiutare);
+            this.gestoreInvitiRicevuti.rifiutaInvito(invitoDaRifiutare);
     }
 
     /**
@@ -94,8 +93,8 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         return gestoreStock;
     }
 
-    public RiceventeInvito getRiceventeInvito() {
-        return riceventeInvito;
+    public GestoreInvitiRicevuti getGestoreInvitiRicevuti() {
+        return gestoreInvitiRicevuti;
     }
 
     public void setInformazioniSensibili(InformazioniSensibili informazioniSensibili){
