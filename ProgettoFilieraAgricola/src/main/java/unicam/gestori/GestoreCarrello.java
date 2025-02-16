@@ -19,12 +19,14 @@ public class GestoreCarrello {
         return carrello;
     }
 
-    public void completaAcquisto(MetodoPagamento metodoPagamento) {
+    public String completaAcquisto(MetodoPagamento metodoPagamento) {
         carrello.calcolaTotalePrezzo();
         metodoPagamento.pagamento(carrello.getTotalePrezzo());
+        String ricevuta = metodoPagamento.generaRicevuta(carrello);
         GestoreSistema.getInstance().aggiornaQuantitaElementi(carrello.getElementiCarrello());
         carrello.svuotaCarrello();
         notificaAziende();
+        return ricevuta;
     }
 
     /**

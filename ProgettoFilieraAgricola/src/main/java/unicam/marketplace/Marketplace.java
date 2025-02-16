@@ -5,16 +5,19 @@ import unicam.elements.ElementoMarketplace;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che rappresenta il marketplace del sistema
+ */
 public class Marketplace {
     private final List<ElementoMarketplace> listaElementiMarketplace;
 
     public Marketplace() {
-        this.listaElementiMarketplace = new ArrayList<ElementoMarketplace>();
+        this.listaElementiMarketplace = new ArrayList<>();
     }
 
 
     /**
-     * Ritorna la lista di tutti gli elementi del marketplace.
+     * Ritorna la lista di tutti gli elementi disponibili nel marketplace, ovvero quelli con stock > 0
      *
      * @return lista di tutti gli elementi del marketplace
      */
@@ -28,20 +31,33 @@ public class Marketplace {
         return elementiDisponibili;
     }
 
+    /**
+     * Ritorna l'id massimo degli elementi del marketplace
+     * @return id massimo degli elementi del marketplace
+     */
     public int getMaxId() {
-        int maxId = 0;
-        for (ElementoMarketplace elementoMarketplace : this.listaElementiMarketplace) {
-            if (elementoMarketplace.getId() > maxId)
-                maxId = elementoMarketplace.getId();
-        }
-        return maxId;
+        return listaElementiMarketplace.size();
+//        int maxId = 0;
+//        for (ElementoMarketplace elementoMarketplace : this.listaElementiMarketplace) {
+//            if (elementoMarketplace.getId() > maxId)
+//                maxId = elementoMarketplace.getId();
+//        }
+//        return maxId;
+        //TODO credo basti solo la prima riga
     }
 
+    /**
+     * Aggiunge un elemento al marketplace
+     * @param elementoMarketplace
+     */
     public void addElementoMarketplace(ElementoMarketplace elementoMarketplace) {
         this.listaElementiMarketplace.add(elementoMarketplace);
     }
 
-
+    /**
+     * Aggiunge una lista di elementi al marketplace
+     * @param listaElementoMarketplace
+     */
     public void addElementoMarketplace(List<ElementoMarketplace> listaElementoMarketplace) {
         this.listaElementiMarketplace.addAll(listaElementoMarketplace);
     }
@@ -57,4 +73,5 @@ public class Marketplace {
     public List<ElementoMarketplace> getListaElementi() {
         return listaElementiMarketplace;
     }
+    // TODO forse alcuni di sti metodi non servono
 }

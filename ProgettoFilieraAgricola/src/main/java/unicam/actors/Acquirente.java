@@ -3,8 +3,10 @@ package unicam.actors;
 import unicam.elements.ElementoMarketplace;
 import unicam.gestori.GestoreCarrello;
 import unicam.gestori.GestoreSistema;
+import unicam.marketplace.Carrello;
 import unicam.marketplace.MetodoPagamento;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,8 +25,8 @@ public class Acquirente extends UtenteAutenticato {
      *
      * @param metodoPagamento metodo di pagamento selezionato
      */
-    public void completaAcquisto(MetodoPagamento metodoPagamento) {
-        gestoreCarrello.completaAcquisto(metodoPagamento);
+    public String completaAcquisto(MetodoPagamento metodoPagamento) {
+        return gestoreCarrello.completaAcquisto(metodoPagamento);
     }
 
     /**
@@ -54,5 +56,14 @@ public class Acquirente extends UtenteAutenticato {
      */
     public List<ElementoMarketplace> getListaMarketplace(){
         return GestoreSistema.getInstance().getElementiDisponibiliMarketplace();
+    }
+
+    /**
+     * Ottiene la lista di tutti gli elementi presenti nel carrello.
+     *
+     * @return
+     */
+    public List<ElementoMarketplace> getListaElementiCarrello(){
+        return new ArrayList<>(gestoreCarrello.getCarrello().getElementiCarrello().keySet());
     }
 }

@@ -33,18 +33,38 @@ public class Carrello {
         this.totalePrezzo = 0;
     }
 
+    /**
+     * Aggiunge un elemento al carrello
+     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
+     * @param elemento
+     * @param quantita
+     */
     public void aggiungiElementoAlCarrello(ElementoMarketplace elemento,int quantita){
         if (quantita > elemento.getStock().getQuantita() || quantita < 0)
             throw new IllegalArgumentException("Quantità non disponibile");
         elementiCarrello.put(elemento, quantita);
     }
 
+    /**
+     * Rimuove un elemento dal carrello
+     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
+     * @throws IllegalArgumentException se l'elemento non è presente nel carrello
+     * @param elemento
+     * @param quantita
+     */
     public void rimuoviElementoDalCarrello(ElementoMarketplace elemento, int quantita){
         if (quantita > elementiCarrello.get(elemento) || quantita < 0)
             throw new IllegalArgumentException("Quantità non disponibile");
+        if (!elementiCarrello.containsKey(elemento))
+            throw new IllegalArgumentException("Elemento non presente nel carrello");
         elementiCarrello.remove(elemento);
     }
 
+    /**
+     * Ritorna la mappa degli elementi presenti nel carrello
+     *
+     * @return mappa degli elementi presenti nel carrello
+     */
     public Map<ElementoMarketplace, Integer> getElementiCarrello() {
         return elementiCarrello;
     }

@@ -6,6 +6,7 @@ import unicam.actors.Produttore;
 import unicam.elements.ElementoMarketplace;
 import unicam.gestori.GestoreInformazioni;
 import unicam.gestori.GestoreSistema;
+import unicam.marketplace.Bancomat;
 import unicam.marketplace.InformazioneDaApprovare;
 import unicam.marketplace.MetodoPagamento;
 
@@ -40,7 +41,7 @@ public class Main {
         Acquirente acquirente = new Acquirente("email", "nomeUtente");
         acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().getFirst(),1);
         acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().get(1),3);
-        acquirente.completaAcquisto(new MetodoPagamento());
+        acquirente.completaAcquisto(new Bancomat());
         System.out.println("Dopo acquisto");
         for (ElementoMarketplace elemento : GestoreSistema.getInstance().getElementiDisponibiliMarketplace()) {
             System.out.println(elemento.getId());
