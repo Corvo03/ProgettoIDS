@@ -18,8 +18,8 @@ class AcquirenteTest {
     ElementoMarketplace elementoMarketplace2 = new ElementoMarketplace(1,new Stock(prodotto2));
 
     private void ricaricaElementi() {
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getFirst(), 5);
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getLast(), 5);
+        elementoMarketplace.getStock().addQuantita(10);
+        elementoMarketplace2.getStock().addQuantita(10);
     }
 
     @Test
@@ -27,12 +27,12 @@ class AcquirenteTest {
         ricaricaElementi();
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace2, 3);
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace));
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace2));
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace2));
         String ricevuta = acquirente.completaAcquisto(new Bancomat());
-        assertTrue(acquirente.getListaMarketplace().isEmpty());
-        assertFalse(acquirente.getListaMarketplace().contains(elementoMarketplace));
-        assertFalse(acquirente.getListaMarketplace().contains(elementoMarketplace2));
+        assertTrue(acquirente.getListaElementiCarrello().isEmpty());
+        assertFalse(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
+        assertFalse(acquirente.getListaElementiCarrello().contains(elementoMarketplace2));
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace2, 3);
         assertEquals(ricevuta, acquirente.completaAcquisto(new Bancomat()));
@@ -41,13 +41,13 @@ class AcquirenteTest {
     @Test
     void aggiungiElementoAlCarrello() {
         ricaricaElementi();
-        assertTrue(acquirente.getListaMarketplace().isEmpty());
+        assertTrue(acquirente.getListaElementiCarrello().isEmpty());
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace2, 3);
-        assertFalse(acquirente.getListaMarketplace().isEmpty());
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace));
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace2));
-        assertEquals(2, acquirente.getListaMarketplace().size());
+        assertFalse(acquirente.getListaElementiCarrello().isEmpty());
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace2));
+        assertEquals(2, acquirente.getListaElementiCarrello().size());
     }
 
     @Test
@@ -55,15 +55,15 @@ class AcquirenteTest {
         ricaricaElementi();
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         acquirente.aggiungiElementoAlCarrello(elementoMarketplace2, 3);
-        assertEquals(2, acquirente.getListaMarketplace().size());
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace));
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace2));
+        assertEquals(2, acquirente.getListaElementiCarrello().size());
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace2));
         acquirente.eliminaElementoDalCarrello(elementoMarketplace, 1);
-        assertFalse(acquirente.getListaMarketplace().contains(elementoMarketplace));
-        assertTrue(acquirente.getListaMarketplace().contains(elementoMarketplace2));
+        assertFalse(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
+        assertTrue(acquirente.getListaElementiCarrello().contains(elementoMarketplace2));
         acquirente.eliminaElementoDalCarrello(elementoMarketplace2, 3);
-        assertTrue(acquirente.getListaMarketplace().isEmpty());
-        assertFalse(acquirente.getListaMarketplace().contains(elementoMarketplace));
+        assertTrue(acquirente.getListaElementiCarrello().isEmpty());
+        assertFalse(acquirente.getListaElementiCarrello().contains(elementoMarketplace));
     }
 
     @Test

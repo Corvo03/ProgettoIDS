@@ -53,10 +53,10 @@ public class Carrello {
      * @param quantita
      */
     public void rimuoviElementoDalCarrello(ElementoMarketplace elemento, int quantita){
-        if (quantita > elementiCarrello.get(elemento) || quantita < 0)
-            throw new IllegalArgumentException("Quantità non disponibile");
         if (!elementiCarrello.containsKey(elemento))
             throw new IllegalArgumentException("Elemento non presente nel carrello");
+        if (quantita > elementiCarrello.get(elemento) || quantita < 0)
+            throw new IllegalArgumentException("Quantità non disponibile");
         elementiCarrello.remove(elemento);
     }
 

@@ -17,14 +17,17 @@ class CarrelloTest {
     ElementoMarketplace elementoMarketplace = new ElementoMarketplace(1,new Stock(prodotto));
     Prodotto prodotto2 = new Prodotto(20.0f, "Prodotto2", "Descrizione2", produttore);
     ElementoMarketplace elementoMarketplace2 = new ElementoMarketplace(1,new Stock(prodotto2));
+    private void ricaricaElementi() {
+        elementoMarketplace.getStock().addQuantita(10);
+        elementoMarketplace2.getStock().addQuantita(10);
+    }
 
     @Test
     void svuotaCarrello() {
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getFirst(), 5);
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getLast(), 5);
+        ricaricaElementi();
         assertTrue(carrello.getElementiCarrello().isEmpty());
-        carrello.aggiungiElementoAlCarrello(marketplace.getElementiDisponibiliMarketplace().getFirst(), 1);
-        carrello.aggiungiElementoAlCarrello(marketplace.getElementiDisponibiliMarketplace().getLast(), 1);
+        carrello.aggiungiElementoAlCarrello(elementoMarketplace, 1);
+        carrello.aggiungiElementoAlCarrello(elementoMarketplace2, 1);
         assertEquals(2, carrello.getElementiCarrello().size());
         assertTrue(carrello.getElementiCarrello().containsKey(elementoMarketplace));
         assertTrue(carrello.getElementiCarrello().containsKey(elementoMarketplace2));
@@ -36,27 +39,27 @@ class CarrelloTest {
 
     @Test
     void aggiungiElementoAlCarrello() {
+        ricaricaElementi();
         assertTrue(carrello.getElementiCarrello().isEmpty());
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getFirst(), 5);
-        carrello.aggiungiElementoAlCarrello(marketplace.getElementiDisponibiliMarketplace().getFirst(), 1);
+        carrello.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         assertEquals(1, carrello.getElementiCarrello().size());
         assertTrue(carrello.getElementiCarrello().containsKey(elementoMarketplace));
         assertThrows(IllegalArgumentException.class, () -> carrello.aggiungiElementoAlCarrello
-                (marketplace.getElementiDisponibiliMarketplace().getFirst(), 6));
+                (elementoMarketplace, 100));
     }
 
     @Test
     void rimuoviElementoDalCarrello() {
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getFirst(), 5);
-        carrello.aggiungiElementoAlCarrello(marketplace.getElementiDisponibiliMarketplace().getFirst(), 1);
+        ricaricaElementi();
+        carrello.aggiungiElementoAlCarrello(elementoMarketplace, 1);
         assertEquals(1, carrello.getElementiCarrello().size());
         assertTrue(carrello.getElementiCarrello().containsKey(elementoMarketplace));
         assertThrows(IllegalArgumentException.class, () -> carrello.rimuoviElementoDalCarrello
-                (marketplace.getElementiDisponibiliMarketplace().getFirst(), 2));
-        carrello.rimuoviElementoDalCarrello(marketplace.getElementiDisponibiliMarketplace().getFirst(), 1);
+                (elementoMarketplace, 2));
+        carrello.rimuoviElementoDalCarrello(elementoMarketplace, 1);
         assertTrue(carrello.getElementiCarrello().isEmpty());
         assertFalse(carrello.getElementiCarrello().containsKey(elementoMarketplace));
         assertThrows(IllegalArgumentException.class, () -> carrello.rimuoviElementoDalCarrello
-                (marketplace.getElementiDisponibiliMarketplace().getFirst(), 1));
+                (elementoMarketplace, 1));
     }
 }

@@ -64,6 +64,9 @@ public class Marketplace {
     }
 
     public void removeElementoMarketplace(ElementoMarketplace elementoMarketplace) {
+        if (!this.listaElementiMarketplace.contains(elementoMarketplace)) {
+            throw new IllegalArgumentException("Elemento non presente nel marketplace");
+        }
         this.listaElementiMarketplace.remove(elementoMarketplace);
     }
 

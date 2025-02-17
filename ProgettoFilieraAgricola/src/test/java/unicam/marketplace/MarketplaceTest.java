@@ -21,7 +21,7 @@ class MarketplaceTest {
         assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
         marketplace.addElementoMarketplace(elementoMarketplace);
         assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
-        produttore.getGestoreStock().ricaricaProdotto(produttore.getGestoreStock().getListaStock().getFirst(), 2);
+        produttore.getGestoreStock().ricaricaProdotto(elementoMarketplace.getStock(), 2);
         assertFalse(marketplace.getElementiDisponibiliMarketplace().isEmpty());
         assertTrue(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
         assertEquals(1, marketplace.getElementiDisponibiliMarketplace().size());
@@ -29,10 +29,30 @@ class MarketplaceTest {
 
     @Test
     void testAddElementoMarketplace() {
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        marketplace.addElementoMarketplace(elementoMarketplace);
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        produttore.getGestoreStock().ricaricaProdotto(elementoMarketplace.getStock(), 2);
+        assertFalse(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
+        assertEquals(1, marketplace.getElementiDisponibiliMarketplace().size());
     }
 
     @Test
     void removeElementoMarketplace() {
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        marketplace.addElementoMarketplace(elementoMarketplace);
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        produttore.getGestoreStock().ricaricaProdotto(elementoMarketplace.getStock(), 2);
+        assertFalse(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
+        assertEquals(1, marketplace.getElementiDisponibiliMarketplace().size());
+        assertThrows(IllegalArgumentException.class, () -> marketplace.removeElementoMarketplace
+                (new ElementoMarketplace(2,new Stock(new Prodotto(10.0f, "Prodotto2",
+                        "Descrizione2", produttore)))));
+        marketplace.removeElementoMarketplace(elementoMarketplace);
+        assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());
+        assertFalse(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
     }
 
     @Test

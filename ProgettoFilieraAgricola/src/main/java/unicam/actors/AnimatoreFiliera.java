@@ -76,11 +76,10 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
      * Delega l'invito di un'azienda al mittente
      * @param evento
      * @param partecipanteEvento
-     * @param dataCreazione
-     * @param dataScadenza
+     * @param messaggio
      */
-    public void invitaAzienda(Evento evento, PartecipanteEvento partecipanteEvento, LocalDate dataCreazione, LocalDate dataScadenza, String messaggio) {
-        Invito invito = new Invito(this, evento, partecipanteEvento, dataCreazione, dataScadenza, messaggio);
+    public void invitaAzienda(Evento evento, PartecipanteEvento partecipanteEvento,String messaggio) {
+        Invito invito = new Invito(this, evento, partecipanteEvento, messaggio);
         this.gestoreInvitiInviati.InviaInvito(invito);
     }
     public void invitaAzienda(Invito invito){

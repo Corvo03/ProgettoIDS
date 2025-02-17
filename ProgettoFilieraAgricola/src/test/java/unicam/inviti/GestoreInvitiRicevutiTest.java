@@ -19,7 +19,7 @@ class GestoreInvitiRicevutiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         animatoreFiliera.invitaAzienda(invito);
         azienda.accettaInvito(invito);
@@ -33,7 +33,7 @@ class GestoreInvitiRicevutiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         animatoreFiliera.invitaAzienda(invito);
         azienda.rifiutaInvito(invito);
@@ -51,7 +51,7 @@ class GestoreInvitiRicevutiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         azienda.getGestoreInvitiRicevuti().addInvito(invito);
 
@@ -66,7 +66,7 @@ class GestoreInvitiRicevutiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         animatoreFiliera.invitaAzienda(invito);
         assertTrue(azienda.getGestoreInvitiRicevuti().getInvitiRicevuti().contains(invito));

@@ -19,7 +19,7 @@ class MediatorInvitiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
         MediatorInviti.getInstance().inviaInvito(invito);
@@ -35,7 +35,7 @@ class MediatorInvitiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         MediatorInviti.getInstance().inviaInvito(invito);
         MediatorInviti.getInstance().accettaInvito(invito);
@@ -56,7 +56,7 @@ class MediatorInvitiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
         invito.getAnimatoreFiliera().invitaAzienda(invito);
@@ -74,7 +74,7 @@ class MediatorInvitiTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
         animatoreFiliera.getGestoreInvitiInviati().InviaInvito(invito);

@@ -20,7 +20,7 @@ class GestoreEsitoInvitoTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         invito.setAccettato(true);
         gestore.gestisciInvitoAccettato(invito);
@@ -35,7 +35,7 @@ class GestoreEsitoInvitoTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
         animatoreFiliera.getGestoreInvitiInviati().InviaInvito(invito);
@@ -55,7 +55,7 @@ class GestoreEsitoInvitoTest {
         Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,data1,data2,"messaggio");
+        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         invito.setAccettato(true);
         gestore.gestisciInvitoAccettato(invito);
