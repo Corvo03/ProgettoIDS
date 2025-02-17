@@ -1,10 +1,8 @@
-package unicam;
+package unicam.actors;
 
-import unicam.actors.Produttore;
 import unicam.creators.CreatorProdotto;
 import unicam.gestori.GestoreSistema;
 import unicam.gestori.certificato.Certificato;
-import unicam.gestori.certificato.GestoreCertificatoLettura;
 import unicam.gestori.certificato.GestoreCertificatoScrittura;
 import unicam.informazioniAggiuntive.MetodoProduzione;
 import unicam.elements.Prodotto;

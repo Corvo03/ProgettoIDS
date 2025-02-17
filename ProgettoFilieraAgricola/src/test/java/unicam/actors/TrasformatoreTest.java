@@ -1,7 +1,6 @@
-package unicam;
+package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.actors.Trasformatore;
 import unicam.creators.CreatorProdotto;
 import unicam.elements.Prodotto;
 import unicam.informazioniAggiuntive.Fase;
@@ -33,7 +32,7 @@ class TrasformatoreTest {
         ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
         assertEquals( "Processo1", info.getNome());
         assertEquals( "DescProcesso1", info.getDescrizione());
-        assertEquals( "", info.getFasiTrasformazione());
+        assertNull(info.getFasiTrasformazione());
 
     }
 
@@ -45,6 +44,6 @@ class TrasformatoreTest {
 
         info.AddFaseProduzione(new Fase("Fase2"));
         assertEquals( "Fase1 Fase2", info.getFasiTrasformazione().getFirst().getDescrizione() +
-                " "+ info.getFasiTrasformazione().getLast().getDescrizione());
+                " " + info.getFasiTrasformazione().getLast().getDescrizione());
     }
 }

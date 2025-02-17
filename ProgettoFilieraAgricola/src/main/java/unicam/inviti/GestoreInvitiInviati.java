@@ -1,5 +1,6 @@
 package unicam.inviti;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +34,15 @@ public class GestoreInvitiInviati implements UtilizzatoreInviti {
         this.listaInvito.remove(invito);
     }
 
+    /**
+     *
+     * @return la lista di inviti inviati, togliendo gli inviti scaduti.
+     */
     public List<Invito> getListaInvito() {
+        listaInvito.removeIf(invito -> !invito.getDataScadenza().isAfter(LocalDate.now()));
         return listaInvito;
     }
+
     public Mediator getMediator() {
         return mediator;
     }

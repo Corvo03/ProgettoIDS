@@ -61,4 +61,7 @@ public class GestoreMarketplace {
         return null;
     }
 
+    public void eliminaElementoMarketplace(Stock stock) {
+        marketPlace.eliminaElementoMarketplace(stock);
+    }
 }

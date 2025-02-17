@@ -1,7 +1,6 @@
-package unicam;
+package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.actors.DistributoreTipicita;
 import unicam.creators.CreatorProdotto;
 import unicam.elements.Pacchetto;
 import unicam.elements.Prodotto;

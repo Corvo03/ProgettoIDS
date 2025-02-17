@@ -110,4 +110,8 @@ public class GestoreSistema {
             throw new IllegalArgumentException("Id non valido");
         return this.gestoreMarketplace.getItemById(id);
     }
+
+    public void eliminaElementoMarketplace(Stock stock) {
+        gestoreMarketplace.eliminaElementoMarketplace(stock);
+    }
 }

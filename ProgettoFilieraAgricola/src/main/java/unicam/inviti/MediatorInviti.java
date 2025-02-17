@@ -2,7 +2,7 @@ package unicam.inviti;
 
 /**
  * SINGLETON<<<<
- * medaitore tra gestore invitiInviati, GestoreInvitiRicevuti e GestoreEsitoInvito
+ * mediatore tra gestore invitiInviati, GestoreInvitiRicevuti e GestoreEsitoInvito
  * (AnimatoreFiliera, Azienda ed Evento)
  */
 public class MediatorInviti implements Mediator {

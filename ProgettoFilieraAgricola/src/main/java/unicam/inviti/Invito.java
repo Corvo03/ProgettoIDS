@@ -32,20 +32,18 @@ public class Invito {
     private String messaggio;
 
     /**
-     *
-     * @param organizzatoreEvento
-     * @param evento
-     * @param partecipanteEvento
-     * @param dataCreazione
-     * @param dataScadenza
+     * Crea un nuovo invito. L'invito ha scadenza dopo due giorni della data della sua creazione.
+     * @param organizzatoreEvento che crea l'invito.
+     * @param evento a cui è rivolto l'invito.
+     * @param partecipanteEvento invitato all'evento.
+     * @param messaggio di invito all'evento.
      */
-    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento,
-                  LocalDate dataCreazione, LocalDate dataScadenza, String messaggio) {
+    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento, String messaggio) {
         this.animatoreFiliera = organizzatoreEvento ;
         this.evento = evento ;
         this.partecipanteEvento = partecipanteEvento;
-        this.dataCreazione = dataCreazione ;
-        this.dataScadenza = dataScadenza ;
+        this.dataCreazione = LocalDate.now() ;
+        this.dataScadenza = LocalDate.now().plusDays(2) ;
         this.messaggio = messaggio ;
         this.accettato = false;
     }

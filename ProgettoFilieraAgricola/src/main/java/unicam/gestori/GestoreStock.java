@@ -72,4 +72,14 @@ public class GestoreStock {
             throw new NullPointerException("Stock non valido");
         return listaStock.contains(stock);
     }
+
+    /**
+     * Elimina lo stock selezionato dalla lista degli stock.
+     * Questo viene eliminato anche dal marketplace.
+     * @param stock da eliminare.
+     */
+    public void eliminaItem(Stock stock) {
+        GestoreSistema.getInstance().eliminaElementoMarketplace(stock);
+        listaStock.remove(stock);
+    }
 }

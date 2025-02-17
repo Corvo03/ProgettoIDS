@@ -1,6 +1,7 @@
 package unicam.marketplace;
 
 import unicam.elements.ElementoMarketplace;
+import unicam.elements.Stock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,5 +74,12 @@ public class Marketplace {
     public List<ElementoMarketplace> getListaElementi() {
         return listaElementiMarketplace;
     }
-    // TODO forse alcuni di sti metodi non servono
+
+    /**
+     * Rimuove l'elemento dal marketplace che ha quel determinato stock.
+     * @param stock contenuto dall'elementoMarketplace da eliminare.
+     */
+    public void eliminaElementoMarketplace(Stock stock) {
+        listaElementiMarketplace.removeIf(e -> e.getStock().equals(stock));
+    }
 }

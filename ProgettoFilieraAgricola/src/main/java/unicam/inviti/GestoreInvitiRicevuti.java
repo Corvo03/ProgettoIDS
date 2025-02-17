@@ -1,5 +1,6 @@
 package unicam.inviti;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class GestoreInvitiRicevuti implements UtilizzatoreInviti{
         this.invitiRicevuti = new ArrayList<Invito>();
     }
 
-
     /**
      * accetta invito e notifica
      * @param invito
@@ -27,18 +27,17 @@ public class GestoreInvitiRicevuti implements UtilizzatoreInviti{
     }
 
     /**
-     * rifiuta invito e notifica
+     * Rifiuta invito e notifica
      * @param invito
      */
     public void rifiutaInvito(Invito invito){
         if(!invitiRicevuti.contains(invito)) throw new RuntimeException("Invito non trovato");
         invito.setAccettato(false);
         mediator.notify(invito,this);
-
     }
 
     /**
-     * mette in lista l'invito ricevuto
+     * Mette in lista l'invito ricevuto
      * @param invito
      */
     public void addInvito(Invito invito){
@@ -53,7 +52,12 @@ public class GestoreInvitiRicevuti implements UtilizzatoreInviti{
         this.invitiRicevuti.remove(invito);
     }
 
+    /**
+     *
+     * @return la lista di inviti ricevuti, togliendo gli inviti scaduti.
+     */
     public List<Invito> getInvitiRicevuti() {
+        invitiRicevuti.removeIf(invito -> !invito.getDataScadenza().isAfter(LocalDate.now()));
         return invitiRicevuti;
     }
 }

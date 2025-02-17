@@ -2,6 +2,7 @@ package unicam.actors.azienda;
 
 import unicam.actors.UtenteAutenticato;
 import unicam.elements.Prodotto;
+import unicam.elements.Stock;
 import unicam.gestori.GestoreSistema;
 import unicam.gestori.GestoreStock;
 import unicam.gestori.certificato.Certificato;
@@ -59,6 +60,19 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
     }
 
     /**
+     * Aggiorna la quantità da aggiungere all'item.
+     * @param stock
+     * @param quantita
+     */
+    public void aggiornaStockElemento(Stock stock, int quantita) {
+        gestoreStock.ricaricaProdotto(stock, quantita);
+    }
+
+    public void eliminaItem(Stock stock){
+        gestoreStock.eliminaItem(stock);
+    }
+
+    /**
      * Delega l'accettazione all'accettatore
      * @param invitoDaAccettare
      */
@@ -74,6 +88,9 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
             this.gestoreInvitiRicevuti.rifiutaInvito(invitoDaRifiutare);
     }
 
+    public List<Invito> getInviti(){
+        return this.gestoreInvitiRicevuti.getInvitiRicevuti();
+    }
     /**
      * Richiede la verifica delle informazioni sensibili al curatore.
      *
