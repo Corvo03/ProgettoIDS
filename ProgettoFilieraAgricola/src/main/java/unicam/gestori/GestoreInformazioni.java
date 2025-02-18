@@ -71,15 +71,15 @@ public class GestoreInformazioni {
         switch (informazione) {
             case Prodotto prodotto -> {
                 Azienda azienda = prodotto.getAzienda();
-                azienda.getGestoreStock().aggiungiStock(new Stock(prodotto));
+                azienda.getGestoreStock().aggiungiStock(prodotto);
             }
             case Pacchetto pacchetto -> {
                 Azienda azienda = pacchetto.getAzienda();
-                azienda.getGestoreStock().aggiungiStock(new Stock(pacchetto));
+                azienda.getGestoreStock().aggiungiStock(pacchetto);
             }
             case Biglietto biglietto -> {
                 AnimatoreFiliera animatore = biglietto.getAnimatore();
-                animatore.getGestoreStock().aggiungiStock(new Stock(biglietto));
+                animatore.getGestoreStock().aggiungiStock(biglietto);
             }
             case InformazioniSensibili informazioniSensibili -> {
                 Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);

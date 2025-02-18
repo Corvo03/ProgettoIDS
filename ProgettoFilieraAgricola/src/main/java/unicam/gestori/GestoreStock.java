@@ -1,5 +1,6 @@
 package unicam.gestori;
 
+import unicam.elements.Item;
 import unicam.elements.Stock;
 
 import java.util.ArrayList;
@@ -23,14 +24,15 @@ public class GestoreStock {
 
     /**
      * Aggiunge uno stock alla lista degli Stock.
-     * @param stock stock da aggiungere
+     * @param item item da aggiungere allo stock
      *
      * @throws NullPointerException se lo stock è nullo.
      * @throws IllegalArgumentException se lo stock non è presente nella lista.
      */
-    public void aggiungiStock(Stock stock) {
-        if(stock == null)
+    public void aggiungiStock(Item item) {
+        if(item == null)
             throw new NullPointerException("Stock nullo");
+        Stock stock = new Stock(item);
         if (this.contains(stock))
             throw new IllegalArgumentException("Stock non presente");
         listaStock.add(stock);
