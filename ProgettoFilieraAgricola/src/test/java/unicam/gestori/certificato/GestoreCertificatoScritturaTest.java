@@ -12,6 +12,7 @@ class GestoreCertificatoScritturaTest {
     GestoreCertificatoLettura gcl = new GestoreCertificatoLettura();
     @Test
     void aggiungiCertificato() {
+        gcs.getListaCertificati().clear();
         assertTrue(gcl.getListaCertificati().isEmpty());
 
         gcs.aggiungiCertificato(new Certificato("Cert1", "Cert1"));

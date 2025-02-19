@@ -1,8 +1,9 @@
 package unicam.actors.azienda;
 
 import unicam.actors.UtenteAutenticato;
-import unicam.elements.Prodotto;
+import unicam.elements.Item;
 import unicam.elements.Stock;
+import unicam.gestori.GestoreItemRifiutati;
 import unicam.gestori.GestoreSistema;
 import unicam.gestori.GestoreStock;
 import unicam.gestori.certificato.Certificato;
@@ -19,6 +20,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
     private final GestoreInvitiRicevuti gestoreInvitiRicevuti;
     private InformazioniSensibili informazioniSensibili;
     private Profilo profilo;
+    private GestoreItemRifiutati gestoreItemRifiutati;
 
 
     /**
@@ -31,6 +33,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.certificati = new ArrayList<>();
+        this.gestoreItemRifiutati = new GestoreItemRifiutati();
     }
 
     /**
@@ -68,8 +71,12 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         gestoreStock.ricaricaProdotto(stock, quantita);
     }
 
+    /**
+     * Elimina un item dal proprio gestore Stock. Poi sarà eliminato anche dal marketplace.
+     * @param stock da eliminare
+     */
     public void eliminaItem(Stock stock){
-        gestoreStock.eliminaItem(stock);
+        gestoreStock.eliminaStock(stock);
     }
 
     /**
@@ -91,6 +98,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
     public List<Invito> getInviti(){
         return this.gestoreInvitiRicevuti.getInvitiRicevuti();
     }
+
     /**
      * Richiede la verifica delle informazioni sensibili al curatore.
      *
@@ -106,6 +114,15 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         richiediVerificaInformazioni(new InformazioniSensibili(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
     }
 
+    /**
+     * Ritorna uno stock col nome dell'item del parametro. La ricerca è effettuata nella lista degli Stock dell'azienda.
+     * @param nome da ricercare.
+     * @return lo Stock, se presente, null altrimenti.
+     */
+    public Stock getStockByNome(String nome){
+        return this.gestoreStock.getStock(nome);
+    }
+
     public GestoreStock getGestoreStock() {
         return gestoreStock;
     }
@@ -116,5 +133,36 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
 
     public void setInformazioniSensibili(InformazioniSensibili informazioniSensibili){
         this.informazioniSensibili = informazioniSensibili;
+    }
+
+    public GestoreItemRifiutati getGestoreItemRifiutati() {
+        return this.gestoreItemRifiutati;
+    }
+
+    public Item getItemRifiutato(String nome){
+        return this.gestoreItemRifiutati.getItemByName(nome);
+    }
+
+     /**
+     * Modifica l'item rifiutato, in modo che possa essere poi approvato dal curatore.
+     * @param itemRifiutato da modificare.
+     * @param nome nuovo nome da dare all'item, se null rimane quello che c'è già.
+     * @param descrizione nuova descrizione da dare all'item, se null rimane quella che c'è già.
+     * @param prezzo nuovo prezzo da dare all'item, se minore di 0 rimane quello che c'è già.
+     *
+     */
+    public void modificaItemRifiutato(Item itemRifiutato, String nome, String descrizione, float prezzo){
+        this.gestoreItemRifiutati.modificaItemRifiutato(itemRifiutato, nome, descrizione, prezzo);
+        richiediVerificaInformazioni(itemRifiutato);
+    }
+
+    /**
+     * Modifica un item rifiutato lasciando invariato il prezzo. L'item sarà poi visionato dal curatore.
+     * @param itemRifiutato da modificare.
+     * @param nome nuovo nome da dare all'item, se null rimane quello che c'è già.
+     * @param descrizione nuova descrizione da dare all'item, se null rimane quella che c'è già.
+     */
+    public void modificaItemRifiutato(Item itemRifiutato, String nome, String descrizione){
+        this.modificaItemRifiutato(itemRifiutato, nome, descrizione, 0);
     }
 }

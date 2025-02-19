@@ -5,6 +5,7 @@ import unicam.creators.CreatorBiglietto;
 import unicam.creators.ItemFactory;
 import unicam.elements.Biglietto;
 import unicam.elements.Stock;
+import unicam.gestori.GestoreItemRifiutati;
 import unicam.gestori.GestoreStock;
 import unicam.inviti.*;
 import unicam.marketplace.RichiedenteVerificaInformazione;
@@ -33,6 +34,7 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
      * Gestore degli Inviti che l'animatore ha inviato.
      */
     private GestoreInvitiInviati gestoreInvitiInviati;
+    private GestoreItemRifiutati gestoreItemRifiutati;
 
     /**
      * Crea un nuovo Animatore della Filiera
@@ -44,8 +46,8 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
         this.gestoreInvitiInviati = new GestoreInvitiInviati(MediatorInviti.getInstance());
         this.gestoreStock = new GestoreStock();
         this.listaEventi = new ArrayList<Evento>();
+        this.gestoreItemRifiutati = new GestoreItemRifiutati();
     }
-
 
     /**
      * Crea un biglietto con le seguenti caratteristiche e lo manda in verifica:
@@ -74,25 +76,26 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
 
     /**
      * Delega l'invito di un'azienda al mittente
-     * @param evento
-     * @param partecipanteEvento
-     * @param messaggio
+     * @param evento al quale invitare l'azienda
+     * @param partecipanteEvento da invitare all'evento
+     * @param messaggio col quale mandare l'invito.
      */
     public void invitaAzienda(Evento evento, PartecipanteEvento partecipanteEvento,String messaggio) {
         Invito invito = new Invito(this, evento, partecipanteEvento, messaggio);
         this.gestoreInvitiInviati.InviaInvito(invito);
     }
+
     public void invitaAzienda(Invito invito){
         this.gestoreInvitiInviati.InviaInvito(invito);
     }
 
     /**
      * Crea l'evento e lo mette nella lista, se l'evento non è valido richiede i dati
-     * @param nome
-     * @param data
-     * @param luogo
-     * @param descrizione
-     * @param capienzaMassima
+     * @param nome dell'evento.
+     * @param data in cui si svolgerà l'evento.
+     * @param luogo nel quale si terrà l'evento.
+     * @param descrizione dell'evento.
+     * @param capienzaMassima rappresenta il numero massimo di persone che possono partecipare.
      */
     public void creaEvento(String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima){
             try{
@@ -112,5 +115,9 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
 
     public GestoreInvitiInviati getGestoreInvitiInviati() {
         return gestoreInvitiInviati;
+    }
+
+    public GestoreItemRifiutati getGestoreItemRifiutati() {
+        return this.gestoreItemRifiutati;
     }
 }

@@ -8,7 +8,6 @@ import unicam.actors.azienda.Azienda;
 import unicam.elements.Biglietto;
 import unicam.elements.Pacchetto;
 import unicam.elements.Prodotto;
-import unicam.elements.Stock;
 
 import java.util.*;
 
@@ -61,7 +60,7 @@ public class GestoreInformazioni {
      * Data un informazione approvata, la rimuove dalla lista delle informazioni da approvare
      * e crea lo Stock corrispondente.
      *
-     * @param informazione
+     * @param informazione approvata.
      */
     public void informazioneApprovata(InformazioneDaApprovare informazione) {
         if (!informazioniDaApprovare.containsKey(informazione)) {
@@ -91,17 +90,34 @@ public class GestoreInformazioni {
         informazioniDaApprovare.remove(informazione);
     }
 
-
     /**
      * Data un informazione rifiutata, la rimuove dalla lista delle informazioni da approvare.
      * E se è un prodotto o pacchetto, viene aggiunto alla lista degli item rifiutati.
-     * @param informazione
+     * @param informazione non approvata.
      */
     public void informazioneRifiutata(InformazioneDaApprovare informazione) {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");
         }
-        //todo aggiungere modo per arrivare al gestoreItemRifiutati
+        switch (informazione) {
+            case Prodotto prodotto -> {
+                Azienda azienda = prodotto.getAzienda();
+                azienda.getGestoreItemRifiutati().aggiungiItemRifiutato(prodotto);
+            }
+            case Pacchetto pacchetto -> {
+                Azienda azienda = pacchetto.getAzienda();
+                azienda.getGestoreItemRifiutati().aggiungiItemRifiutato(pacchetto);
+            }
+            case Biglietto biglietto -> {
+                AnimatoreFiliera animatore = biglietto.getAnimatore();
+                animatore.getGestoreItemRifiutati().aggiungiItemRifiutato(biglietto);
+            }
+            case InformazioniSensibili informazioniSensibili -> {
+                //TODO mettere qualcosa?
+            }
+            default -> throw new IllegalArgumentException("Tipo di informazione non supportato");
+        }
+
         informazioniDaApprovare.remove(informazione);
     }
 }

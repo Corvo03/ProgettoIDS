@@ -80,7 +80,7 @@ public class GestoreStock {
      * Questo viene eliminato anche dal marketplace.
      * @param stock da eliminare.
      */
-    public void eliminaItem(Stock stock) {
+    public void eliminaStock(Stock stock) {
         GestoreSistema.getInstance().eliminaElementoMarketplace(stock);
         listaStock.remove(stock);
     }

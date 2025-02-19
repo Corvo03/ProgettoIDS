@@ -32,8 +32,7 @@ class TrasformatoreTest {
         ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
         assertEquals( "Processo1", info.getNome());
         assertEquals( "DescProcesso1", info.getDescrizione());
-        assertNull(info.getFasiTrasformazione());
-
+        assertTrue(info.getFasiTrasformazione().isEmpty() );
     }
 
     @Test

@@ -114,4 +114,5 @@ public class GestoreSistema {
     public void eliminaElementoMarketplace(Stock stock) {
         gestoreMarketplace.eliminaElementoMarketplace(stock);
     }
+
 }

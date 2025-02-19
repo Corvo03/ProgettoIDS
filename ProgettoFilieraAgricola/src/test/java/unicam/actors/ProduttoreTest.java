@@ -31,18 +31,18 @@ class ProduttoreTest {
         assertEquals(p.getAziendaProduttrice(), produttore);
 
         //aggiungi certificati
+        aggiungiCertificati();
         List<Certificato> cert = GestoreSistema.getInstance().getListaCertificati();
         produttore.aggiungiCertificatoProdotto(cert.getFirst(), p);
         produttore.aggiungiCertificatoProdotto(cert.getLast(), p);
 
         assertEquals(2, p.getListaCertificati().size());
         assertEquals("Cert1", p.getListaCertificati().getFirst().getNome());
-
     }
 
     private void aggiungiCertificati(){
-        for(int i=0; i<15; i++){
-            gcs.aggiungiCertificato(new Certificato( "Cert"+i, "Descr"+1));
+        for(int i=1; i<=15; i++){
+            gcs.aggiungiCertificato(new Certificato( "Cert"+i, "Descr"+i));
         }
     }
 
