@@ -1,5 +1,6 @@
 package unicam.gestori;
 
+import unicam.elements.Item;
 import unicam.marketplace.InformazioneDaApprovare;
 import unicam.actors.azienda.InformazioniSensibili;
 import unicam.marketplace.RichiedenteVerificaInformazione;
@@ -66,19 +67,9 @@ public class GestoreInformazioni {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");
         }
-
         switch (informazione) {
-            case Prodotto prodotto -> {
-                Azienda azienda = prodotto.getAzienda();
-                azienda.getGestoreStock().aggiungiStock(prodotto);
-            }
-            case Pacchetto pacchetto -> {
-                Azienda azienda = pacchetto.getAzienda();
-                azienda.getGestoreStock().aggiungiStock(pacchetto);
-            }
-            case Biglietto biglietto -> {
-                AnimatoreFiliera animatore = biglietto.getAnimatore();
-                animatore.getGestoreStock().aggiungiStock(biglietto);
+            case Item item -> {
+                informazioniDaApprovare.get(informazione).getGestoreStock().aggiungiStock(item);;
             }
             case InformazioniSensibili informazioniSensibili -> {
                 Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);
@@ -86,7 +77,6 @@ public class GestoreInformazioni {
             }
             default -> throw new IllegalArgumentException("Tipo di informazione non supportato");
         }
-
         informazioniDaApprovare.remove(informazione);
     }
 
@@ -99,25 +89,10 @@ public class GestoreInformazioni {
         if (!informazioniDaApprovare.containsKey(informazione)) {
             throw new IllegalArgumentException("informazione non presente");
         }
-        switch (informazione) {
-            case Prodotto prodotto -> {
-                Azienda azienda = prodotto.getAzienda();
-                azienda.getGestoreItemRifiutati().aggiungiItemRifiutato(prodotto);
-            }
-            case Pacchetto pacchetto -> {
-                Azienda azienda = pacchetto.getAzienda();
-                azienda.getGestoreItemRifiutati().aggiungiItemRifiutato(pacchetto);
-            }
-            case Biglietto biglietto -> {
-                AnimatoreFiliera animatore = biglietto.getAnimatore();
-                animatore.getGestoreItemRifiutati().aggiungiItemRifiutato(biglietto);
-            }
-            case InformazioniSensibili informazioniSensibili -> {
-                //TODO mettere qualcosa?
-            }
-            default -> throw new IllegalArgumentException("Tipo di informazione non supportato");
+        if (informazione instanceof Item item){
+            informazioniDaApprovare.get(informazione).getGestoreItemRifiutati()
+                    .aggiungiItemRifiutato(item);
         }
-
         informazioniDaApprovare.remove(informazione);
     }
 }

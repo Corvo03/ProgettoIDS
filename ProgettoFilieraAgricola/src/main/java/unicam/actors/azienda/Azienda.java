@@ -15,7 +15,6 @@ import java.util.List;
 
 public abstract class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione, PartecipanteEvento {
     private List<String> indirizzoSediProduttive;
-    private List<Certificato> certificati;
     private final GestoreStock gestoreStock;
     private final GestoreInvitiRicevuti gestoreInvitiRicevuti;
     private InformazioniSensibili informazioniSensibili;
@@ -28,12 +27,15 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      * @param email
      * @param nomeUtente
      */
-    public Azienda(String email, String nomeUtente) {
+    public Azienda(String email, String nomeUtente, List<String> indirizzoSediProduttive,
+                   InformazioniSensibili informazioniSensibili) {
         super(email, nomeUtente);
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
-        this.certificati = new ArrayList<>();
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
+        this.indirizzoSediProduttive = indirizzoSediProduttive;
+        this.informazioniSensibili = informazioniSensibili;
+        creaProfilo(nomeUtente, "Profilo aziendale");
     }
 
     /**
@@ -123,6 +125,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         return this.gestoreStock.getStock(nome);
     }
 
+    @Override
     public GestoreStock getGestoreStock() {
         return gestoreStock;
     }
