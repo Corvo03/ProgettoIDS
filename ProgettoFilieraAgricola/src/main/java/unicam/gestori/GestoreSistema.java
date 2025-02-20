@@ -94,8 +94,7 @@ public class GestoreSistema {
      * @param certificato da cercare nella lista
      * @return true se il certificato è presente, false altrimenti.
      */
-    public boolean containsCertificato(Certificato certificato) {
-        return getListaCertificati().contains(certificato);
+    public boolean containsCertificato(Certificato certificato) {return getListaCertificati().contains(certificato);
     }
 
     /**

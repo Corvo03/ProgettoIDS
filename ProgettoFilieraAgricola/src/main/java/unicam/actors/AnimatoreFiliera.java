@@ -19,7 +19,7 @@ import java.util.List;
  * Si occupa di delegare le operazioni per
  * creare gli eventi, mandare inviti e mettere biglietti sul Market
  */
-public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
+public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
     /**
      * Lista di tutti gli eventi creati dall'animatore
      */
@@ -104,17 +104,17 @@ public  class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteV
                 System.out.println("Errore nella creazione del evento, riprovare");
             }
     }
-
-    public GestoreStock getGestoreStock() {
-        return gestoreStock;
-    }
-
     public List<Evento> getListaEventi() {
         return listaEventi;
     }
 
     public GestoreInvitiInviati getGestoreInvitiInviati() {
         return gestoreInvitiInviati;
+    }
+
+    @Override
+    public GestoreStock getGestoreStock() {
+        return this.gestoreStock;
     }
 
     public GestoreItemRifiutati getGestoreItemRifiutati() {
