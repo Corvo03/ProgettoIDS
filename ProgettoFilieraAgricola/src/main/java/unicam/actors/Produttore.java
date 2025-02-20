@@ -2,6 +2,7 @@ package unicam.actors;
 
 import unicam.actors.azienda.Azienda;
 import unicam.gestori.GestoreSistema;
+import unicam.gestori.GestoreMetodoProduzione;
 import unicam.gestori.certificato.Certificato;
 import unicam.informazioniAggiuntive.MetodoProduzione;
 import unicam.elements.Prodotto;
@@ -10,24 +11,10 @@ import unicam.creators.ItemFactory;
 
 public class Produttore extends Azienda {
 
+    private GestoreMetodoProduzione gestoreMetodoProduzione;
     public Produttore(String nome, String mail) {
         super(mail, nome);
-    }
-
-    /**
-     * Crea un prodotto utilizzando le seguenti informazioni:
-     * @param prezzo del prodotto.
-     * @param nome del prodotto.
-     * @param descrizione del prodotto.
-     * @param nomeMetodo riguarda il nome del metodo di Produzione utilizzato
-     * @param descrizioneMetodo riguarda la descrizione del metodo di Produzione utilizzato
-     * @return il prodotto creato.
-     */
-    public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, String nomeMetodo, String descrizioneMetodo) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, this.creaMetodoProduzione(nomeMetodo,descrizioneMetodo), this);
-        Prodotto prodotto = (Prodotto) fact.createItem();
-        this.richiediVerificaInformazioni(prodotto);
-        return prodotto;
+        this.gestoreMetodoProduzione = new GestoreMetodoProduzione();
     }
 
     /**
@@ -46,17 +33,25 @@ public class Produttore extends Azienda {
     }
 
     /**
+     * Restituisce un metodo di produzione
+     * @param nome del metodo di produzione da restituire
+     * @return il metodo di produzione trovato
+     */
+    public MetodoProduzione getMetodoProduzione(String nome) {
+        return this.gestoreMetodoProduzione.getMetodoProduzione(nome);
+    }
+
+    /**
      * Crea un Metodo di Produzione con le seguenti caratteristiche
      * @param nomeMetodo, rappresenta il nome del metodo di produzione. Permette di distinguerlo dagli altri.
      * @param descrizioneMetodo, rappresenta una descrizione del metodo di produzione utilizzato.
      *
-     * @return il Metodo di Produzione creato
      * @throws IllegalArgumentException se il nome o la descrizione sono vuote.
      */
-    public MetodoProduzione creaMetodoProduzione(String nomeMetodo, String descrizioneMetodo) {
+    public void creaMetodoProduzione(String nomeMetodo, String descrizioneMetodo) {
         if(nomeMetodo.isEmpty() || descrizioneMetodo.isEmpty())
             throw new IllegalArgumentException("Nome o Descrizione ddel processo non validi");
-        return new MetodoProduzione(nomeMetodo, descrizioneMetodo);
+        this.gestoreMetodoProduzione.aggiungiMetodoProduzione(nomeMetodo, descrizioneMetodo);
     }
 
     /**

@@ -18,16 +18,17 @@ class ProduttoreTest {
     Produttore produttore = new Produttore("produttore", "Prod@prod.te");
     @org.junit.jupiter.api.Test
     void creaProdotto() {
-        MetodoProduzione info =  produttore.creaMetodoProduzione("Metodo1", "DescMetodo1");
+        this.produttore.creaMetodoProduzione("MetProd1", "descrMetodo1");
+        MetodoProduzione mp = this.produttore.getMetodoProduzione("MetProd1");
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                23.5, info, produttore);
+                23.5, mp, produttore);
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
 
         assertEquals(p.getNomeItem(), "prodotto1");
         assertEquals(p.getDescrizione(), "descr1");
         assertEquals(p.getPrezzo(), 23.5);
-        assertEquals(p.getInformazioneAggiuntiva(), info);
+        assertEquals(p.getInformazioneAggiuntiva(), mp);
         assertEquals(p.getAziendaProduttrice(), produttore);
 
         //aggiungi certificati
@@ -48,8 +49,8 @@ class ProduttoreTest {
 
     @org.junit.jupiter.api.Test
     void testCreaMetodoProduzione() {
-        MetodoProduzione info =  produttore.creaMetodoProduzione("Metodo1", "DescMetodo1");
-        assertEquals(info.getNome(), "Metodo1");
-        assertEquals(info.getDescrizione(), "DescMetodo1");
+        this.produttore.creaMetodoProduzione("MetProd2", "descrMetodo2");
+        assertEquals(this.produttore.getMetodoProduzione("MetProd2").getNome(), "MetProd2");
+        assertEquals(this.produttore.getMetodoProduzione("MetProd2").getDescrizione(), "descrMetodo2");
     }
 }

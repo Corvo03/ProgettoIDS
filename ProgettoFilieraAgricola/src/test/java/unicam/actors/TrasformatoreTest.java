@@ -14,35 +14,34 @@ class TrasformatoreTest {
     @Test
     void testCreaProdotto() {
 
-        ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
+        trasformatore.creaProcesso("Processo2", "DescProcesso2");
+        ProcessoTrasformazione pt = trasformatore.getProcessoTrasformazione("Processo2");
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                25.1, info, trasformatore);
+                25.1, pt, trasformatore);
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
         //TODO trasformatore.creaProdotto();
         assertEquals("prodotto1", p.getNomeItem());
         assertEquals("descr1", p.getDescrizione());
         assertEquals(25.1, p.getPrezzo());
-        assertEquals(info, p.getInformazioneAggiuntiva());
+        assertEquals(pt, p.getInformazioneAggiuntiva());
         assertEquals( trasformatore, p.getAziendaProduttrice());
     }
 
     @Test
     void testCreaProcesso() {
-        ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
-        assertEquals( "Processo1", info.getNome());
-        assertEquals( "DescProcesso1", info.getDescrizione());
-        assertTrue(info.getFasiTrasformazione().isEmpty() );
+        trasformatore.creaProcesso("Processo1", "DescProcesso1");
+        assertEquals( "Processo1", trasformatore.getProcessoTrasformazione("Processo1").getNome());
+        assertEquals( "DescProcesso1", trasformatore.getProcessoTrasformazione("Processo1").getDescrizione());
+        assertTrue(trasformatore.getProcessoTrasformazione("Processo1").getFasiTrasformazione().isEmpty() );
     }
 
     @Test
     void testAggiungiStepAlProcesso() {
-        ProcessoTrasformazione info =  trasformatore.creaProcesso("Processo1", "DescProcesso1");
-        info.AddFaseProduzione(new Fase("Fase1"));
-        assertEquals( "Fase1", info.getFasiTrasformazione().getFirst().getDescrizione());
+        trasformatore.creaProcesso("Processo2", "DescProcesso2");
+        trasformatore.aggiungiStepAlProcesso("DescFase2", "Processo2" );
 
-        info.AddFaseProduzione(new Fase("Fase2"));
-        assertEquals( "Fase1 Fase2", info.getFasiTrasformazione().getFirst().getDescrizione() +
-                " " + info.getFasiTrasformazione().getLast().getDescrizione());
+        assertEquals( "DescFase2", trasformatore.getProcessoTrasformazione("Processo2").getFasiTrasformazione().getFirst().getDescrizione());
+
     }
 }
