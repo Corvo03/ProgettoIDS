@@ -1,17 +1,18 @@
 package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.elements.Prodotto;
-import unicam.gestori.GestoreInformazioni;
-import unicam.gestori.GestoreSistema;
-import unicam.informazioniAggiuntive.MetodoProduzione;
+import unicam.modelli.actors.Curatore;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.gestori.GestoreInformazioni;
+import unicam.modelli.gestori.GestoreSistema;
+import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CuratoreTest {
 
     Curatore curatore = new Curatore("nomeUtente", "email");
-    Produttore produttore = new Produttore("nome", "cognome");
+    Produttore produttore = new Produttore("nome", "cognome", null, null);
 
     @Test
     void approvaInformazione() {

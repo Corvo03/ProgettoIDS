@@ -1,13 +1,14 @@
 package unicam.gestori.certificato;
 
 import org.junit.jupiter.api.Test;
-import unicam.actors.Produttore;
-
-import static org.junit.jupiter.api.Assertions.*;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.elements.Certificato;
+import unicam.modelli.gestori.certificato.GestoreCertificatoLettura;
+import unicam.modelli.gestori.certificato.GestoreCertificatoScrittura;
 
 class GestoreCertificatoScritturaTest {
 
-    Produttore p = new Produttore("abc", "abc@de.f");
+    Produttore p = new Produttore("abc", "abc@de.f",null, null);
     GestoreCertificatoScrittura gcs = new GestoreCertificatoScrittura();
     GestoreCertificatoLettura gcl = new GestoreCertificatoLettura();
     @Test

@@ -1,17 +1,18 @@
 package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.elements.ElementoMarketplace;
-import unicam.elements.Prodotto;
-import unicam.elements.Stock;
-import unicam.marketplace.Bancomat;
-import unicam.marketplace.Marketplace;
+import unicam.modelli.actors.Acquirente;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.elements.ElementoMarketplace;
+import unicam.modelli.elements.Prodotto;
+import unicam.modelli.elements.Stock;
+import unicam.modelli.marketplace.Bancomat;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AcquirenteTest {
     Acquirente acquirente = new Acquirente("email", "nomeUtente");
-    Produttore produttore = new Produttore("nome", "cognome");
+    Produttore produttore = new Produttore("nome", "cognome", null, null);
     Prodotto prodotto = new Prodotto(10.0f, "Prodotto1", "Descrizione1", produttore);
     ElementoMarketplace elementoMarketplace = new ElementoMarketplace(1,new Stock(prodotto));
     Prodotto prodotto2 = new Prodotto(20.0f, "Prodotto2", "Descrizione2", produttore);

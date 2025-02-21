@@ -1,11 +1,12 @@
 package unicam.actors;
 
-import unicam.creators.CreatorProdotto;
-import unicam.gestori.GestoreSistema;
-import unicam.gestori.certificato.Certificato;
-import unicam.gestori.certificato.GestoreCertificatoScrittura;
-import unicam.informazioniAggiuntive.MetodoProduzione;
-import unicam.elements.Prodotto;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.creators.CreatorProdotto;
+import unicam.modelli.gestori.GestoreSistema;
+import unicam.modelli.elements.Certificato;
+import unicam.modelli.gestori.certificato.GestoreCertificatoScrittura;
+import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
+import unicam.modelli.elements.Prodotto;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProduttoreTest {
 
     GestoreCertificatoScrittura gcs = new GestoreCertificatoScrittura();
-    Produttore produttore = new Produttore("produttore", "Prod@prod.te");
+    Produttore produttore = new Produttore("produttore", "Prod@prod.te",null, null);
     @org.junit.jupiter.api.Test
     void creaProdotto() {
         this.produttore.creaMetodoProduzione("MetProd1", "descrMetodo1");

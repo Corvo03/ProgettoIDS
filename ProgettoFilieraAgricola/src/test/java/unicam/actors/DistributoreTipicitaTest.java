@@ -1,9 +1,10 @@
 package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.creators.CreatorProdotto;
-import unicam.elements.Pacchetto;
-import unicam.elements.Prodotto;
+import unicam.modelli.actors.DistributoreTipicita;
+import unicam.modelli.creators.CreatorProdotto;
+import unicam.modelli.elements.Pacchetto;
+import unicam.modelli.elements.Prodotto;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DistributoreTipicitaTest {
 
-    DistributoreTipicita distributoreTipicita = new DistributoreTipicita("distributore", "distr@gmail.com");
+    DistributoreTipicita distributoreTipicita = new DistributoreTipicita("distributore", "distr@gmail.com", null, null);
     CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
             23.5, distributoreTipicita);
     CreatorProdotto creatorProdotto2 = new CreatorProdotto("prodotto2", "descr2",

@@ -1,19 +1,19 @@
 package unicam.inviti;
 
 import org.junit.jupiter.api.Test;
-import unicam.actors.Produttore;
-import unicam.actors.azienda.Azienda;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.actors.azienda.Azienda;
+import unicam.modelli.inviti.Evento;
 
 import java.time.LocalDate;
-import java.time.chrono.ChronoLocalDate;
-import java.util.Date;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class EventoTest {
     LocalDate data1 = LocalDate.of(2018, 1, 1);
     Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-    Azienda azienda = new Produttore("nomeProduttore","mailProduttore");
+    Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
     @Test
     void addPartecipante() {
         assertTrue(evento.getNome().equals("nome"));

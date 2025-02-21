@@ -1,19 +1,18 @@
 package unicam;
 
-import unicam.actors.Acquirente;
-import unicam.actors.Curatore;
-import unicam.actors.Produttore;
-import unicam.elements.ElementoMarketplace;
-import unicam.gestori.GestoreInformazioni;
-import unicam.gestori.GestoreSistema;
-import unicam.marketplace.Bancomat;
-import unicam.marketplace.InformazioneDaApprovare;
-import unicam.marketplace.MetodoPagamento;
+import unicam.modelli.actors.Acquirente;
+import unicam.modelli.actors.Curatore;
+import unicam.modelli.actors.Produttore;
+import unicam.modelli.elements.ElementoMarketplace;
+import unicam.modelli.gestori.GestoreInformazioni;
+import unicam.modelli.gestori.GestoreSistema;
+import unicam.modelli.marketplace.Bancomat;
+import unicam.modelli.marketplace.InformazioneDaApprovare;
 
 public class Main {
     public static void main(String[] args) {
         //produttore crea prodotti e vedo sta stanno dentro gestoreinformazioni
-        Produttore produttore = new Produttore("produttore1", "prod@prod.a");
+        Produttore produttore = new Produttore("produttore1", "prod@prod.a", null, null);
         produttore.creaProdotto(10.0f, "Prodotto1", "Descrizione1", null);
         produttore.creaProdotto(20.0f, "Prodotto2", "Descrizione2", null);
         System.out.println("Prodotti creati:");

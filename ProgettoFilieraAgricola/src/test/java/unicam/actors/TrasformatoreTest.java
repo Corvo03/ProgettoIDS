@@ -1,16 +1,16 @@
 package unicam.actors;
 
 import org.junit.jupiter.api.Test;
-import unicam.creators.CreatorProdotto;
-import unicam.elements.Prodotto;
-import unicam.informazioniAggiuntive.Fase;
-import unicam.informazioniAggiuntive.ProcessoTrasformazione;
+import unicam.modelli.actors.Trasformatore;
+import unicam.modelli.creators.CreatorProdotto;
+import unicam.modelli.elements.Prodotto;
+import unicam.modelli.informazioniAggiuntive.ProcessoTrasformazione;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrasformatoreTest {
 
-    Trasformatore trasformatore = new Trasformatore("T1", "T1@something.com");
+    Trasformatore trasformatore = new Trasformatore("T1", "T1@something.com",null, null);
     @Test
     void testCreaProdotto() {
 
