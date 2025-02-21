@@ -111,4 +111,8 @@ public class GestoreProcessoTrasformazione {
             throw new NullPointerException("Fase non valida");
         this.getProcessoTrasformazione(nomeProcesso).AddFaseProduzione(new Fase(descrizioneFase));
     }
+
+    public void setListaProcessiTrasformazione(List<ProcessoTrasformazione> listaProcessiTrasformazione) {
+        this.listaProcessiTrasformazione = listaProcessiTrasformazione;
+    }
 }

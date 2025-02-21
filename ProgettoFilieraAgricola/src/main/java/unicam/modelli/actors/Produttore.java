@@ -64,9 +64,22 @@ public class Produttore extends Azienda {
      */
     public void creaMetodoProduzione(String nomeMetodo, String descrizioneMetodo) {
         if(nomeMetodo.isEmpty() || descrizioneMetodo.isEmpty())
-            throw new IllegalArgumentException("Nome o Descrizione ddel processo non validi");
+            throw new IllegalArgumentException("Nome o Descrizione del processo non validi");
         this.gestoreMetodoProduzione.aggiungiMetodoProduzione(nomeMetodo, descrizioneMetodo);
     }
+
+    /**
+     * Crea un Metodo di Produzione con le seguenti caratteristiche
+     *
+     * @param metodoProduzione, rappresenta il metodo di produzione da aggiungere.
+     * @throws IllegalArgumentException se il nome o la descrizione sono vuote.
+     */
+    public void creaMetodoProduzione(MetodoProduzione metodoProduzione) {
+        if(metodoProduzione == null)
+            throw new IllegalArgumentException("Nome o Descrizione del processo non validi");
+        this.gestoreMetodoProduzione.aggiungiMetodoProduzione(metodoProduzione);
+    }
+
 
     /**
      * Permette di aggiungere un certificato al Prodotto creato da questa azienda.
@@ -84,5 +97,9 @@ public class Produttore extends Azienda {
         if(!GestoreSistema.getInstance().containsCertificato(certificato))
             throw new IllegalArgumentException("Certificato non trovato");
         prodotto.addCertificato(certificato);
+    }
+
+    public GestoreMetodoProduzione getGestoreMetodoProduzione() {
+        return gestoreMetodoProduzione;
     }
 }

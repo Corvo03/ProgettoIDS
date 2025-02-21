@@ -7,6 +7,7 @@ import unicam.modelli.actors.azienda.InformazioniSensibili;
 import unicam.modelli.creators.CreatorPacchetto;
 import unicam.modelli.creators.CreatorProdotto;
 import unicam.modelli.creators.ItemFactory;
+import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Pacchetto;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.gestori.GestoreSistema;
@@ -17,6 +18,7 @@ import java.util.List;
 public class DistributoreTipicita extends Azienda {
     @Id
     private String id;
+
     public DistributoreTipicita(String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili);
@@ -109,5 +111,12 @@ public class DistributoreTipicita extends Azienda {
         if(!GestoreSistema.getInstance().containsCertificato(certificato))
             throw new IllegalArgumentException("Certificato non trovato");
         prodotto.addCertificato(certificato);
+    }
+
+    public List<Item> getPacchettiStock() {
+        return getGestoreStock().toListaItem();
+    }
+    public Pacchetto getPacchettoStock(String nome) {
+        return (Pacchetto) getGestoreStock().getItem(nome);
     }
 }

@@ -115,4 +115,11 @@ public class Trasformatore extends Azienda {
             throw new IllegalArgumentException("Certificato non trovato");
         prodotto.addCertificato(certificato);
     }
+    public List<ProcessoTrasformazione> getListaProcessiTrasformazione(){
+        return gestoreProcessoTrasformazione.getListaProcessiTrasformazione();
+    }
+
+    public GestoreProcessoTrasformazione getGestoreProcessoTrasformazione() {
+        return gestoreProcessoTrasformazione;
+    }
 }

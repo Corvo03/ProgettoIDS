@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class GestoreStock {
+public class GestoreStock{
     private final List<Stock> listaStock;
 
     public GestoreStock() {
@@ -83,5 +83,22 @@ public class GestoreStock {
     public void eliminaStock(Stock stock) {
         GestoreSistema.getInstance().eliminaElementoMarketplace(stock);
         listaStock.remove(stock);
+    }
+
+    /**
+     * ritorna la lista di tutti gli item nel gestore stock
+     *
+     * @return
+     */
+    public List<Item> toListaItem() {
+        List<Item> listaItem = new ArrayList<>();
+        for (Stock stock : listaStock) {
+            listaItem.add(stock.getItem());
+        }
+        return listaItem;
+    }
+
+    public Item getItem(String nome){
+        return getStock(nome).getItem();
     }
 }
