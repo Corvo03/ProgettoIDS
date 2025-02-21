@@ -2,6 +2,7 @@ package unicam.modelli.actors;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 import unicam.modelli.elements.ElementoMarketplace;
 import unicam.modelli.gestori.GestoreCarrello;

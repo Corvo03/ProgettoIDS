@@ -33,7 +33,6 @@ public class Prodotto extends Item {
         super(prezzo, nome, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
-        ;
     }
 
     public Prodotto() {

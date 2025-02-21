@@ -18,7 +18,7 @@ public class GestoreCertificato{
      *
      * @param certificato da aggiungere alla lista.
      */
-    public void aggiungiCertificato(Certificato certificato){
+    public void creaCertificato(Certificato certificato){
         listaCertificati.add(certificato);
     }
 }

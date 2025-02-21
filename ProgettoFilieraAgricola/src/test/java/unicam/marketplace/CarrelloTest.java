@@ -15,9 +15,9 @@ class CarrelloTest {
     Carrello carrello = new Carrello();
     Produttore produttore = new Produttore("nome", "cognome",null,null);
     Prodotto prodotto = new Prodotto(10.0, "Prodotto1", "Descrizione1", produttore);
-    ElementoMarketplace elementoMarketplace = new ElementoMarketplace(1,new Stock(prodotto));
+    ElementoMarketplace elementoMarketplace = new ElementoMarketplace(new Stock(prodotto));
     Prodotto prodotto2 = new Prodotto(20.0, "Prodotto2", "Descrizione2", produttore);
-    ElementoMarketplace elementoMarketplace2 = new ElementoMarketplace(1,new Stock(prodotto2));
+    ElementoMarketplace elementoMarketplace2 = new ElementoMarketplace(new Stock(prodotto2));
     private void ricaricaElementi() {
         elementoMarketplace.getStock().addQuantita(10);
         elementoMarketplace2.getStock().addQuantita(10);

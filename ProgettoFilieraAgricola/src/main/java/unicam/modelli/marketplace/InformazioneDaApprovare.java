@@ -1,3 +1,4 @@
 package unicam.modelli.marketplace;
 
-public interface InformazioneDaApprovare { }
+public interface InformazioneDaApprovare {
+}

@@ -2,9 +2,9 @@ package unicam.actors;
 
 import unicam.modelli.actors.Produttore;
 import unicam.modelli.creators.CreatorProdotto;
+import unicam.modelli.gestori.GestoreCertificato;
 import unicam.modelli.gestori.GestoreSistema;
 import unicam.modelli.elements.Certificato;
-import unicam.modelli.gestori.certificato.GestoreCertificatoScrittura;
 import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
 import unicam.modelli.elements.Prodotto;
 
@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProduttoreTest {
 
-    GestoreCertificatoScrittura gcs = new GestoreCertificatoScrittura();
+    GestoreCertificato gcs = new GestoreCertificato();
     Produttore produttore = new Produttore("produttore", "Prod@prod.te",null, null);
     @org.junit.jupiter.api.Test
     void creaProdotto() {
@@ -44,7 +44,7 @@ class ProduttoreTest {
 
     private void aggiungiCertificati(){
         for(int i=1; i<=15; i++){
-            gcs.aggiungiCertificato(new Certificato( "Cert"+i, "Descr"+i));
+            gcs.creaCertificato(new Certificato( "Cert"+i, "Descr"+i));
         }
     }
 

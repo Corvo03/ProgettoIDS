@@ -1,25 +1,34 @@
 package unicam.modelli.inviti;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import unicam.modelli.actors.AnimatoreFiliera;
+import unicam.modelli.actors.azienda.Azienda;
 
 import java.time.LocalDate;
 
 /**
  * L'invito concreto, con tutte le info necessarie non modificabili (occorre fare un invito nuovo)
  */
-
+@Entity
 public class Invito {
+    @Id
+    private String id;
     /**
      * animatore che ha creato invito
      */
+    @OneToOne
     private AnimatoreFiliera animatoreFiliera;
     /**
      * evento a cui si riferisce
      */
+    @OneToOne
     private Evento evento;
     /**
      * invitato
      */
-    private PartecipanteEvento partecipanteEvento;
+    @OneToOne
+    private Azienda partecipanteEvento;
     /**
      * data creazione
      */
@@ -38,7 +47,7 @@ public class Invito {
      * @param partecipanteEvento invitato all'evento.
      * @param messaggio di invito all'evento.
      */
-    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, PartecipanteEvento partecipanteEvento, String messaggio) {
+    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, Azienda partecipanteEvento, String messaggio) {
         this.animatoreFiliera = organizzatoreEvento ;
         this.evento = evento ;
         this.partecipanteEvento = partecipanteEvento;
@@ -46,6 +55,9 @@ public class Invito {
         this.dataScadenza = LocalDate.now().plusDays(2) ;
         this.messaggio = messaggio ;
         this.accettato = false;
+    }
+
+    public Invito() {
     }
 
     public Evento getEvento() {

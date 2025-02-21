@@ -14,7 +14,7 @@ class MarketplaceTest {
     Marketplace marketplace = new Marketplace();
     Produttore produttore = new Produttore("nome", "cognome",null,null);
     Prodotto prodotto = new Prodotto(10.0, "Prodotto1", "Descrizione1", produttore);
-    ElementoMarketplace elementoMarketplace = new ElementoMarketplace(1,new Stock(prodotto));
+    ElementoMarketplace elementoMarketplace = new ElementoMarketplace(new Stock(prodotto));
 
     @Test
     void getElementiDisponibiliMarketplace() {
@@ -48,7 +48,7 @@ class MarketplaceTest {
         assertTrue(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
         assertEquals(1, marketplace.getElementiDisponibiliMarketplace().size());
         assertThrows(IllegalArgumentException.class, () -> marketplace.removeElementoMarketplace
-                (new ElementoMarketplace(2,new Stock(new Prodotto(10.0, "Prodotto2",
+                (new ElementoMarketplace(new Stock(new Prodotto(10.0, "Prodotto2",
                         "Descrizione2", produttore)))));
         marketplace.removeElementoMarketplace(elementoMarketplace);
         assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());

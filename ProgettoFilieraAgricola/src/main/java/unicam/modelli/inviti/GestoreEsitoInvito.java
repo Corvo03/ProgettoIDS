@@ -1,5 +1,7 @@
 package unicam.modelli.inviti;
 
+import unicam.modelli.actors.azienda.Azienda;
+
 public class GestoreEsitoInvito {
     /**
      * gestisce un invito accettato

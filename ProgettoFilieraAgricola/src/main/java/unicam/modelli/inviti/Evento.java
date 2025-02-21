@@ -3,6 +3,8 @@ package unicam.modelli.inviti;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
+import unicam.modelli.actors.azienda.Azienda;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ public class Evento {
     /**
      * lista partecipanti che hanno accettato l'invito
      */
-    @OneToMany
+    @Transient
     private List<PartecipanteEvento> listaPartecipanti;
 
     /**
@@ -42,7 +44,7 @@ public class Evento {
         this.luogo = luogo;
         this.descrizione = descrizione;
         this.capienzaMassima = capienzaMassima;
-        this.listaPartecipanti = new ArrayList<PartecipanteEvento>();
+        this.listaPartecipanti = new ArrayList<>();
     }
 
     public Evento() {

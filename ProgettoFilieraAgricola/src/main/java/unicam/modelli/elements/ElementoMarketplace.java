@@ -11,8 +11,7 @@ public class ElementoMarketplace {
     @OneToOne
     private Stock stock;
 
-    public ElementoMarketplace(String id, Stock stock) {
-        this.id = id;
+    public ElementoMarketplace(Stock stock) {
         this.stock = stock;
     }
 

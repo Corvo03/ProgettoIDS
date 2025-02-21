@@ -1,13 +1,13 @@
 package unicam.modelli.actors;
 
 import jakarta.persistence.*;
+import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.creators.CreatorBiglietto;
 import unicam.modelli.creators.ItemFactory;
 import unicam.modelli.elements.Biglietto;
 import unicam.modelli.elements.Stock;
 import unicam.modelli.gestori.GestoreItemRifiutati;
 import unicam.modelli.gestori.GestoreStock;
-import unicam.inviti.*;
 import unicam.modelli.inviti.*;
 import unicam.modelli.marketplace.RichiedenteVerificaInformazione;
 
@@ -57,6 +57,9 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
     }
 
+    public AnimatoreFiliera() {
+    }
+
     /**
      * Crea un biglietto con le seguenti caratteristiche e lo manda in verifica:
      *
@@ -90,7 +93,7 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param partecipanteEvento da invitare all'evento
      * @param messaggio          col quale mandare l'invito.
      */
-    public void invitaAzienda(Evento evento, PartecipanteEvento partecipanteEvento, String messaggio) {
+    public void invitaAzienda(Evento evento, Azienda partecipanteEvento, String messaggio) {
         Invito invito = new Invito(this, evento, partecipanteEvento, messaggio);
         this.gestoreInvitiInviati.InviaInvito(invito);
     }

@@ -7,6 +7,7 @@ import unicam.modelli.elements.Stock;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class GestoreMarketplace {
     private Marketplace marketPlace;
@@ -21,7 +22,7 @@ public class GestoreMarketplace {
      * @return l'elemento del marketplace creato
      */
     public ElementoMarketplace creaElementoMarketPlace(Stock stock){
-        ElementoMarketplace elementoMarketplace = new ElementoMarketplace(marketPlace.getMaxId()+1, stock);
+        ElementoMarketplace elementoMarketplace = new ElementoMarketplace(stock);
         marketPlace.addElementoMarketplace(elementoMarketplace);
         return elementoMarketplace;
     }
@@ -53,9 +54,9 @@ public class GestoreMarketplace {
      * @param id da ricercare.
      * @return l'Item relativo all'elemento marketplace con quell'id, null se non lo trova.
      */
-    public Item getItemById(int id) {
+    public Item getItemById(String  id) {
         for(ElementoMarketplace elemento : getElementiDisponibiliMarketplace())
-            if(elemento.getId() == id)
+            if(Objects.equals(elemento.getId(), id))
                 return elemento.getStock().getItem();
         //elemento non trovato
         return null;

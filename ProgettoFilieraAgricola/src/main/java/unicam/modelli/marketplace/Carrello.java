@@ -1,14 +1,17 @@
 package unicam.modelli.marketplace;
 
+import jakarta.persistence.*;
 import unicam.modelli.elements.ElementoMarketplace;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Classe che rappresenta il carrello dell'utente nel quale si possono inserire e rimuoere elementi del marketplace
+ * Classe che rappresenta il carrello dell'utente nel quale si possono inserire e rimuovere elementi del marketplace
  */
+
 public class Carrello {
+    private String id;
     private Map<ElementoMarketplace, Integer> elementiCarrello;
     private double totalePrezzo;
 

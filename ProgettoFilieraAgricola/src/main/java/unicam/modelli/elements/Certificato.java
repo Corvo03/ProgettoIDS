@@ -25,4 +25,8 @@ public class Certificato {
     public String getDescrizione() {
         return descrizione;
     }
+
+    public String getId() {
+        return Id;
+    }
 }

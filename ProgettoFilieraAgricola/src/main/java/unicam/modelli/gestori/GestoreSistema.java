@@ -1,12 +1,12 @@
 package unicam.modelli.gestori;
 
+import unicam.modelli.actors.ResponsabilePiattaforma;
+import unicam.modelli.actors.UtenteAutenticato;
 import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Certificato;
 import unicam.modelli.actors.azienda.Profilo;
 import unicam.modelli.elements.ElementoMarketplace;
 import unicam.modelli.elements.Stock;
-import unicam.modelli.gestori.certificato.GestoreCertificatoLettura;
-
 import java.util.List;
 import java.util.Map;
 
@@ -15,14 +15,14 @@ import java.util.Map;
  */
 public class GestoreSistema {
     private static GestoreSistema istanza;
-    private GestoreCertificatoLettura gestoreCertificatoLettura;
+    private final GestoreCertificato gestoreCertificato;
     private final SezioneProfili sezioneProfili;
     private final GestoreMarketplace gestoreMarketplace;
 
     private GestoreSistema() {
         gestoreMarketplace = new GestoreMarketplace();
         sezioneProfili = new SezioneProfili();
-        gestoreCertificatoLettura = new GestoreCertificatoLettura();
+        gestoreCertificato = new GestoreCertificato();
     }
 
     /**
@@ -60,7 +60,7 @@ public class GestoreSistema {
      * @return lista di tutti i certificati disponibili
      */
     public List<Certificato> getListaCertificati(){
-        return gestoreCertificatoLettura.getListaCertificati();
+        return gestoreCertificato.getListaCertificati();
     }
 
     /**
@@ -104,9 +104,7 @@ public class GestoreSistema {
      *
      * @throws IllegalArgumentException se l'id è minore di 0.
      */
-    public Item getItemById(int id) {
-        if(id<0)
-            throw new IllegalArgumentException("Id non valido");
+    public Item getItemById(String id) {
         return this.gestoreMarketplace.getItemById(id);
     }
 
@@ -114,4 +112,8 @@ public class GestoreSistema {
         gestoreMarketplace.eliminaElementoMarketplace(stock);
     }
 
+    public void creaCertificato(Certificato certificato, UtenteAutenticato utenteAutenticato) {
+        if (utenteAutenticato instanceof ResponsabilePiattaforma)
+            gestoreCertificato.creaCertificato(certificato);
+    }
 }
