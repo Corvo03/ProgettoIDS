@@ -74,4 +74,8 @@ public class Prodotto extends Item {
     public Azienda getAzienda() {
         return aziendaProduttrice;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
