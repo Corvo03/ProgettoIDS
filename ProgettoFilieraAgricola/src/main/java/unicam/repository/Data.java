@@ -5,6 +5,13 @@ import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.actors.azienda.InformazioniSensibili;
 import unicam.modelli.actors.azienda.Profilo;
 import unicam.modelli.elements.Biglietto;
+import unicam.modelli.elements.Item;
+import unicam.modelli.elements.Prodotto;
+
+import unicam.modelli.elements.ElementoMarketplace;
+import unicam.modelli.gestori.GestoreSistema;
+import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
+import unicam.modelli.informazioniAggiuntive.ProcessoTrasformazione;
 import unicam.modelli.inviti.Evento;
 import unicam.modelli.inviti.Invito;
 
@@ -17,8 +24,13 @@ public class Data {
     public List<Invito> inviti;
     public List<AnimatoreFiliera> animatori;
     public List<Profilo> profili;
+    private static int idItem = 1;
     private int idAziende = 1;
     private static Data istance;
+    public static List<MetodoProduzione> metodiProduzione = new ArrayList<>();
+    public static List<ProcessoTrasformazione> processiTrasformazione = new ArrayList<>();
+    public static GestoreSistema gestoreSistema = GestoreSistema.getInstance();
+
 
     private Data() {
         animatori = new ArrayList<>();
@@ -44,9 +56,13 @@ public class Data {
         }
         for (Produttore prod : listaProduttori) {
             for (int i = 1; i <= 5; i++) {
-                prod.creaProdotto(10.F + i, "Prodotto" + i, "Descrizione" + i, null, Integer.toString(i));
+                prod.creaProdotto(10.F + i, "Prodotto" + i, "Descrizione" + i, null, Integer.toString(idItem++));
             }
         }
+
+        riempiMetodiProduzione();
+        riempiProcessiTrasformazione();
+        creaProdotti();
     }
 
     private void riempiBiglietti() {
@@ -80,7 +96,7 @@ public class Data {
     }
 
     private void riempiEventi() {
-        for (int i = 0; i <= 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             animatori.get(i).creaEvento(Integer.toString(i * 2 + 1), "Evento1Animatore" + i, LocalDate.now(), "Luogo" + i,
                     "DescrEvento", 100);
             animatori.get(i).creaEvento(Integer.toString(i * 2 + 2), "Evento2Animatore" + i, LocalDate.now(), "Luogo" + i,
@@ -97,19 +113,20 @@ public class Data {
     }
 
     private void riempiAzienda() {
+
         for (int i = 1; i <= 5; i++) {
             List<String> sediProd = new ArrayList<>();
             sediProd.add("SedeProduttivaPrincipale");
             sediProd.add("SedeProduttivaSecondaria");
             sediProd.add("Prod" + i);
-            Produttore prod = new Produttore("nomeProduttore" + i, "produttore" + i + "@some.thing", sediProd,
+            Produttore prod = new Produttore(Integer.toString(idItem++),"nomeProduttore" + i, "produttore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede prod" + i, "prod" + i + "@pec.com",
                             "AziendaProd" + i, "pIvaProd" + i, "codProd" + i),
                     "profiloProduttore" + i, "descrProfiloProduttore" + i
             );
             prod.setId(Integer.toString(idAziende++));
             aziende.add(prod);
-            Trasformatore tras = new Trasformatore(
+            Trasformatore tras = new Trasformatore(Integer.toString(idItem++),
                     "nomeTrasformatore" + i, "trasformatore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede trasf" + i, "trasf" + i + "@pec.com",
                             "AziendaTrasf" + i, "pIvaTrasf" + i, "codTrasf" + i),
@@ -117,7 +134,7 @@ public class Data {
             );
             tras.setId(Integer.toString(idAziende++));
             aziende.add(tras);
-            DistributoreTipicita dist = new DistributoreTipicita(
+            DistributoreTipicita dist = new DistributoreTipicita(Integer.toString(idItem++),
                     "nomeDistributore" + i, "distributore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede distr" + i, "distr" + i + "@pec.com",
                             "AziendaDistr" + i, "pIvaDistr" + i, "codDistr" + i),
@@ -135,6 +152,35 @@ public class Data {
         }
     }
 
+    private void riempiMetodiProduzione() {
+        for (int i = 1; i <= 15; i++) {
+            metodiProduzione.add(new MetodoProduzione("Metodo" + i, "DescrizioneMetodo" + i));
+        }
+    }
+
+    private void riempiProcessiTrasformazione() {
+        for (int i = 1; i <= 15; i++) {
+            processiTrasformazione.add(new ProcessoTrasformazione("Processo" + i, "DescrizioneProcesso" + i));
+        }
+    }
+
+    private void creaProdotti() {
+        int i = 0;
+        for (Azienda azienda : aziende) {
+            i++;
+            if (azienda instanceof Produttore) {
+                ((Produttore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, metodiProduzione.get(0), "aaa")
+                ;
+                ((Produttore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, metodiProduzione.get(0),"bbb");
+            }
+            if (azienda instanceof Trasformatore) {
+                ((Trasformatore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, processiTrasformazione.get(0),"ccc");
+            }
+            if (azienda instanceof DistributoreTipicita) {
+                ((DistributoreTipicita) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i,"ddd");
+            }
+        }
+    }
 
     public static Data getIstance() {
         if (istance == null) {
@@ -165,5 +211,30 @@ public class Data {
                 return azienda;
         }
         return null;
+    }
+
+//    public Evento getEventoById(String id) {
+//        for (Evento evento : eventi) {
+//            if (Objects.equals(evento.getId(), id))
+//                return evento;
+//        }
+//        return null;
+//    }
+
+    public Prodotto getProdottoById(String id) {
+        Prodotto prodotto = null;
+        for (Azienda azienda : aziende) {
+            for (ElementoMarketplace elementoMarketplace : gestoreSistema.getElementiDisponibiliMarketplace()) {
+                prodotto = (Prodotto) elementoMarketplace.getStock().getItem();
+                if (Objects.equals(prodotto.getNomeItem(), id))
+                    return prodotto;
+            }
+        }
+        return null;
+    }
+
+    public Item getProdottoByAzienda(String idAzienda, String idProdotto) {
+        Azienda azienda = getAziendaById(idAzienda);
+        return azienda.getGestoreStock().getStock(idProdotto).getItem();
     }
 }

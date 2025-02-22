@@ -38,9 +38,10 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      * @param email
      * @param nomeUtente
      */
-    public Azienda(String email, String nomeUtente, List<String> indirizzoSediProduttive,
+    public Azienda(String id,String email, String nomeUtente, List<String> indirizzoSediProduttive,
                    InformazioniSensibili informazioniSensibili) {
         super(email, nomeUtente);
+        this.id = id;
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
@@ -50,9 +51,10 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
 
     }
 
-    public Azienda(String email, String nomeUtente, List<String> indirizzoSediProduttive,
+    public Azienda(String id, String email, String nomeUtente, List<String> indirizzoSediProduttive,
                    InformazioniSensibili informazioniSensibili, String nomeProfilo, String descProfilo) {
         super(email, nomeUtente);
+        this.id = id;
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.gestoreItemRifiutati = new GestoreItemRifiutati();

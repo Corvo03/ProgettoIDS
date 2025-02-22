@@ -40,6 +40,7 @@ public class InformazioneDaApprovareServiceController {
                 dto.setPrezzo(prodotto.getPrezzo());
                 dto.setDescrizione(prodotto.getDescrizione());
                 dto.setNomeAziendaProduttrice(prodotto.getAziendaProduttrice().getId());
+                dto.setIdItem(prodotto.getId());
             }
             dtoList.add(dto);
         }
@@ -103,20 +104,23 @@ public class InformazioneDaApprovareServiceController {
         return prodotto.getNomeItem().equals(dto.getNomeItem()) &&
                 prodotto.getPrezzo() == dto.getPrezzo() &&
                 prodotto.getDescrizione().equals(dto.getDescrizione()) &&
-                prodotto.getAziendaProduttrice().getId().equals(dto.getNomeAziendaProduttrice());
+                prodotto.getAziendaProduttrice().getId().equals(dto.getNomeAziendaProduttrice()) &&
+                prodotto.getId().equals(dto.getIdItem());
     }
 
     private boolean controlloPacchetto(Pacchetto pacchetto, InformazioneDaApprovareDTO dto) {
         return pacchetto.getNomeItem().equals(dto.getNomeItem()) &&
                 pacchetto.getPrezzo() == dto.getPrezzo() &&
                 pacchetto.getDescrizione().equals(dto.getDescrizione()) &&
-                pacchetto.getAziendaProduttrice().getId().equals(dto.getNomeAziendaProduttrice());
+                pacchetto.getAziendaProduttrice().getId().equals(dto.getNomeAziendaProduttrice()) &&
+                pacchetto.getId().equals(dto.getIdItem());
     }
 
     private boolean controlloBiglietto(Biglietto biglietto, InformazioneDaApprovareDTO dto) {
         return biglietto.getNomeItem().equals(dto.getNomeItem()) &&
                 biglietto.getPrezzo() == dto.getPrezzo() &&
                 biglietto.getDescrizione().equals(dto.getDescrizione()) &&
-                biglietto.getAnimatore().getId().equals(dto.getNomeAziendaProduttrice());
+                biglietto.getAnimatore().getId().equals(dto.getNomeAziendaProduttrice()) &&
+                biglietto.getId().equals(dto.getIdItem());
     }
 }

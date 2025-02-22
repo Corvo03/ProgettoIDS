@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TrasformatoreTest {
 
-    Trasformatore trasformatore = new Trasformatore("T1", "T1@something.com",null, null);
+    Trasformatore trasformatore = new Trasformatore("1","T1", "T1@something.com",null, null);
     @Test
     void testCreaProdotto() {
 

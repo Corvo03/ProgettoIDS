@@ -6,7 +6,7 @@ import unicam.modelli.marketplace.InformazioneDaApprovare;
 @Entity
 public abstract class Item implements InformazioneDaApprovare {
     @Id
-    private int id;
+    private String id;
     private double prezzo;
     private String nomeItem;
     private String descrizione;
@@ -44,7 +44,7 @@ public abstract class Item implements InformazioneDaApprovare {
         this.prezzo = prezzo;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }

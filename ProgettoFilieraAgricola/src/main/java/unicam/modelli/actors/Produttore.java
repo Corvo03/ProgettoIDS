@@ -22,15 +22,15 @@ public class Produttore extends Azienda {
     @Transient
     private GestoreMetodoProduzione gestoreMetodoProduzione;
 
-    public Produttore(String nome, String mail, List<String> indirizzoSediProduttive
+    public Produttore(String id, String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
-        super(mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
+        super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
         gestoreMetodoProduzione = new GestoreMetodoProduzione();
     }
 
-    public Produttore(String nome, String mail, List<String> indirizzoSediProduttive
+    public Produttore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
-        super(mail, nome, indirizzoSediProduttive, informazioniSensibili);
+        super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili);
         gestoreMetodoProduzione = new GestoreMetodoProduzione();
     }
 

@@ -15,7 +15,7 @@ public class ElementiMarketPlaceServiceController {
     private final ElementoMarketplace elementoMarketplace = new ElementoMarketplace
             (new Stock
                     (new Prodotto(19.99,"nome","descrizione",
-                            new Produttore("nome","descrizione",null,null),"aaa")));
+                            new Produttore("1","nome","descrizione",null,null),"aaa")));
 
     @GetMapping("/elementiMarketPlace")
     public ResponseEntity<Object> getQuantitaDisponibile(){

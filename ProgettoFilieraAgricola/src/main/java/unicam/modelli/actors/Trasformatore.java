@@ -18,20 +18,18 @@ import java.util.List;
 
 @Entity
 public class Trasformatore extends Azienda {
-    @Id
-    private String id;
     @Transient
     private GestoreProcessoTrasformazione gestoreProcessoTrasformazione;
 
-    public Trasformatore(String nome, String mail, List<String> indirizzoSediProduttive
+    public Trasformatore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
-        super(mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
+        super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
         gestoreProcessoTrasformazione = new GestoreProcessoTrasformazione();
     }
 
-    public Trasformatore(String nome, String mail, List<String> indirizzoSediProduttive
+    public Trasformatore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
-        super(mail, nome, indirizzoSediProduttive, informazioniSensibili);
+        super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili);
         gestoreProcessoTrasformazione = new GestoreProcessoTrasformazione();
     }
 

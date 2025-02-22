@@ -19,15 +19,15 @@ public class DistributoreTipicita extends Azienda {
     @Id
     private String id;
 
-    public DistributoreTipicita(String mail, String nomeUtente, List<String> indirizzoSediProduttive
+    public DistributoreTipicita(String id,String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
-        super(mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili,nomeProfilo, descrProfilo);
+        super(id,mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili,nomeProfilo, descrProfilo);
 
     }
 
-    public DistributoreTipicita(String mail, String nomeUtente, List<String> indirizzoSediProduttive
+    public DistributoreTipicita(String id, String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
-        super(mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili);
+        super(id, mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili);
 
     }
 
@@ -74,7 +74,7 @@ public class DistributoreTipicita extends Azienda {
      * @return il Prodotto creato.
      */
     public Prodotto creaProdotto(double prezzo, String nome, String descrizione,String id) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, null, this, id);
+        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, null, this,id);
         Prodotto prodotto = (Prodotto) fact.createItem();
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;

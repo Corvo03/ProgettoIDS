@@ -9,7 +9,7 @@ import unicam.modelli.actors.Produttore;
 
 @RestController
 public class MetodoProduzioneServiceController {
-    private final Produttore produttore = new Produttore("nome", "descrizione", null, null);
+    private final Produttore produttore = new Produttore("1","nome", "descrizione", null, null);
 
 
     @GetMapping ("/metodoProduzione")

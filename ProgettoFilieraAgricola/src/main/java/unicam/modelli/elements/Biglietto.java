@@ -8,8 +8,6 @@ import unicam.modelli.actors.AnimatoreFiliera;
 
 @Entity
 public class Biglietto extends Item {
-    @Id
-    private int id;
     @OneToOne
     private AnimatoreFiliera animatore;
     @OneToOne

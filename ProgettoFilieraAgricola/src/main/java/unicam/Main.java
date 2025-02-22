@@ -12,7 +12,7 @@ import unicam.modelli.marketplace.InformazioneDaApprovare;
 public class Main {
     public static void main(String[] args) {
         //produttore crea prodotti e vedo sta stanno dentro gestoreinformazioni
-        Produttore produttore = new Produttore("produttore1", "prod@prod.a", null, null);
+        Produttore produttore = new Produttore("1","produttore1", "prod@prod.a", null, null);
         produttore.creaProdotto(10.0f, "Prodotto1", "Descrizione1", null,"aaa");
         produttore.creaProdotto(20.0f, "Prodotto2", "Descrizione2", null,"bbb");
         System.out.println("Prodotti creati:");

@@ -6,6 +6,7 @@ public class InformazioneDaApprovareDTO {
     private double prezzo;
     private String nomeItem;
     private String descrizione;
+    private String idItem;
     private String nomeAziendaProduttrice;
 
     public double getPrezzo() {
@@ -38,5 +39,13 @@ public class InformazioneDaApprovareDTO {
 
     public void setNomeAziendaProduttrice(String nomeAziendaProduttrice) {
         this.nomeAziendaProduttrice = nomeAziendaProduttrice;
+    }
+
+    public String getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(String idItem) {
+        this.idItem = idItem;
     }
 }

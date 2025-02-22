@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 public class PacchettoServiceController {
-    private final DistributoreTipicita distributoreTipicita = new DistributoreTipicita("nome","descrizione",null, null);
+    private final DistributoreTipicita distributoreTipicita = new DistributoreTipicita("1","nome","descrizione",null, null);
 
 
     @PostMapping("/pacchetto/creaPacchetto")
