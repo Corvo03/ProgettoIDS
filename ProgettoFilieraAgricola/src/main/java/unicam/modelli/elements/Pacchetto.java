@@ -85,7 +85,7 @@ public class Pacchetto extends Item {
         this.listaProdotti.add(prodotto);
     }
 
-    public Azienda getAzienda() {
+    public Azienda getAziendaProduttrice() {
         return aziendaProduttrice;
     }
 }

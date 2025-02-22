@@ -38,7 +38,7 @@ public abstract class Item implements InformazioneDaApprovare {
         return prezzo;
     }
 
-    public void setPrezzo(float prezzo) {
+    public void setPrezzo(double prezzo) {
         if (prezzo < 0)
             throw new IllegalArgumentException("prezzo non valido");
         this.prezzo = prezzo;

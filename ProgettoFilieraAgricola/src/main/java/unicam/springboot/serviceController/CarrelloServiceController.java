@@ -13,8 +13,9 @@ public class CarrelloServiceController {
     private final GestoreSistema gS = GestoreSistema.getInstance();
     private final Acquirente acquirente = new Acquirente("email","nome");
 
-    @GetMapping("/carrello")
-    public ResponseEntity<Object> getElementiCarrello(){
+    @GetMapping("/carrello/{idAcquirente}")
+    public ResponseEntity<Object> getElementiCarrello(@RequestBody String idAcquirente){
+
         return new ResponseEntity<>(acquirente.getListaElementiCarrello(), HttpStatus.OK);
     }
 

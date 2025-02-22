@@ -25,4 +25,28 @@ public class InformazioniSensibili implements InformazioneDaApprovare {
     public InformazioniSensibili() {
 
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getSedeLegale() {
+        return sedeLegale;
+    }
+
+    public String getPec() {
+        return pec;
+    }
+
+    public String getNomeAzienda() {
+        return nomeAzienda;
+    }
+
+    public String getpIva() {
+        return pIva;
+    }
+
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
 }

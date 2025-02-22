@@ -40,7 +40,7 @@ class DistributoreTipicitaTest {
         assertEquals(p.getNomeItem(), "Pacchetto1");
         assertEquals(p.getDescrizione(), "DescrPacchett1");
         assertEquals(p.getPrezzo(), 50);
-        assertEquals(p.getAzienda(), distributoreTipicita);
+        assertEquals(p.getAziendaProduttrice(), distributoreTipicita);
         assertEquals(p.getListaProdotti().getFirst().getNomeItem(), p1.getNomeItem());
         assertEquals(p.getListaProdotti().getLast().getNomeItem(), p2.getNomeItem());
 

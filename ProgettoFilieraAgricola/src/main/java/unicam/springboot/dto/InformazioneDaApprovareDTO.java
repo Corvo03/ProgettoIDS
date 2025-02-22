@@ -1,5 +1,7 @@
 package unicam.springboot.dto;
 
+import unicam.modelli.marketplace.InformazioneDaApprovare;
+
 public class InformazioneDaApprovareDTO {
     private double prezzo;
     private String nomeItem;
