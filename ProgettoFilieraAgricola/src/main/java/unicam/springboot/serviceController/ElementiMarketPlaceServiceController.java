@@ -1,4 +1,4 @@
-package unicam.springboot.controller;
+package unicam.springboot.serviceController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import unicam.modelli.actors.Produttore;
 import unicam.modelli.elements.ElementoMarketplace;
-import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.elements.Stock;
 
@@ -16,7 +15,7 @@ public class ElementiMarketPlaceServiceController {
     private final ElementoMarketplace elementoMarketplace = new ElementoMarketplace
             (new Stock
                     (new Prodotto(19.99,"nome","descrizione",
-                            new Produttore("nome","descrizione",null,null))));
+                            new Produttore("nome","descrizione",null,null),"aaa")));
 
     @GetMapping("/elementiMarketPlace")
     public ResponseEntity<Object> getQuantitaDisponibile(){

@@ -1,4 +1,4 @@
-package unicam.springboot.controller;
+package unicam.springboot.serviceController;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import unicam.modelli.actors.Produttore;
-import unicam.modelli.actors.azienda.Azienda;
-import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
 
 @RestController
 public class MetodoProduzioneServiceController {

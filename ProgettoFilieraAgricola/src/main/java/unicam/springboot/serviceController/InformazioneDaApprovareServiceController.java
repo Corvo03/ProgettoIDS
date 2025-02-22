@@ -1,4 +1,4 @@
-package unicam.springboot.controller;
+package unicam.springboot.serviceController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import unicam.modelli.actors.Curatore;
-import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.gestori.GestoreInformazioni;
 import unicam.modelli.marketplace.InformazioneDaApprovare;

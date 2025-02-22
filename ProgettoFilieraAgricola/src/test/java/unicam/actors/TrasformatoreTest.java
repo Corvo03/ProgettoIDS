@@ -17,7 +17,7 @@ class TrasformatoreTest {
         trasformatore.creaProcesso("Processo2", "DescProcesso2");
         ProcessoTrasformazione pt = trasformatore.getProcessoTrasformazione("Processo2");
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                25.1, pt, trasformatore);
+                25.1, pt, trasformatore,"bbb");
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
         //TODO trasformatore.creaProdotto();

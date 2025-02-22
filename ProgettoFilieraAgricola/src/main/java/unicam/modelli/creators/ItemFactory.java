@@ -6,6 +6,7 @@ public abstract class ItemFactory {
     protected String nome;
     protected String descrizione;
     protected double prezzo;
+    protected String id;
 
     /**
      * Costruttore del Factory dell'Item, permette di creare un Item a partire dagli elementi passati nel costruttore.

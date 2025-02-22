@@ -22,7 +22,7 @@ class ProduttoreTest {
         this.produttore.creaMetodoProduzione("MetProd1", "descrMetodo1");
         MetodoProduzione mp = this.produttore.getMetodoProduzione("MetProd1");
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                23.5, mp, produttore);
+                23.5, mp, produttore,"aaa");
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
 

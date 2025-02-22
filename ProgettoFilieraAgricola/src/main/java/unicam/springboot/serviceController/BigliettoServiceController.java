@@ -1,4 +1,4 @@
-package unicam.springboot.controller;
+package unicam.springboot.serviceController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import unicam.modelli.actors.AnimatoreFiliera;
 import unicam.modelli.inviti.Evento;
 import unicam.repository.Data;
-
-import static unicam.repository.Data.*;
 
 @RestController
 public class BigliettoServiceController {

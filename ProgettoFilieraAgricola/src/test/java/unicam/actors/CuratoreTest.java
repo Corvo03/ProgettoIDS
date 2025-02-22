@@ -16,7 +16,7 @@ class CuratoreTest {
 
     @Test
     void approvaInformazione() {
-        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"));
+        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"),"aaa");
         assertEquals(1, GestoreInformazioni.getInstance().getInformazioniDaApprovare().size());
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         assertTrue(GestoreInformazioni.getInstance().getInformazioniDaApprovare().isEmpty());
@@ -27,7 +27,7 @@ class CuratoreTest {
 
     @Test
     void rifiutaInformazione() {
-        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"));
+        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"),"bbb");
         assertEquals(1, GestoreInformazioni.getInstance().getInformazioniDaApprovare().size());
         curatore.rifiutaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         assertTrue(GestoreInformazioni.getInstance().getInformazioniDaApprovare().isEmpty());

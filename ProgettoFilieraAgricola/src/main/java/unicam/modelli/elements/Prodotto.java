@@ -22,17 +22,19 @@ public class Prodotto extends Item {
     @OneToOne
     private InformazioneAggiuntiva informazioneAggiuntiva;
 
-    public Prodotto(double prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione) {
+    public Prodotto(double prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione, String id) {
         super(prezzo, nomeItem, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
         informazioneAggiuntiva = informazione;
+        this.id = id;
     }
 
-    public Prodotto(double prezzo, String nome, String descrizione, Azienda aziendaProduttrice) {
+    public Prodotto(double prezzo, String nome, String descrizione, Azienda aziendaProduttrice, String id) {
         super(prezzo, nome, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
+        this.id = id;
     }
 
     public Prodotto() {

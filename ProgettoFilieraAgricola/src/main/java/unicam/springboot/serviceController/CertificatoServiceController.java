@@ -1,4 +1,4 @@
-package unicam.springboot.controller;
+package unicam.springboot.serviceController;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

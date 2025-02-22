@@ -14,14 +14,14 @@ class DistributoreTipicitaTest {
 
     DistributoreTipicita distributoreTipicita = new DistributoreTipicita("distributore", "distr@gmail.com", null, null);
     CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-            23.5, distributoreTipicita);
+            23.5, distributoreTipicita,"aaa");
     CreatorProdotto creatorProdotto2 = new CreatorProdotto("prodotto2", "descr2",
-            27, distributoreTipicita);
+            27, distributoreTipicita,"bbb");
 
     @Test
     void creaProdotto() {
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                23.5, distributoreTipicita);
+                23.5, distributoreTipicita,"aaa");
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
 
         assertEquals(p.getNomeItem(), "prodotto1");

@@ -48,7 +48,7 @@ public class Trasformatore extends Azienda {
      * @return il prodotto creato.
      */
     public Prodotto creaProdotto(Float prezzo, String nome, String descrizione, ProcessoTrasformazione processo) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, processo, this);
+        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, processo, this, "bbb");
         Prodotto prodotto = (Prodotto) fact.createItem();
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;

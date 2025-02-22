@@ -43,4 +43,8 @@ public abstract class Item implements InformazioneDaApprovare {
             throw new IllegalArgumentException("prezzo non valido");
         this.prezzo = prezzo;
     }
+
+    public int getId() {
+        return id;
+    }
 }

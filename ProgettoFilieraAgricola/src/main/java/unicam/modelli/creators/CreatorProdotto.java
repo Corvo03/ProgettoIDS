@@ -25,7 +25,7 @@ public class CreatorProdotto extends ItemFactory {
      */
     public CreatorProdotto(String nome, String descrizione, Float prezzo,
                            InformazioneAggiuntiva informazioneAggiuntiva, List<Certificato> certificazioni,
-                           Azienda aziendaProduttrice) {
+                           Azienda aziendaProduttrice, String id) {
         super(nome, descrizione, prezzo);
         this.informazioneAggiuntiva = informazioneAggiuntiva;
         this.certificati = certificazioni;
@@ -42,14 +42,14 @@ public class CreatorProdotto extends ItemFactory {
      * @param aziendaProduttrice del prodotto.
      */
     public CreatorProdotto(String nome, String descrizione, double prezzo,
-                           InformazioneAggiuntiva informazioneAggiuntiva, Azienda aziendaProduttrice) {
+                           InformazioneAggiuntiva informazioneAggiuntiva, Azienda aziendaProduttrice, String id) {
         super(nome, descrizione, prezzo);
         this.informazioneAggiuntiva = informazioneAggiuntiva;
         this.aziendaProduttrice = aziendaProduttrice;
         this.certificati = new ArrayList<Certificato>();
     }
 
-    public CreatorProdotto(String nome, String descrizione, double prezzo, Azienda aziendaProduttrice) {
+    public CreatorProdotto(String nome, String descrizione, double prezzo, Azienda aziendaProduttrice, String id) {
         super(nome, descrizione, prezzo);
         this.informazioneAggiuntiva = null;
         this.aziendaProduttrice = aziendaProduttrice;
@@ -63,7 +63,7 @@ public class CreatorProdotto extends ItemFactory {
     @Override
     public Item createItem() {
         if(informazioneAggiuntiva != null)
-            return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva);
-        return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice);
+            return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva, id);
+        return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, id );
     }
 }
