@@ -115,9 +115,16 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
     public void creaEvento(String id,String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
         try {
             Evento eventoCreato = new Evento(id, nome, data, luogo, descrizione, capienzaMassima);
+            this.listaEventi.add(eventoCreato);
         } catch (IllegalArgumentException e) {
             System.out.println("Errore nella creazione del evento, riprovare");
         }
+    }
+
+    public void creaEvento(Evento evento) {
+        if(evento == null)
+            throw new NullPointerException("Evento non trovato");
+        this.listaEventi.add(evento);
     }
 
     public List<Evento> getListaEventi() {

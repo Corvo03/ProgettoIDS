@@ -101,7 +101,7 @@ public class Evento {
     }
 
     /**
-     * Aggiunge un partecipente all'evento
+     * Aggiunge un participate all'evento
      * @param partecipanteEvento, partecipante da aggiungere.
      */
     public void addPartecipante(PartecipanteEvento partecipanteEvento) {

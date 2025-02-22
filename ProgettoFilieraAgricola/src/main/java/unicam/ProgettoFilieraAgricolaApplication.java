@@ -8,7 +8,7 @@ import unicam.repository.Data;
 public class ProgettoFilieraAgricolaApplication {
 
     public static void main(String[] args) {
-        Data.getIstance();
+        Data data = Data.getIstance();
         SpringApplication.run(ProgettoFilieraAgricolaApplication.class, args);
     }
 

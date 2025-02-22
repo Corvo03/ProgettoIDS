@@ -10,24 +10,22 @@ import java.time.LocalDate;
 /**
  * L'invito concreto, con tutte le info necessarie non modificabili (occorre fare un invito nuovo)
  */
-@Entity
+
 public class Invito {
-    @Id
-    private String id;
+
     /**
      * animatore che ha creato invito
      */
-    @OneToOne
+
     private AnimatoreFiliera animatoreFiliera;
     /**
      * evento a cui si riferisce
      */
-    @OneToOne
+
     private Evento evento;
     /**
      * invitato
      */
-    @OneToOne
     private Azienda partecipanteEvento;
     /**
      * data creazione
@@ -64,10 +62,9 @@ public class Invito {
         return evento;
     }
 
-    public PartecipanteEvento getPartecipanteEvento() {
+    public Azienda getPartecipanteEvento() {
         return partecipanteEvento;
     }
-
 
     public LocalDate getDataScadenza() {
         return dataScadenza;
