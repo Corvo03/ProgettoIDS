@@ -5,7 +5,10 @@ import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.actors.azienda.InformazioniSensibili;
 import unicam.modelli.actors.azienda.Profilo;
 import unicam.modelli.elements.Biglietto;
+<<<<<<< Updated upstream
 import unicam.modelli.elements.Prodotto;
+=======
+>>>>>>> Stashed changes
 import unicam.modelli.elements.ElementoMarketplace;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.gestori.GestoreSistema;
@@ -25,12 +28,20 @@ public class Data {
     public static List<Azienda> aziende = new ArrayList<>();
     public static List<AnimatoreFiliera> animatori = new ArrayList<>();
     public static List<Profilo> profili = new ArrayList<>();
+<<<<<<< Updated upstream
     private static int idAziende = 0;
     private static Data istance;
+=======
+>>>>>>> Stashed changes
     public static List<MetodoProduzione> metodiProduzione = new ArrayList<>();
     public static List<ProcessoTrasformazione> processiTrasformazione = new ArrayList<>();
     public static GestoreSistema gestoreSistema = GestoreSistema.getInstance();
 
+<<<<<<< Updated upstream
+=======
+
+    private static Data istance;
+>>>>>>> Stashed changes
 
 
     private Data() {
@@ -39,6 +50,7 @@ public class Data {
         riempiEventi();
         riempiInviti();
         riempiBiglietti();
+<<<<<<< Updated upstream
         riempiAziendeDiProdotti();
     }
 
@@ -54,11 +66,13 @@ public class Data {
                 prod.creaProdotto(10.F + i, "Prodotto" + i, "Descrizione" + i, null, "aaa");
             }
         }
+=======
+>>>>>>> Stashed changes
         riempiMetodiProduzione();
         riempiProcessiTrasformazione();
         creaProdotti();
     }
-
+    
     private void riempiBiglietti() {
     }
 
@@ -139,8 +153,12 @@ public class Data {
         for(Azienda azienda : aziende){
             i++;
             if(azienda instanceof Produttore){
+<<<<<<< Updated upstream
                 ((Produttore) azienda).creaProdotto(10.0f, "prodotto"+i, "descr"+i, metodiProduzione.get(0),"aaa")
                 ;
+=======
+                ((Produttore) azienda).creaProdotto(10.0f, "prodotto"+i, "descr"+i, metodiProduzione.get(0));
+>>>>>>> Stashed changes
             }
             if (azienda instanceof Trasformatore){
                 ((Trasformatore) azienda).creaProdotto(10.0f, "prodotto"+i, "descr"+i, processiTrasformazione.get(0));
