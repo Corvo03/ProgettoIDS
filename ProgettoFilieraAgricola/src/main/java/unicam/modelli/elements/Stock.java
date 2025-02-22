@@ -51,4 +51,8 @@ public class Stock {
     public String getNomeItem() {
         return item.getNomeItem();
     }
+
+    public String getId() {
+        return Id;
+    }
 }

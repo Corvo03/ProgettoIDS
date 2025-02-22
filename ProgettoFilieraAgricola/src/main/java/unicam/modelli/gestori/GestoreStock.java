@@ -50,12 +50,12 @@ public class GestoreStock{
 
     /**
      * Dato il nome dell'Item ritorna lo stock relativo. Se non è presente ritorna null.
-     * @param nomeItem, nome dell'Item dello Stock da ricercare.
+     * @param id, id dell'Item dello Stock da ricercare.
      * @return Stock se trovato, null altrimenti.
      */
-    public Stock getStock(String nomeItem){
+    public Stock getStock(String id){
         for (Stock stock : listaStock) {
-            if(Objects.equals(stock.getNomeItem(), nomeItem))
+            if(Objects.equals(stock.getId(), id))
                 return stock;
         }
         return null;

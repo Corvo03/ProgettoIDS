@@ -56,4 +56,8 @@ public class Profilo {
         this.nomeProfilo = nomeProfilo;
     }
     public void setAzienda(Azienda azienda) {this.azienda = azienda;}
+
+    public String getId() {
+        return id;
+    }
 }

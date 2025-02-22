@@ -1,7 +1,9 @@
 package unicam.modelli.gestori;
 
+import org.springframework.http.HttpStatusCode;
 import unicam.modelli.actors.ResponsabilePiattaforma;
 import unicam.modelli.actors.UtenteAutenticato;
+import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Certificato;
 import unicam.modelli.actors.azienda.Profilo;
@@ -115,5 +117,9 @@ public class GestoreSistema {
     public void creaCertificato(Certificato certificato, UtenteAutenticato utenteAutenticato) {
         if (utenteAutenticato instanceof ResponsabilePiattaforma)
             gestoreCertificato.creaCertificato(certificato);
+    }
+
+    public Azienda getAzienda(String id) {
+        return sezioneProfili.getProfilo(id).getAzienda();
     }
 }

@@ -21,6 +21,13 @@ public class SezioneProfili {
         return listaProfili;
     }
 
+    public Profilo getProfilo(String id){
+        for(Profilo profilo : listaProfili){
+            if(profilo.getId().equals(id))
+                return profilo;
+        }
+        return null;
+    }
     public void addProfilo(Profilo profilo) {
         listaProfili.add(profilo);
     }

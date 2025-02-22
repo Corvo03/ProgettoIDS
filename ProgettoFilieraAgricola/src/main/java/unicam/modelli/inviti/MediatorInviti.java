@@ -1,5 +1,10 @@
 package unicam.modelli.inviti;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
 /**
  * SINGLETON<<<<
  * mediatore tra gestore invitiInviati, GestoreInvitiRicevuti e GestoreEsitoInvito
@@ -11,6 +16,7 @@ public class MediatorInviti implements Mediator {
     private MediatorInviti() {
         gestoreEsitoInvito = new GestoreEsitoInvito();
     }
+
 
     public static MediatorInviti getInstance() {
         if (instance == null) {

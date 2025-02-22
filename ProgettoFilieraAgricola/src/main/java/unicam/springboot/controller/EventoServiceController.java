@@ -17,8 +17,4 @@ public class EventoServiceController {
         return new ResponseEntity<>(Data.eventi, HttpStatus.OK);
     }
 
-    @GetMapping(value="/evento")
-    public ResponseEntity<Object> getEventi(){
-        return new ResponseEntity<>(Data.eventi, HttpStatus.OK);
-    }
 }
