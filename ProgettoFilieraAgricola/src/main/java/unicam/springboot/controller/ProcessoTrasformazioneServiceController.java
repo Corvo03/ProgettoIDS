@@ -2,10 +2,7 @@ package unicam.springboot.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import unicam.modelli.actors.Curatore;
 import unicam.modelli.actors.Trasformatore;
 import unicam.modelli.gestori.GestoreSistema;
@@ -43,7 +40,7 @@ public class ProcessoTrasformazioneServiceController {
         return new ResponseEntity<>(trasformatore.getListaProcessiTrasformazione(), HttpStatus.OK);
     }
 
-    @PostMapping("/processoTrasformazione/rimuovMetodoTrasformazione")
+    @DeleteMapping("/processoTrasformazione")
     public ResponseEntity<Object> eliminaMetodoTrasformazione(@RequestParam String nomeProcesso) {
         //trasformatore.getGestoreProcessoTrasformazione().eliminaMetodoTrasformazione(nomeProcesso);
         return new ResponseEntity<>("Metodo rimosso", HttpStatus.OK);

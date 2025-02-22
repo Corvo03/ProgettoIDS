@@ -35,10 +35,11 @@ public class Evento {
      * @param descrizione
      * @param capienzaMassima
      */
-    public Evento(String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
+    public Evento(String id,String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
         if(nome == null || data == null || luogo == null || descrizione == null || capienzaMassima < 1){
             throw new IllegalArgumentException();
         }
+        this.id = id;
         this.nome = nome;
         this.data = data;
         this.luogo = luogo;
@@ -105,5 +106,9 @@ public class Evento {
      */
     public void addPartecipante(PartecipanteEvento partecipanteEvento) {
         this.listaPartecipanti.add(partecipanteEvento);
+    }
+
+    public String getId() {
+        return id;
     }
 }

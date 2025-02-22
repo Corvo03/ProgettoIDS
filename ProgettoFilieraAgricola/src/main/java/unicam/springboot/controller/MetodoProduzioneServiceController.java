@@ -30,10 +30,12 @@ public class MetodoProduzioneServiceController {
         produttore.getGestoreMetodoProduzione().eliminaMetodoProduzione(nomeMetodoProduzione);
         return ResponseEntity.ok("Metodo eliminato");
     }
-
+    //TODO risolvere problema, stesso mapping definito sopra.
+/*
     @PostMapping("/metodoProduzione/aggiungiMetodoProduzione")
     public ResponseEntity<Object> aggiungiMetodoProduzione(MetodoProduzione metodoProduzione) {
         produttore.getGestoreMetodoProduzione().aggiungiMetodoProduzione(metodoProduzione);
         return ResponseEntity.ok("Step aggiunto");
     }
+    */
 }

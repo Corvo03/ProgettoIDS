@@ -45,7 +45,19 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
         this.indirizzoSediProduttive = indirizzoSediProduttive;
         this.informazioniSensibili = informazioniSensibili;
-        creaProfilo(nomeUtente, "Profilo aziendale");
+        modificaProfilo(nomeUtente, "Profilo aziendale");
+    }
+
+    public Azienda(String email, String nomeUtente, List<String> indirizzoSediProduttive,
+                   InformazioniSensibili informazioniSensibili, String nomeProfilo, String descProfilo) {
+        super(email, nomeUtente);
+        this.gestoreStock = new GestoreStock();
+        this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
+        this.gestoreItemRifiutati = new GestoreItemRifiutati();
+        this.indirizzoSediProduttive = indirizzoSediProduttive;
+        this.informazioniSensibili = informazioniSensibili;
+        modificaProfilo(nomeUtente, "Profilo aziendale");
+        this.modificaProfilo(nomeProfilo, descProfilo);
     }
 
     public Azienda() {
@@ -56,7 +68,7 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      * @param nomeProfilo del profilo relativo all'azienda.
      * @param descrizione del profilo aziendale.
      */
-    public void creaProfilo(String nomeProfilo, String descrizione) {
+    public void modificaProfilo(String nomeProfilo, String descrizione) {
         if (nomeProfilo == null)
             throw new NullPointerException("nome profilo null");
         if (descrizione == null)

@@ -20,6 +20,12 @@ public class DistributoreTipicita extends Azienda {
     private String id;
 
     public DistributoreTipicita(String mail, String nomeUtente, List<String> indirizzoSediProduttive
+            , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
+        super(mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili,nomeProfilo, descrProfilo);
+
+    }
+
+    public DistributoreTipicita(String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili);
 

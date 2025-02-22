@@ -23,6 +23,12 @@ public class Produttore extends Azienda {
     private GestoreMetodoProduzione gestoreMetodoProduzione;
 
     public Produttore(String nome, String mail, List<String> indirizzoSediProduttive
+            , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
+        super(mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
+        gestoreMetodoProduzione = new GestoreMetodoProduzione();
+    }
+
+    public Produttore(String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(mail, nome, indirizzoSediProduttive, informazioniSensibili);
         gestoreMetodoProduzione = new GestoreMetodoProduzione();

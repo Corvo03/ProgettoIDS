@@ -49,12 +49,13 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param email      dell'animatore.
      * @param nomeUtente associato all'animatore
      */
-    public AnimatoreFiliera(String email, String nomeUtente) {
+    public AnimatoreFiliera(String id,String email, String nomeUtente) {
         super(email, nomeUtente);
         this.gestoreInvitiInviati = new GestoreInvitiInviati(MediatorInviti.getInstance());
         this.gestoreStock = new GestoreStock();
         this.listaEventi = new ArrayList<Evento>();
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
+        this.id = id;
     }
 
     public AnimatoreFiliera() {
@@ -70,7 +71,7 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param evento           a cui è collegato il biglietto.
      * @return il biglietto appena creato.
      */
-    public Biglietto creaBiglietto(float prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
+    public Biglietto creaBiglietto(double prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
         ItemFactory fact = new CreatorBiglietto(nome, descrizione, prezzo, this, evento);
         Biglietto biglietto = (Biglietto) fact.createItem();
         this.richiediVerificaInformazioni(biglietto);
@@ -111,9 +112,9 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param descrizione     dell'evento.
      * @param capienzaMassima rappresenta il numero massimo di persone che possono partecipare.
      */
-    public void creaEvento(String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
+    public void creaEvento(String id,String nome, LocalDate data, String luogo, String descrizione, int capienzaMassima) {
         try {
-            Evento eventoCreato = new Evento(nome, data, luogo, descrizione, capienzaMassima);
+            Evento eventoCreato = new Evento(id, nome, data, luogo, descrizione, capienzaMassima);
         } catch (IllegalArgumentException e) {
             System.out.println("Errore nella creazione del evento, riprovare");
         }
@@ -134,5 +135,9 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
 
     public GestoreItemRifiutati getGestoreItemRifiutati() {
         return this.gestoreItemRifiutati;
+    }
+
+    public String getId() {
+        return id;
     }
 }

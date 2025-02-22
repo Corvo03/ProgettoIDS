@@ -24,6 +24,12 @@ public class Trasformatore extends Azienda {
     private GestoreProcessoTrasformazione gestoreProcessoTrasformazione;
 
     public Trasformatore(String nome, String mail, List<String> indirizzoSediProduttive
+            , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
+        super(mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
+        gestoreProcessoTrasformazione = new GestoreProcessoTrasformazione();
+    }
+
+    public Trasformatore(String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(mail, nome, indirizzoSediProduttive, informazioniSensibili);
         gestoreProcessoTrasformazione = new GestoreProcessoTrasformazione();
