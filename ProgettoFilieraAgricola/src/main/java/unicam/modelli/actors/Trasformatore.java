@@ -45,8 +45,8 @@ public class Trasformatore extends Azienda {
      * @param processo    riguarda il processo di Trasformazione utilizzato
      * @return il prodotto creato.
      */
-    public Prodotto creaProdotto(double prezzo, String nome, String descrizione, ProcessoTrasformazione processo, String id) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, processo, this, id);
+    public Prodotto creaProdotto(String id, double prezzo, String nome, String descrizione, ProcessoTrasformazione processo) {
+        ItemFactory fact = new CreatorProdotto(id, nome, descrizione, prezzo, processo, this);
         Prodotto prodotto = (Prodotto) fact.createItem();
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;
@@ -119,6 +119,7 @@ public class Trasformatore extends Azienda {
             throw new IllegalArgumentException("Certificato non trovato");
         prodotto.addCertificato(certificato);
     }
+
     public List<ProcessoTrasformazione> getListaProcessiTrasformazione(){
         return gestoreProcessoTrasformazione.getListaProcessiTrasformazione();
     }

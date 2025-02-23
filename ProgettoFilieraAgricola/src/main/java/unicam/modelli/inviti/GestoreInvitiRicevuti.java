@@ -60,4 +60,17 @@ public class GestoreInvitiRicevuti implements UtilizzatoreInviti{
         invitiRicevuti.removeIf(invito -> !invito.getDataScadenza().isAfter(LocalDate.now()));
         return invitiRicevuti;
     }
+
+    /**
+     * Ritorna un invito a partire dal suo id.
+     * @param idInvito da ricercare
+     * @return Invito se presente, altrimenti null
+     */
+    public Invito getInvitoById(String idInvito) {
+        for(Invito invito : invitiRicevuti){
+            if(invito.getIdInvito().equals(idInvito))
+                return invito;
+        }
+        return null;
+    }
 }

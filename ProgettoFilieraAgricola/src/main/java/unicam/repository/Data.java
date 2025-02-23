@@ -56,7 +56,7 @@ public class Data {
         }
         for (Produttore prod : listaProduttori) {
             for (int i = 1; i <= 5; i++) {
-                prod.creaProdotto(10.F + i, "Prodotto" + i, "Descrizione" + i, null, Integer.toString(idItem++));
+                prod.creaProdotto(Integer.toString(idItem++),10.F + i, "Prodotto" + i, "Descrizione" + i, null);
             }
         }
 
@@ -79,7 +79,7 @@ public class Data {
                 try{
                     int numEventi = animatore.getListaEventi().size();
                     if(numEventi != 0){
-                        animatore.invitaAzienda(
+                        animatore.invitaAzienda(Integer.toString(i+j),
                                 animatore.getListaEventi().get(i%animatore.getListaEventi().size()),
                                 this.getAziendaById(Integer.toString(r.nextInt(1,15))),
                                 "Messaggio invito"+i
@@ -169,15 +169,15 @@ public class Data {
         for (Azienda azienda : aziende) {
             i++;
             if (azienda instanceof Produttore) {
-                ((Produttore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, metodiProduzione.get(0), "aaa")
+                ((Produttore) azienda).creaProdotto(i+"a",10.0, "prodotto" + i, "descr" + i, metodiProduzione.getFirst())
                 ;
-                ((Produttore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, metodiProduzione.get(0),"bbb");
+                ((Produttore) azienda).creaProdotto(i+"b", 10.0, "prodotto" + i, "descr" + i, metodiProduzione.getFirst());
             }
             if (azienda instanceof Trasformatore) {
-                ((Trasformatore) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i, processiTrasformazione.get(0),"ccc");
+                ((Trasformatore) azienda).creaProdotto(i+"",10.0, "prodotto" + i, "descr" + i, processiTrasformazione.getFirst());
             }
             if (azienda instanceof DistributoreTipicita) {
-                ((DistributoreTipicita) azienda).creaProdotto(10.0f, "prodotto" + i, "descr" + i,"ddd");
+                ((DistributoreTipicita) azienda).creaProdotto(i+"",10.0, "prodotto" + i, "descr" + i);
             }
         }
     }
@@ -236,5 +236,10 @@ public class Data {
     public Item getProdottoByAzienda(String idAzienda, String idProdotto) {
         Azienda azienda = getAziendaById(idAzienda);
         return azienda.getGestoreStock().getStock(idProdotto).getItem();
+    }
+
+    public Invito getInvitoById(String idInvito, String idAzienda){
+        Azienda azienda = getAziendaById(idAzienda);
+        return azienda.getInvito(idInvito);
     }
 }

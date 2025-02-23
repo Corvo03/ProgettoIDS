@@ -1,32 +1,25 @@
 package unicam.springboot.dto;
 
-public class BigliettoDTO {
+import unicam.modelli.elements.Biglietto;
+import unicam.modelli.elements.Item;
+import unicam.modelli.marketplace.InformazioneDaApprovare;
 
-    double prezzo;
-    private String nomeItem;
-    private String descrizione;
+
+public class BigliettoDTO extends Item implements InformazioneDaApprovare {
+
     private String idAnimatore;
     private String idEvento;
 
-    public BigliettoDTO(double prezzo, String nomeItem, String descrizione, String idAnimatore, String idEvento) {
-
-        this.prezzo = prezzo;
-        this.nomeItem = nomeItem;
-        this.descrizione = descrizione;
+    public BigliettoDTO(String id, double prezzo, String nomeItem, String descrizione, String idAnimatore, String idEvento) {
+        super(id, prezzo, nomeItem, descrizione);
         this.idAnimatore = idAnimatore;
         this.idEvento = idEvento;
     }
 
-    public double getPrezzo() {
-        return prezzo;
-    }
-
-    public String getNomeItem() {
-        return nomeItem;
-    }
-
-    public String getDescrizione() {
-        return descrizione;
+    public BigliettoDTO(Biglietto biglietto) {
+        super(biglietto.getId(), biglietto.getPrezzo(), biglietto.getNomeItem(), biglietto.getDescrizione());
+        this.idAnimatore = biglietto.getAnimatore().getId();
+        this.idEvento = biglietto.getEvento().getId();
     }
 
     public String getIdAnimatore() {

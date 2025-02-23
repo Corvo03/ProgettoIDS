@@ -1,4 +1,4 @@
-package unicam.springboot.serviceController;
+package unicam.springboot.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,7 @@ import unicam.modelli.elements.Item;
 import unicam.modelli.elements.Pacchetto;
 import unicam.modelli.elements.Prodotto;
 
+import java.nio.DoubleBuffer;
 import java.util.List;
 
 @RestController
@@ -19,14 +20,14 @@ public class PacchettoServiceController {
 
 
     @PostMapping("/pacchetto/creaPacchetto")
-    public ResponseEntity<Object> crePacchetto(float prezzo, String nome, String descrizione, List<Prodotto> listaProdotti) {
-        distributoreTipicita.creaPacchetto(prezzo, nome, descrizione, listaProdotti);
+    public ResponseEntity<Object> crePacchetto(String id, double prezzo, String nome, String descrizione, List<Prodotto> listaProdotti) {
+        distributoreTipicita.creaPacchetto(id, prezzo, nome, descrizione, listaProdotti);
         return new ResponseEntity<>("pacchetto creato", HttpStatus.OK);
     }
 
     @PostMapping("/pacchetto/creaPacchetto/conDescrizione")
-    public ResponseEntity<Object> crePacchetto(float prezzo, String nome, String descrizione) {
-        distributoreTipicita.creaPacchetto(prezzo, nome, descrizione);
+    public ResponseEntity<Object> crePacchetto(String id, double prezzo, String nome, String descrizione) {
+        distributoreTipicita.creaPacchetto(id, prezzo, nome, descrizione);
         return new ResponseEntity<>("pacchetto creato", HttpStatus.OK);
     }
 

@@ -14,7 +14,10 @@ import unicam.modelli.elements.Pacchetto;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.gestori.GestoreInformazioni;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
+import unicam.springboot.dto.BigliettoDTO;
 import unicam.springboot.dto.InformazioneDaApprovareDTO;
+import unicam.springboot.dto.PacchettoDTO;
+import unicam.springboot.dto.ProdottoDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,20 +30,20 @@ public class InformazioneDaApprovareServiceController {
 
     @GetMapping("/infoDaApprovare")
     public ResponseEntity<Object> getInformazioneDaApprovare() {
-        List<InformazioneDaApprovareDTO> dtoList = convertitoreInfoToDTO(gi.getInformazioniDaApprovare());
+        List<InformazioneDaApprovare> dtoList = convertitoreInfoToDTO(gi.getInformazioniDaApprovare());
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
-    private List<InformazioneDaApprovareDTO> convertitoreInfoToDTO(List<InformazioneDaApprovare> informazioniDaApprovare) {
-        List<InformazioneDaApprovareDTO> dtoList = new ArrayList<>();
+    private List<InformazioneDaApprovare> convertitoreInfoToDTO(List<InformazioneDaApprovare> informazioniDaApprovare) {
+        List<InformazioneDaApprovare> dtoList = new ArrayList<>();
         for (InformazioneDaApprovare info : informazioniDaApprovare) {
-            InformazioneDaApprovareDTO dto = new InformazioneDaApprovareDTO();
-            if (info instanceof Prodotto prodotto) {
-                dto.setNomeItem(prodotto.getNomeItem());
-                dto.setPrezzo(prodotto.getPrezzo());
-                dto.setDescrizione(prodotto.getDescrizione());
-                dto.setNomeAziendaProduttrice(prodotto.getAziendaProduttrice().getId());
-                dto.setIdItem(prodotto.getId());
+            InformazioneDaApprovare dto;
+            switch (info){
+                case Prodotto prodotto -> dto = new ProdottoDTO(prodotto);
+                case Biglietto biglietto -> dto = new BigliettoDTO(biglietto);
+                case Pacchetto pacchetto -> dto = new PacchettoDTO(pacchetto);
+                case InformazioniSensibili informazioniSensibili -> dto = informazioniSensibili;
+                default -> throw new IllegalStateException("Unexpected value: " + info);
             }
             dtoList.add(dto);
         }

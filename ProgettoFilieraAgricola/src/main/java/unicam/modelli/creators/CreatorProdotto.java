@@ -23,10 +23,10 @@ public class CreatorProdotto extends ItemFactory {
      * @param certificazioni relative al prodotto.
      * @param aziendaProduttrice del prodotto.
      */
-    public CreatorProdotto(String nome, String descrizione, Float prezzo,
+    public CreatorProdotto(String id, String nome, String descrizione, Double prezzo,
                            InformazioneAggiuntiva informazioneAggiuntiva, List<Certificato> certificazioni,
-                           Azienda aziendaProduttrice, String id) {
-        super(nome, descrizione, prezzo);
+                           Azienda aziendaProduttrice) {
+        super(id, nome, descrizione, prezzo);
         this.informazioneAggiuntiva = informazioneAggiuntiva;
         this.certificati = certificazioni;
         this.aziendaProduttrice = aziendaProduttrice;
@@ -41,16 +41,16 @@ public class CreatorProdotto extends ItemFactory {
      * @param informazioneAggiuntiva del prodotto Rappresenta un Metodo di Produzione o un Processo di Trasformazione.
      * @param aziendaProduttrice del prodotto.
      */
-    public CreatorProdotto(String nome, String descrizione, double prezzo,
-                           InformazioneAggiuntiva informazioneAggiuntiva, Azienda aziendaProduttrice, String id) {
-        super(nome, descrizione, prezzo);
+    public CreatorProdotto(String id, String nome, String descrizione, double prezzo,
+                           InformazioneAggiuntiva informazioneAggiuntiva, Azienda aziendaProduttrice) {
+        super(id, nome, descrizione, prezzo);
         this.informazioneAggiuntiva = informazioneAggiuntiva;
         this.aziendaProduttrice = aziendaProduttrice;
         this.certificati = new ArrayList<Certificato>();
     }
 
-    public CreatorProdotto(String nome, String descrizione, double prezzo, Azienda aziendaProduttrice, String id) {
-        super(nome, descrizione, prezzo);
+    public CreatorProdotto(String id, String nome, String descrizione, double prezzo, Azienda aziendaProduttrice) {
+        super(id, nome, descrizione, prezzo);
         this.informazioneAggiuntiva = null;
         this.aziendaProduttrice = aziendaProduttrice;
         this.certificati = new ArrayList<Certificato>();
@@ -63,7 +63,7 @@ public class CreatorProdotto extends ItemFactory {
     @Override
     public Item createItem() {
         if(informazioneAggiuntiva != null)
-            return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva, id);
-        return new Prodotto(prezzo, nome, descrizione, aziendaProduttrice, id );
+            return new Prodotto(id, prezzo, nome, descrizione, aziendaProduttrice, informazioneAggiuntiva);
+        return new Prodotto(id, prezzo, nome, descrizione, aziendaProduttrice );
     }
 }

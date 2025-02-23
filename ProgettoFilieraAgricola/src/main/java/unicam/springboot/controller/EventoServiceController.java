@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import unicam.modelli.actors.AnimatoreFiliera;
 import unicam.modelli.inviti.Evento;
 import unicam.repository.Data;
+import unicam.springboot.dto.EventoDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -18,10 +22,17 @@ public class EventoServiceController {
         AnimatoreFiliera animatore = data.getAnimatoreById(id);
         if(animatore == null)
             return new ResponseEntity<>("Animatore non presente", HttpStatus.BAD_REQUEST);
-        if(!animatore.getListaEventi().isEmpty())
-            return new ResponseEntity<>(animatore.getListaEventi(), HttpStatus.OK);
+        if(!animatore.getListaEventi().isEmpty()){
+            List<EventoDTO> eventiDTO = new ArrayList<EventoDTO>();
+            for(Evento evento : animatore.getListaEventi())
+                eventiDTO.add( new EventoDTO(evento));
+
+            return new ResponseEntity<>(eventiDTO, HttpStatus.OK);
+        }
+
         return new ResponseEntity<>("eventi non trovati", HttpStatus.OK);
     }
+
 
     @PostMapping(value = "/evento/{id}")
     public ResponseEntity<Object> addEvento(@PathVariable("id") String idAnimatore,

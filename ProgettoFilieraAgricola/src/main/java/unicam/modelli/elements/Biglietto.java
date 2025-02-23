@@ -13,8 +13,8 @@ public class Biglietto extends Item {
     @OneToOne
     private Evento evento;
 
-    public Biglietto(double prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatore, Evento evento) {
-        super(prezzo, nomeItem, descrizione);
+    public Biglietto(String id, double prezzo, String nomeItem, String descrizione, AnimatoreFiliera animatore, Evento evento) {
+        super(id, prezzo, nomeItem, descrizione);
         this.animatore = animatore;
         this.evento = evento;
     }

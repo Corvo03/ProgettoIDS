@@ -71,8 +71,8 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param evento           a cui è collegato il biglietto.
      * @return il biglietto appena creato.
      */
-    public Biglietto creaBiglietto(double prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
-        ItemFactory fact = new CreatorBiglietto(nome, descrizione, prezzo, this, evento);
+    public Biglietto creaBiglietto(String id, double prezzo, String nome, String descrizione, AnimatoreFiliera animatoreFiliera, Evento evento) {
+        ItemFactory fact = new CreatorBiglietto(id, nome, descrizione, prezzo, this, evento);
         Biglietto biglietto = (Biglietto) fact.createItem();
         this.richiediVerificaInformazioni(biglietto);
         return biglietto;
@@ -146,5 +146,17 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
 
     public String getId() {
         return id;
+    }
+
+    public void invitaAzienda(String id,Evento evento, Azienda partecipanteEvento, String messaggio) {
+        Invito invito = new Invito(id,this, evento, partecipanteEvento, messaggio);
+        this.gestoreInvitiInviati.InviaInvito(invito);
+    }
+
+    /**
+     * @return la lista degli inviti inviati
+     */
+    public List<Invito> getInviti() {
+        return this.gestoreInvitiInviati.getListaInvito();
     }
 }

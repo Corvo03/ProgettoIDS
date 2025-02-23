@@ -16,7 +16,8 @@ public abstract class ItemFactory {
      *
      * @throws IllegalArgumentException se il prezzo, il nome o la descrizione non sono validi.
      */
-    public ItemFactory(String nome, String descrizione, double prezzo) {
+
+    public ItemFactory(String id,String nome, String descrizione, double prezzo) {
         if (prezzo <= 0)
             throw new IllegalArgumentException("Prezzo non valido");
         if (nome == null || nome.isEmpty())
@@ -26,8 +27,8 @@ public abstract class ItemFactory {
         this.nome = nome;
         this.descrizione = descrizione;
         this.prezzo = prezzo;
+        this.id = id;
     }
-
     /**
      * Permette di creare un Item a partire dagli elementi caricati nel costruttore.
      * @return l'Item creato.

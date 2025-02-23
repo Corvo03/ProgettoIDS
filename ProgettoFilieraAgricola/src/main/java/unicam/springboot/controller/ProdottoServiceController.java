@@ -1,4 +1,4 @@
-package unicam.springboot.serviceController;
+package unicam.springboot.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class ProdottoServiceController {
 
     @GetMapping("/prodotto")
     public ResponseEntity<Prodotto> getProdotto(@RequestParam String id) {
-        if(data.getProdottoById(id) == null) return ResponseEntity.ok(new Prodotto(1.00,"aaa","dddeee",data.getAziendaById("1"),null,"peffoh"));
+        if(data.getProdottoById(id) == null) return ResponseEntity.ok(new Prodotto("2", 1.00,"aaa","dddeee",data.getAziendaById("1"),null));
         return ResponseEntity.ok(data.getProdottoById(id));
     }
 
@@ -31,13 +31,13 @@ public class ProdottoServiceController {
         if(azienda != null){
             switch (azienda) {
                 case Produttore produttore -> {
-                    produttore.creaProdotto(addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (MetodoProduzione) addProdottoDTO.getInformazioneAggiuntiva(),addProdottoDTO.getId());
+                    produttore.creaProdotto( addProdottoDTO.getId(),addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (MetodoProduzione) addProdottoDTO.getInformazioneAggiuntiva());
                 }
                 case Trasformatore trasformatore -> {
-                    trasformatore.creaProdotto(addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (ProcessoTrasformazione) addProdottoDTO.getInformazioneAggiuntiva(),addProdottoDTO.getId());
+                    trasformatore.creaProdotto(addProdottoDTO.getId(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (ProcessoTrasformazione) addProdottoDTO.getInformazioneAggiuntiva());
                 }
                 case DistributoreTipicita distributoreTipicita -> {
-                    distributoreTipicita.creaProdotto(addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(),addProdottoDTO.getId());
+                    distributoreTipicita.creaProdotto(addProdottoDTO.getId(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione());
                 }
                 default -> {
                     return ResponseEntity.badRequest().body("Tipo di azienda non esistente");

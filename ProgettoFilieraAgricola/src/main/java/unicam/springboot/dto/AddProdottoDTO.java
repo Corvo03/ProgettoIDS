@@ -1,6 +1,5 @@
 package unicam.springboot.dto;
 
-import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.informazioniAggiuntive.InformazioneAggiuntiva;
 
 public class AddProdottoDTO {
@@ -49,4 +48,5 @@ public class AddProdottoDTO {
     public String getId() {
         return id;
     }
+    
 }

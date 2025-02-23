@@ -12,16 +12,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DistributoreTipicitaTest {
 
-    DistributoreTipicita distributoreTipicita = new DistributoreTipicita("distributore", "distr@gmail.com", null, null);
-    CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-            23.5, distributoreTipicita,"aaa");
-    CreatorProdotto creatorProdotto2 = new CreatorProdotto("prodotto2", "descr2",
-            27, distributoreTipicita,"bbb");
+    DistributoreTipicita distributoreTipicita = new DistributoreTipicita("1", "distributore", "distr@gmail.com", null, null);
+    CreatorProdotto creatorProdotto1 = new CreatorProdotto("1","prodotto1", "descr1",
+            23.5, distributoreTipicita);
+    CreatorProdotto creatorProdotto2 = new CreatorProdotto("2", "prodotto2", "descr2",
+            27, distributoreTipicita);
 
     @Test
     void creaProdotto() {
-        CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                23.5, distributoreTipicita,"aaa");
+        CreatorProdotto creatorProdotto1 = new CreatorProdotto("1", "prodotto1", "descr1",
+                23.5, distributoreTipicita);
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
 
         assertEquals(p.getNomeItem(), "prodotto1");
@@ -36,7 +36,7 @@ class DistributoreTipicitaTest {
         ArrayList<Prodotto> listaProdotti = new ArrayList<>();
         listaProdotti.add(p1);
         listaProdotti.add(p2);
-        Pacchetto p = new Pacchetto(50, "Pacchetto1", "DescrPacchett1", distributoreTipicita, listaProdotti);
+        Pacchetto p = new Pacchetto("1", 50, "Pacchetto1", "DescrPacchett1", distributoreTipicita, listaProdotti);
         assertEquals(p.getNomeItem(), "Pacchetto1");
         assertEquals(p.getDescrizione(), "DescrPacchett1");
         assertEquals(p.getPrezzo(), 50);

@@ -20,8 +20,8 @@ public class CreatorBiglietto extends ItemFactory {
      *
      * @throws NullPointerException se l'Evento o l'Animatore non sono validi (cioè se sono null).
      */
-    public CreatorBiglietto(String nome, String descrizione, double prezzo, AnimatoreFiliera animatoreFiliera, Evento evento) {
-        super(nome, descrizione, prezzo);
+    public CreatorBiglietto(String id, String nome, String descrizione, double prezzo, AnimatoreFiliera animatoreFiliera, Evento evento) {
+        super(id, nome, descrizione, prezzo);
         if (animatoreFiliera == null) {
             throw new NullPointerException("animatoreFiliera");
         }
@@ -30,6 +30,7 @@ public class CreatorBiglietto extends ItemFactory {
             throw new NullPointerException("evento");
         }
         this.evento = evento;
+        this.id = id;
 
     }
 
@@ -39,6 +40,6 @@ public class CreatorBiglietto extends ItemFactory {
      */
     @Override
     public Item createItem() {
-        return new Biglietto(prezzo, nome, descrizione, animatoreFiliera, evento);
+        return new Biglietto(id, prezzo, nome, descrizione, animatoreFiliera, evento);
     }
 }

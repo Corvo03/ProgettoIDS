@@ -42,9 +42,9 @@ public class DistributoreTipicita extends Azienda {
      * @param listaProdotti, lista degli elementi del pacchetto.
      * @return il pacchetto appena creato.
      */
-    public Pacchetto creaPacchetto(Float prezzo, String nome, String descrizione, List<Prodotto> listaProdotti) {
+    public Pacchetto creaPacchetto(String id, Double prezzo, String nome, String descrizione, List<Prodotto> listaProdotti) {
 
-        CreatorPacchetto fact = new CreatorPacchetto(nome, descrizione, prezzo, listaProdotti, this);
+        CreatorPacchetto fact = new CreatorPacchetto(id, nome, descrizione, prezzo, listaProdotti, this);
 
         Pacchetto pacchetto = (Pacchetto) fact.createItem();
 
@@ -59,8 +59,8 @@ public class DistributoreTipicita extends Azienda {
      * @param descrizione descrizione del pacchetto.
      * @return il pacchetto appena creato.
      */
-    public Pacchetto creaPacchetto(Float prezzo, String nome, String descrizione) {
-        CreatorPacchetto fact = new CreatorPacchetto(nome, descrizione, prezzo, this);
+    public Pacchetto creaPacchetto(String id, Double prezzo, String nome, String descrizione) {
+        CreatorPacchetto fact = new CreatorPacchetto(id, nome, descrizione, prezzo, this);
         Pacchetto pacchetto = (Pacchetto) fact.createItem();
         this.richiediVerificaInformazioni(pacchetto);
         return pacchetto;
@@ -73,8 +73,8 @@ public class DistributoreTipicita extends Azienda {
      * @param descrizione del prodotto
      * @return il Prodotto creato.
      */
-    public Prodotto creaProdotto(double prezzo, String nome, String descrizione,String id) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, null, this,id);
+    public Prodotto creaProdotto(String id, double prezzo, String nome, String descrizione) {
+        ItemFactory fact = new CreatorProdotto(id, nome, descrizione, prezzo, null, this);
         Prodotto prodotto = (Prodotto) fact.createItem();
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;

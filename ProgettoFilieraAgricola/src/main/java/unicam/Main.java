@@ -13,8 +13,8 @@ public class Main {
     public static void main(String[] args) {
         //produttore crea prodotti e vedo sta stanno dentro gestoreinformazioni
         Produttore produttore = new Produttore("1","produttore1", "prod@prod.a", null, null);
-        produttore.creaProdotto(10.0f, "Prodotto1", "Descrizione1", null,"aaa");
-        produttore.creaProdotto(20.0f, "Prodotto2", "Descrizione2", null,"bbb");
+        produttore.creaProdotto("2",10.0, "Prodotto1", "Descrizione1", null);
+        produttore.creaProdotto("1", 20.0, "Prodotto2", "Descrizione2", null);
         System.out.println("Prodotti creati:");
         for (InformazioneDaApprovare info : GestoreInformazioni.getInstance().getInformazioniDaApprovare()) {
             System.out.println(info);

@@ -10,13 +10,15 @@ public abstract class Item implements InformazioneDaApprovare {
     private double prezzo;
     private String nomeItem;
     private String descrizione;
-    public Item(double prezzo, String nomeItem, String descrizione) {
+    public Item(String id, double prezzo, String nomeItem, String descrizione) {
         this.prezzo = prezzo;
         this.nomeItem = nomeItem;
         this.descrizione = descrizione;
+        this.id = id;
     }
 
     public Item() {}
+
 
     public String getDescrizione() {
         return descrizione;

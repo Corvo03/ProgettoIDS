@@ -88,6 +88,14 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         GestoreSistema.getInstance().aggiungiProfilo(this.profilo);
     }
 
+    public List<String> getIndirizzoSediProduttive() {
+        return indirizzoSediProduttive;
+    }
+
+    public Profilo getProfilo() {
+        return profilo;
+    }
+
     /**
      * Imposta l'elenco di sedi produttive
      *
@@ -152,7 +160,10 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      */
     public void modificaDatiSensibili(String sedeLegale, String pec, String nomeAzienda,
                                       String pIva, String codiceFiscale) {
-        richiediVerificaInformazioni(new InformazioniSensibili(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
+        this.modificaDatiSensibili(new InformazioniSensibili(sedeLegale, pec, nomeAzienda, pIva, codiceFiscale));
+    }
+    public void modificaDatiSensibili(InformazioniSensibili informazioniSensibili) {
+        richiediVerificaInformazioni(informazioniSensibili);
     }
 
     /**
@@ -216,5 +227,20 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Invito getInvito(String idInvito) {
+        return this.getGestoreInvitiRicevuti().getInvitoById(idInvito);
+    }
+
+    /**
+     * @return il nome dell'azienda
+     */
+    public String getNome() {
+        return this.informazioniSensibili.getNomeAzienda();
+    }
+
+    public InformazioniSensibili getInformazioniSensibili() {
+        return this.informazioniSensibili;
     }
 }

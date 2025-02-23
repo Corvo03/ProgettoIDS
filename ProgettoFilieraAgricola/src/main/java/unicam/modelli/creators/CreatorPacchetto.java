@@ -24,11 +24,11 @@ public class CreatorPacchetto extends ItemFactory {
      *
      * @throws NullPointerException se la lista è nulla
      */
-    public CreatorPacchetto(String nome, String descrizione, double prezzo, List<Prodotto> listaProdotti, Azienda azienda) {
-        super(nome, descrizione, prezzo);
+    public CreatorPacchetto(String id, String nome, String descrizione, double prezzo, List<Prodotto> listaProdotti, Azienda azienda) {
+        super(id, nome, descrizione, prezzo);
         if (listaProdotti == null)
             throw new NullPointerException("lista item null");
-
+        this.id = id;
         this.listaProdotti = listaProdotti;
         this.aziendaProduttrice = azienda;
     }
@@ -44,8 +44,8 @@ public class CreatorPacchetto extends ItemFactory {
      *
      * @throws NullPointerException se la lista è nulla
      */
-    public CreatorPacchetto(String nome, String descrizione, double prezzo, Azienda azienda) {
-        super(nome, descrizione, prezzo);
+    public CreatorPacchetto(String id, String nome, String descrizione, double prezzo, Azienda azienda) {
+        super(id, nome, descrizione, prezzo);
         this.aziendaProduttrice = azienda;
         this.listaProdotti = new ArrayList<Prodotto>();
     }
@@ -56,6 +56,6 @@ public class CreatorPacchetto extends ItemFactory {
      */
     @Override
     public Item createItem() {
-        return new Pacchetto(prezzo, nome, descrizione, aziendaProduttrice, listaProdotti);
+        return new Pacchetto(id, prezzo, nome, descrizione, aziendaProduttrice, listaProdotti);
     }
 }

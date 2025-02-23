@@ -1,5 +1,6 @@
 package unicam.springboot.dto;
 
+import org.springframework.cglib.core.Local;
 import unicam.modelli.actors.AnimatoreFiliera;
 import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.inviti.Evento;
@@ -15,15 +16,33 @@ public class InvitoDTO {
     private String dataScadenza;
     private boolean accettato;
     private String messaggio;
+    private String id;
 
-    public InvitoDTO(AnimatoreFiliera animatoreFiliera, Evento evento, Azienda partecipanteEvento, String messaggio) {
+    public InvitoDTO(String id, AnimatoreFiliera animatoreFiliera, Evento evento, Azienda partecipanteEvento,
+                     String messaggio, LocalDate dataCreazione, LocalDate dataScadenza, Boolean accettato) {
+        this.id = id;
         this.idAnimatore = animatoreFiliera.getId() ;
         this.idEvento = evento.getId() ;
         this.idPartecipante = partecipanteEvento.getId();
-        this.dataCreazione = LocalDate.now().toString() ;
-        this.dataScadenza = LocalDate.now().plusDays(2).toString() ;
+        this.dataCreazione = dataCreazione.toString();
+        this.dataScadenza = dataScadenza.toString() ;
         this.messaggio = messaggio;
-        this.accettato = false;
+        this.accettato = accettato;
+    }
+
+    public InvitoDTO(Invito invito){
+        this.id = invito.getIdInvito();
+        this.idAnimatore = invito.getAnimatoreFiliera().getId() ;
+        this.idEvento = invito.getEvento().getId() ;
+        this.idPartecipante = invito.getPartecipanteEvento().getId();
+        this.dataCreazione = invito.getDataCreazione().toString();
+        this.dataScadenza = invito.getDataScadenza().toString() ;
+        this.messaggio = invito.getMessaggio();
+        this.accettato = invito.isAccettato();
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getIdAnimatore() {

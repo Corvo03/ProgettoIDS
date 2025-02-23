@@ -45,8 +45,8 @@ public class Produttore extends Azienda {
      * @param metodo riguarda il metodo di Produzione utilizzato
      * @return il prodotto creato.
      */
-    public Prodotto creaProdotto(double prezzo, String nome, String descrizione, MetodoProduzione metodo, String id) {
-        ItemFactory fact = new CreatorProdotto(nome, descrizione, prezzo, metodo, this, id);
+    public Prodotto creaProdotto(String id, double prezzo, String nome, String descrizione, MetodoProduzione metodo) {
+        ItemFactory fact = new CreatorProdotto(id, nome, descrizione, prezzo, metodo, this);
         Prodotto prodotto = (Prodotto) fact.createItem();
         this.richiediVerificaInformazioni(prodotto);
         return prodotto;

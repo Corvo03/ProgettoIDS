@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 class CuratoreTest {
 
     Curatore curatore = new Curatore("nomeUtente", "email");
-    Produttore produttore = new Produttore("nome", "cognome", null, null);
+    Produttore produttore = new Produttore("2", "nome", "cognome", null, null);
 
     @Test
     void approvaInformazione() {
-        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"),"aaa");
+        produttore.creaProdotto("2", 10., "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"));
         assertEquals(1, GestoreInformazioni.getInstance().getInformazioniDaApprovare().size());
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         assertTrue(GestoreInformazioni.getInstance().getInformazioniDaApprovare().isEmpty());
@@ -27,7 +27,7 @@ class CuratoreTest {
 
     @Test
     void rifiutaInformazione() {
-        produttore.creaProdotto(10.f, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"),"bbb");
+        produttore.creaProdotto("2",10, "nome", "descrizione", new MetodoProduzione("metodo", "descrizione"));
         assertEquals(1, GestoreInformazioni.getInstance().getInformazioniDaApprovare().size());
         curatore.rifiutaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         assertTrue(GestoreInformazioni.getInstance().getInformazioniDaApprovare().isEmpty());

@@ -20,16 +20,17 @@ public class Pacchetto extends Item {
 
     /**
      * Crea un pacchetto con un una lista di prodotti già al suo interno.
-     * @param prezzo complessivo del pacchetto.
-     * @param nomePacchetto nome dato al pacchetto.
-     * @param descrizione del pacchetto.
-     * @param azienda che ha composto il pacchetto.
-     * @param listaProdotti da inserire nel pacchetto.
      *
+     * @param id
+     * @param prezzo        complessivo del pacchetto.
+     * @param nomePacchetto nome dato al pacchetto.
+     * @param descrizione   del pacchetto.
+     * @param azienda       che ha composto il pacchetto.
+     * @param listaProdotti da inserire nel pacchetto.
      * @throws NullPointerException se la lista di prodotti è vuota.
      */
-    public Pacchetto(double prezzo, String nomePacchetto, String descrizione, Azienda azienda, List<Prodotto> listaProdotti) {
-        super(prezzo, nomePacchetto, descrizione);
+    public Pacchetto(String id, double prezzo, String nomePacchetto, String descrizione, Azienda azienda, List<Prodotto> listaProdotti) {
+        super(id, prezzo, nomePacchetto, descrizione);
         if(listaProdotti.isEmpty())
             throw new NullPointerException("La lista dei prodotti è vuota");
         this.listaProdotti = listaProdotti;
@@ -43,8 +44,8 @@ public class Pacchetto extends Item {
      * @param descrizione del pacchetto.
      * @param azienda che ha composto il pacchetto.
      */
-    public Pacchetto(double prezzo, String nomePacchetto, String descrizione, Azienda azienda) {
-        super(prezzo, nomePacchetto, descrizione);
+    public Pacchetto(String id, double prezzo, String nomePacchetto, String descrizione, Azienda azienda) {
+        super(id, prezzo, nomePacchetto, descrizione);
         this.listaProdotti = new ArrayList<>();
         this.aziendaProduttrice = azienda;
     }

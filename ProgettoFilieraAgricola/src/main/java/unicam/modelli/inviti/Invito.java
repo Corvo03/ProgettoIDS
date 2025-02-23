@@ -13,6 +13,7 @@ import java.time.LocalDate;
 
 public class Invito {
 
+    private String idInvito;
     /**
      * animatore che ha creato invito
      */
@@ -45,6 +46,17 @@ public class Invito {
      * @param partecipanteEvento invitato all'evento.
      * @param messaggio di invito all'evento.
      */
+    public Invito(String idInvito, AnimatoreFiliera organizzatoreEvento, Evento evento, Azienda partecipanteEvento, String messaggio) {
+        this.idInvito = idInvito;
+        this.animatoreFiliera = organizzatoreEvento ;
+        this.evento = evento ;
+        this.partecipanteEvento = partecipanteEvento;
+        this.dataCreazione = LocalDate.now() ;
+        this.dataScadenza = LocalDate.now().plusDays(2) ;
+        this.messaggio = messaggio ;
+        this.accettato = false;
+    }
+
     public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, Azienda partecipanteEvento, String messaggio) {
         this.animatoreFiliera = organizzatoreEvento ;
         this.evento = evento ;
@@ -55,6 +67,8 @@ public class Invito {
         this.accettato = false;
     }
 
+
+
     public Invito() {
     }
 
@@ -64,6 +78,10 @@ public class Invito {
 
     public Azienda getPartecipanteEvento() {
         return partecipanteEvento;
+    }
+
+    public String getIdInvito() {
+        return idInvito;
     }
 
     public LocalDate getDataScadenza() {
