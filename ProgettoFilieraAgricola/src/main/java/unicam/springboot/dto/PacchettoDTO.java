@@ -10,6 +10,7 @@ import java.util.List;
 
 public class PacchettoDTO extends Item implements InformazioneDaApprovare {
     private final String nomeAziendaProduttrice;
+    private String idAzienda;
     private List<ProdottoDTO> listaProdotti;
 
     public PacchettoDTO(Pacchetto pacchetto) {
@@ -17,6 +18,7 @@ public class PacchettoDTO extends Item implements InformazioneDaApprovare {
         this.listaProdotti = new ArrayList<>();
         this.caricaProdotti(pacchetto);
         this.nomeAziendaProduttrice = pacchetto.getAziendaProduttrice().getNome();
+        this.idAzienda = pacchetto.getAziendaProduttrice().getId();
     }
 
     private void caricaProdotti(Pacchetto pacchetto) {

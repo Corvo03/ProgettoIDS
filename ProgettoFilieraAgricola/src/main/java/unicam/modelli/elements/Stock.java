@@ -7,7 +7,7 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Stock {
     @Id
-    private String Id;
+    private String id;
     @OneToOne
     private Item item;
     private int quantita;
@@ -15,6 +15,7 @@ public class Stock {
     public Stock(Item item) {
         this.item = item;
         this.quantita = 0;
+        this.id = item.getId();
     }
 
     public Stock() {}
@@ -53,6 +54,10 @@ public class Stock {
     }
 
     public String getId() {
-        return Id;
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

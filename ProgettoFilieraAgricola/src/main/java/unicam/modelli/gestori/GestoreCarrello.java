@@ -25,15 +25,6 @@ public class GestoreCarrello {
         String ricevuta = metodoPagamento.generaRicevuta(carrello);
         GestoreSistema.getInstance().aggiornaQuantitaElementi(carrello.getElementiCarrello());
         carrello.svuotaCarrello();
-        notificaAziende();
         return ricevuta;
-    }
-
-    /**
-     * in base agli oggetti venduti nell'ultimo pagamento di comunicano alle aziende
-     * i guadagni e quanti item hanno venduto
-     */
-    private void notificaAziende() {
-        //todo, anche no
     }
 }

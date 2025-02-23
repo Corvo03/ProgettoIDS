@@ -65,7 +65,7 @@ public class GestoreInformazioni {
         }
         switch (informazione) {
             case Item item -> {
-                informazioniDaApprovare.get(informazione).getGestoreStock().aggiungiStock(item);;
+                informazioniDaApprovare.get(informazione).getGestoreStock().aggiungiStock(item);
             }
             case InformazioniSensibili informazioniSensibili -> {
                 Azienda azienda = (Azienda) informazioniDaApprovare.get(informazione);
@@ -90,5 +90,13 @@ public class GestoreInformazioni {
                     .aggiungiItemRifiutato(item);
         }
         informazioniDaApprovare.remove(informazione);
+    }
+
+    public InformazioneDaApprovare getInformazioneDaApprovareDaId(String id) {
+        for (InformazioneDaApprovare info : informazioniDaApprovare.keySet()) {
+            if (info.getId().equals(id))
+                return info;
+        }
+        return null;
     }
 }

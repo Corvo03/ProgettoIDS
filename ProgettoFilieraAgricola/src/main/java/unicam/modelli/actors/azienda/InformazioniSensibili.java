@@ -49,4 +49,5 @@ public class InformazioniSensibili implements InformazioneDaApprovare {
     public String getCodiceFiscale() {
         return codiceFiscale;
     }
+
 }

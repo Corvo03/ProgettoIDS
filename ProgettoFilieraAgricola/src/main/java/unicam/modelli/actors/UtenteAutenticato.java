@@ -16,4 +16,8 @@ public abstract class UtenteAutenticato {
     }
 
     public UtenteAutenticato() {}
+
+    public String getNomeUtente() {
+        return nomeUtente;
+    }
 }

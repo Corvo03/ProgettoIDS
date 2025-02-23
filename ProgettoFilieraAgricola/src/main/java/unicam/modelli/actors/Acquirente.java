@@ -7,6 +7,7 @@ import jakarta.persistence.Transient;
 import unicam.modelli.elements.ElementoMarketplace;
 import unicam.modelli.gestori.GestoreCarrello;
 import unicam.modelli.gestori.GestoreSistema;
+import unicam.modelli.marketplace.Carrello;
 import unicam.modelli.marketplace.MetodoPagamento;
 
 import java.util.ArrayList;
@@ -22,9 +23,10 @@ public class Acquirente extends UtenteAutenticato {
     @Transient
     private GestoreCarrello gestoreCarrello;
 
-    public Acquirente(String email, String nomeUtente) {
+    public Acquirente(String id,String email, String nomeUtente) {
         super(email, nomeUtente);
         this.gestoreCarrello = new GestoreCarrello();
+        this.id = id;
     }
 
     public Acquirente() {}
@@ -74,5 +76,13 @@ public class Acquirente extends UtenteAutenticato {
      */
     public List<ElementoMarketplace> getListaElementiCarrello(){
         return new ArrayList<>(gestoreCarrello.getCarrello().getElementiCarrello().keySet());
+    }
+
+    public Object getId() {
+        return id;
+    }
+
+    public Carrello getCarrello() {
+        return gestoreCarrello.getCarrello();
     }
 }

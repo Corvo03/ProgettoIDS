@@ -37,7 +37,7 @@ public class Main {
         }
 
         //acquirente compra e verifico che siano stati aggiornati i prodotti in marketplace
-        Acquirente acquirente = new Acquirente("email", "nomeUtente");
+        Acquirente acquirente = new Acquirente("1","email", "nomeUtente");
         acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().getFirst(),1);
         acquirente.aggiungiElementoAlCarrello(GestoreSistema.getInstance().getElementiDisponibiliMarketplace().get(1),3);
         acquirente.completaAcquisto(new Bancomat());

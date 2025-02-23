@@ -65,4 +65,8 @@ public class GestoreMarketplace {
     public void eliminaElementoMarketplace(Stock stock) {
         marketPlace.eliminaElementoMarketplace(stock);
     }
+
+    public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
+        return marketPlace.getElementoMarketplaceDaId(idElemento);
+    }
 }

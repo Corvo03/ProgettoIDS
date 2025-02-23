@@ -60,7 +60,6 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
         this.indirizzoSediProduttive = indirizzoSediProduttive;
         this.informazioniSensibili = informazioniSensibili;
-        modificaProfilo(nomeUtente, "Profilo aziendale");
         this.modificaProfilo(nomeProfilo, descProfilo);
     }
 
@@ -84,7 +83,6 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
             this.profilo.setNomeProfilo(nomeProfilo);
             this.profilo.setDescrizione(descrizione);
         }
-
         GestoreSistema.getInstance().aggiungiProfilo(this.profilo);
     }
 

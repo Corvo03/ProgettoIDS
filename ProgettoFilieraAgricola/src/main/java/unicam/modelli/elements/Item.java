@@ -3,6 +3,7 @@ package unicam.modelli.elements;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
+
 @Entity
 public abstract class Item implements InformazioneDaApprovare {
     @Id

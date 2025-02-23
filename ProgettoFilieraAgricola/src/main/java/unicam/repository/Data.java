@@ -24,6 +24,7 @@ public class Data {
     public List<Invito> inviti;
     public List<AnimatoreFiliera> animatori;
     public List<Profilo> profili;
+    public List<Acquirente> acquirenti;
     private static int idItem = 1;
     private int idAziende = 1;
     private static Data istance;
@@ -38,10 +39,11 @@ public class Data {
         inviti = new ArrayList<>();
         biglietti = new ArrayList<>();
         profili = new ArrayList<>();
-
+        acquirenti = new ArrayList<>();
         riempiAnimatore();
         riempiAzienda();
         riempiEventi();
+        riempiAcquirenti();
         riempiInviti();
         riempiBiglietti();
         riempiAziendeDiProdotti();
@@ -161,6 +163,12 @@ public class Data {
         }
     }
 
+    private void riempiAcquirenti(){
+        for (int i = 1; i <= 5; i++) {
+            acquirenti.add(new Acquirente(Integer.toString(i), "acquirente" + i + "@some.thing", "utAcquirente" + i));
+        }
+    }
+
     private void creaProdotti() {
         int i = 0;
         for (Azienda azienda : aziende) {
@@ -238,5 +246,14 @@ public class Data {
     public Invito getInvitoById(String idInvito, String idAzienda){
         Azienda azienda = getAziendaById(idAzienda);
         return azienda.getInvito(idInvito);
+    }
+
+
+    public Acquirente getAcquirenteById(String idAcquirente) {
+        for (Acquirente acquirente : acquirenti) {
+            if (Objects.equals(acquirente.getId(), idAcquirente))
+                return acquirente;
+        }
+        return null;
     }
 }

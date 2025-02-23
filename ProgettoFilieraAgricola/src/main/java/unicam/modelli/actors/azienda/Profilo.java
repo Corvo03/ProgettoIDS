@@ -34,6 +34,7 @@ public class Profilo {
         this.nomeProfilo = nomeProfilo;
         this.descrizione = descrizione;
         this.azienda = azienda;
+        this.id = azienda.getId();
     }
 
     public Profilo() {

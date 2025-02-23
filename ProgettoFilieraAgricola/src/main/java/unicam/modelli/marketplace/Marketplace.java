@@ -38,13 +38,6 @@ public class Marketplace {
      */
     public int getMaxId() {
         return listaElementiMarketplace.size();
-//        int maxId = 0;
-//        for (ElementoMarketplace elementoMarketplace : this.listaElementiMarketplace) {
-//            if (elementoMarketplace.getId() > maxId)
-//                maxId = elementoMarketplace.getId();
-//        }
-//        return maxId;
-        //TODO credo basti solo la prima riga
     }
 
     /**
@@ -84,5 +77,13 @@ public class Marketplace {
      */
     public void eliminaElementoMarketplace(Stock stock) {
         listaElementiMarketplace.removeIf(e -> e.getStock().equals(stock));
+    }
+
+    public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
+        for (ElementoMarketplace elemento : listaElementiMarketplace) {
+            if (elemento.getId().equals(idElemento))
+                return elemento;
+        }
+        return null;
     }
 }

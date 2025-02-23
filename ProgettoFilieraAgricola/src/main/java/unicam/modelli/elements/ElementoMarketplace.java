@@ -13,6 +13,7 @@ public class ElementoMarketplace {
 
     public ElementoMarketplace(Stock stock) {
         this.stock = stock;
+        this.id = stock.getId();
     }
 
     public ElementoMarketplace() {

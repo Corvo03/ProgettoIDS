@@ -12,13 +12,13 @@ public class StockServiceController {
 
     GestoreSistema gs = GestoreSistema.getInstance();
 
-    @GetMapping("/stocks/")
-    public ResponseEntity<Object> getQuantita(@RequestBody String idAzienda, @RequestBody String idProdotto) {
+    @GetMapping("/stocks/{idAzienda}/{idProdotto}")
+    public ResponseEntity<Object> getQuantita(@PathVariable String idAzienda, @PathVariable String idProdotto) {
         return new ResponseEntity<>(gs.getAzienda(idAzienda).getGestoreStock()
                 .getStock(idProdotto).getQuantita(), HttpStatus.OK);
     }
 
-    @PostMapping("/stock/add/{idAzienda}/{idProdotto}/{quantita}")
+    @PostMapping("/stocks/add/{idAzienda}/{idProdotto}/{quantita}")
     public ResponseEntity<Object> addQuantita(@PathVariable String idAzienda, @PathVariable String idProdotto, @PathVariable Integer quantita) {
         if (Data.getIstance().getAziendaById(idAzienda) == null) {
             return new ResponseEntity<>("Azienda non trovata", HttpStatus.BAD_REQUEST);

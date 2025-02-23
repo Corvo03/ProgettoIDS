@@ -122,4 +122,8 @@ public class GestoreSistema {
     public Azienda getAzienda(String id) {
         return sezioneProfili.getProfilo(id).getAzienda();
     }
+
+    public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
+        return gestoreMarketplace.getElementoMarketplaceDaId(idElemento);
+    }
 }

@@ -37,6 +37,7 @@ public class GestoreStock{
             throw new IllegalArgumentException("Stock non presente");
         listaStock.add(stock);
         GestoreSistema.getInstance().creaElementoMarketPlace(stock);
+        stock.setId(item.getId());
     }
 
     /**
