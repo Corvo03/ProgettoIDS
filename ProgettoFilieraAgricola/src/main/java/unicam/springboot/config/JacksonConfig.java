@@ -14,6 +14,7 @@ public class JacksonConfig {
         ObjectMapper mapper = new ObjectMapper();
         mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         mapper.registerModule(new JavaTimeModule());
+        mapper.findAndRegisterModules();
         return mapper;
     }
 }

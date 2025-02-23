@@ -5,12 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.actors.azienda.InformazioniSensibili;
-import unicam.modelli.actors.azienda.Profilo;
 import unicam.repository.Data;
 import unicam.springboot.dto.AziendaDTO;
+import unicam.springboot.dto.ProfiloDTO;
+
+import java.util.List;
 
 @RestController
-public class DatiAziendaController {
+public class DatiAziendaServiceController {
     Data data = Data.getIstance();
 
     @GetMapping(value="/dati-sensibili/{id}")
@@ -32,26 +34,20 @@ public class DatiAziendaController {
         return new ResponseEntity<>(info, HttpStatus.OK);
     }
 
-    @PutMapping(value="/profilo/{id}")
-    public ResponseEntity<Object> modificaProfilo(@PathVariable("id") String idAzienda,
-                                                  @RequestBody Profilo profilo) {
-        Azienda azienda = data.getAziendaById(idAzienda);
-        if(azienda == null)
-            return new ResponseEntity<>("Azienda non presente", HttpStatus.BAD_REQUEST);
-        if(profilo == null)
-            return new ResponseEntity<>("Profilo non presente", HttpStatus.BAD_REQUEST);
-        try{
-            azienda.modificaProfilo(profilo.getNomeProfilo(), profilo.getDescrizione());
-            return new ResponseEntity<>(profilo, HttpStatus.OK);
-        }catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
-    }
-
     @GetMapping(value="dati-azienda/{id}")
     public ResponseEntity<Object> getAzienda(@PathVariable("id") String idAzienda){
         Azienda azienda = data.getAziendaById(idAzienda);
         AziendaDTO aziendaDTO  = new AziendaDTO(azienda);
         return new ResponseEntity<>(aziendaDTO, HttpStatus.OK);
+    }
+
+    @PutMapping(value="/dati-azienda/sedi-produttive/{id}")
+    public ResponseEntity<Object> modificaSediProduttive(@PathVariable("id") String idAzienda,
+                                                        @RequestBody List<String> sedi) {
+        Azienda azienda = data.getAziendaById(idAzienda);
+        if(azienda == null)
+            return new ResponseEntity<>("Azienda non presente", HttpStatus.BAD_REQUEST);
+        azienda.setIndirizzoSediProduttive(sedi);
+        return new ResponseEntity<>(sedi, HttpStatus.OK);
     }
 }

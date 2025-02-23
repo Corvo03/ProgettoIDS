@@ -9,9 +9,7 @@ import java.util.List;
  * contiene tutti i profili della piattaforma
  */
 public class SezioneProfili {
-    private SezioneProfili istanzaSezioneProfili;
     private List<Profilo> listaProfili;
-
 
     public SezioneProfili() {
         listaProfili = new ArrayList<Profilo>();
@@ -28,7 +26,9 @@ public class SezioneProfili {
         }
         return null;
     }
+
     public void addProfilo(Profilo profilo) {
-        listaProfili.add(profilo);
+        if(!listaProfili.contains(profilo))
+            listaProfili.add(profilo);
     }
 }

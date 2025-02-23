@@ -3,8 +3,8 @@ package unicam.springboot.dto;
 import unicam.modelli.actors.azienda.Profilo;
 
 public class ProfiloDTO {
-    private String nome;
-    private String descrizione;
+    private  String nome;
+    private  String descrizione;
 
     public ProfiloDTO(String nome, String descrizione) {
         this.nome = nome;
@@ -15,6 +15,8 @@ public class ProfiloDTO {
         this.nome = profilo.getNomeProfilo();
         this.descrizione = profilo.getDescrizione();
     }
+
+    public ProfiloDTO() {}
 
     public String getNome() {
         return nome;

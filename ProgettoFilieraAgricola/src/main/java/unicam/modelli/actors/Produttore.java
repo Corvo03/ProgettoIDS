@@ -1,8 +1,4 @@
 package unicam.modelli.actors;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
 import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.actors.azienda.InformazioniSensibili;
 import unicam.modelli.gestori.GestoreMetodoProduzione;
@@ -14,12 +10,9 @@ import unicam.modelli.creators.CreatorProdotto;
 import unicam.modelli.creators.ItemFactory;
 
 import java.util.List;
-@Entity
+
 public class Produttore extends Azienda {
 
-    @Id
-    private String id;
-    @Transient
     private GestoreMetodoProduzione gestoreMetodoProduzione;
 
     public Produttore(String id, String nome, String mail, List<String> indirizzoSediProduttive

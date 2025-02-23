@@ -119,28 +119,25 @@ public class Data {
             sediProd.add("SedeProduttivaPrincipale");
             sediProd.add("SedeProduttivaSecondaria");
             sediProd.add("Prod" + i);
-            Produttore prod = new Produttore(Integer.toString(idItem++),"nomeProduttore" + i, "produttore" + i + "@some.thing", sediProd,
+            Produttore prod = new Produttore(Integer.toString(idAziende++),"nomeProduttore" + i, "produttore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede prod" + i, "prod" + i + "@pec.com",
                             "AziendaProd" + i, "pIvaProd" + i, "codProd" + i),
                     "profiloProduttore" + i, "descrProfiloProduttore" + i
             );
-            prod.setId(Integer.toString(idAziende++));
             aziende.add(prod);
-            Trasformatore tras = new Trasformatore(Integer.toString(idItem++),
-                    "nomeTrasformatore" + i, "trasformatore" + i + "@some.thing", sediProd,
+            Trasformatore tras = new Trasformatore(Integer.toString(idAziende++),"nomeTrasformatore" + i,
+                    "trasformatore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede trasf" + i, "trasf" + i + "@pec.com",
                             "AziendaTrasf" + i, "pIvaTrasf" + i, "codTrasf" + i),
                     "profiloTrasformatore" + i, "descrTrasformatore" + i
             );
-            tras.setId(Integer.toString(idAziende++));
             aziende.add(tras);
-            DistributoreTipicita dist = new DistributoreTipicita(Integer.toString(idItem++),
+            DistributoreTipicita dist = new DistributoreTipicita(Integer.toString(idAziende++),
                     "nomeDistributore" + i, "distributore" + i + "@some.thing", sediProd,
                     new InformazioniSensibili("via sede distr" + i, "distr" + i + "@pec.com",
                             "AziendaDistr" + i, "pIvaDistr" + i, "codDistr" + i),
                     "profiloDistributore" + i, "descrProfiloDistributore" + i
             );
-            dist.setId(Integer.toString(idAziende++));
             aziende.add(dist);
         }
     }
