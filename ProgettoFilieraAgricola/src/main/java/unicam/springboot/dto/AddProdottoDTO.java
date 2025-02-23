@@ -12,13 +12,13 @@ public class AddProdottoDTO {
 
     public AddProdottoDTO(String idAzienda, float prezzo,
                           String nome, String descrizione,
-                          InformazioneAggiuntiva informazioneAggiuntiva, String id) {
+                          InformazioneAggiuntiva informazioneAggiuntiva) {
         this.idAzienda = idAzienda;
         this.prezzo = prezzo;
         this.nome = nome;
         this.descrizione = descrizione;
         this.informazioneAggiuntiva = informazioneAggiuntiva;
-        this.id = id;
+
     }
 
     public AddProdottoDTO() {

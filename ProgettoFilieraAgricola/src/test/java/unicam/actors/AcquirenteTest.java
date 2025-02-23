@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AcquirenteTest {
     Acquirente acquirente = new Acquirente("email", "nomeUtente");
-    Produttore produttore = new Produttore("nome", "cognome", null, null);
-    Prodotto prodotto = new Prodotto(10.0f, "Prodotto1", "Descrizione1", produttore);
+    Produttore produttore = new Produttore();
+    Prodotto prodotto = new Prodotto("id111",10.0f, "Prodotto1", "Descrizione1", produttore);
     ElementoMarketplace elementoMarketplace = new ElementoMarketplace(new Stock(prodotto));
-    Prodotto prodotto2 = new Prodotto(20.0f, "Prodotto2", "Descrizione2", produttore);
+    Prodotto prodotto2 = new Prodotto("id222",20.0f, "Prodotto2", "Descrizione2", produttore);
     ElementoMarketplace elementoMarketplace2 = new ElementoMarketplace(new Stock(prodotto2));
 
     private void ricaricaElementi() {

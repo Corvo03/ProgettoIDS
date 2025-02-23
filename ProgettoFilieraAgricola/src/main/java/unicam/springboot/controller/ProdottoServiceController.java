@@ -16,9 +16,8 @@ import unicam.repository.Data;
 public class ProdottoServiceController {
     Data data = Data.getIstance();
 
-    @GetMapping("/prodotto")
-    public ResponseEntity<Prodotto> getProdotto(@RequestParam String id) {
-        if(data.getProdottoById(id) == null) return ResponseEntity.ok(new Prodotto("2", 1.00,"aaa","dddeee",data.getAziendaById("1"),null));
+    @GetMapping("/prodotto/{id}")
+    public ResponseEntity<Prodotto> getProdotto(String id) {
         return ResponseEntity.ok(data.getProdottoById(id));
     }
 
@@ -47,6 +46,11 @@ public class ProdottoServiceController {
             return ResponseEntity.badRequest().body("Azienda non trovata");
         }
         return ResponseEntity.ok("Prodotto aggiunto");
+    }
+
+    @GetMapping("/prodotto")
+    public ResponseEntity<Object> getProdotti() {
+        return ResponseEntity.ok(data.getProdottiMarketplace());
     }
 
 }

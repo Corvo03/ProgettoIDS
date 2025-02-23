@@ -16,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProduttoreTest {
 
     GestoreCertificato gcs = new GestoreCertificato();
-    Produttore produttore = new Produttore("produttore", "Prod@prod.te",null, null);
+    Produttore produttore = new Produttore("1", "nome", "cognome", null, null);
     @org.junit.jupiter.api.Test
     void creaProdotto() {
         this.produttore.creaMetodoProduzione("MetProd1", "descrMetodo1");
         MetodoProduzione mp = this.produttore.getMetodoProduzione("MetProd1");
-        CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                23.5, mp, produttore,"aaa");
+        CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1","descrizione",
+                23.5, mp, produttore);
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
 

@@ -86,4 +86,8 @@ public class Marketplace {
         }
         return null;
     }
+
+    public List<ElementoMarketplace> getListaElementiMarketplace() {
+        return listaElementiMarketplace;
+    }
 }

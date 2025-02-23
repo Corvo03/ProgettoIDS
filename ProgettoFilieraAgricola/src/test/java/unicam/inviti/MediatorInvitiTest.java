@@ -20,9 +20,9 @@ class MediatorInvitiTest {
 
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
@@ -36,9 +36,9 @@ class MediatorInvitiTest {
     void accettaInvito() {
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         MediatorInviti.getInstance().inviaInvito(invito);
@@ -52,14 +52,11 @@ class MediatorInvitiTest {
 
     @Test
     void rifiutaInvito() {
-        //todo i metodi chiamati direttamente dal mediator (senza passare dai gestori)
-        // non riempiono le liste di inviti mandati e ricveuti, quindi non fuonzionano bene
-        // sistemarli o non serve?
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
@@ -75,9 +72,9 @@ class MediatorInvitiTest {
     void testNotify() {
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 

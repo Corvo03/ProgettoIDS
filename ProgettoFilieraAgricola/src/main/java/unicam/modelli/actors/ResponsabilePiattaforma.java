@@ -16,8 +16,8 @@ public class ResponsabilePiattaforma extends UtenteAutenticato {
     public ResponsabilePiattaforma() {
     }
 
-    public void creaCertificato(String nome, String descrizione, UtenteAutenticato utenteAutenticato) {
-        Certificato certificato = new Certificato(nome, descrizione);
+    public void creaCertificato(String id,String nome, String descrizione, UtenteAutenticato utenteAutenticato) {
+        Certificato certificato = new Certificato(id,nome, descrizione);
         GestoreSistema.getInstance().creaCertificato(certificato, this);
     }
 }

@@ -6,6 +6,8 @@ import unicam.modelli.creators.CreatorProdotto;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.informazioniAggiuntive.ProcessoTrasformazione;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TrasformatoreTest {
@@ -16,8 +18,7 @@ class TrasformatoreTest {
 
         trasformatore.creaProcesso("Processo2", "DescProcesso2");
         ProcessoTrasformazione pt = trasformatore.getProcessoTrasformazione("Processo2");
-        CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1",
-                25.1, pt, trasformatore,"bbb");
+        CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1", "descr1",25.1 ,pt, trasformatore);
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
         //TODO trasformatore.creaProdotto();

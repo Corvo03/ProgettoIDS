@@ -18,9 +18,9 @@ class GestoreInvitiInviatiTest {
     void inviaInvito() {
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
@@ -40,9 +40,9 @@ class GestoreInvitiInviatiTest {
     void eliminaInvito() {
         LocalDate data1 = LocalDate.of(2018, 1, 1);
         LocalDate data2 = LocalDate.of(2018, 1, 2);
-        Evento evento = new Evento("nome", data1,"luogo","descrizione", 100);
-        Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
-        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("nomeAnimatore","mailAnimatore");
+        Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
+        Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
+        AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
         Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
         animatoreFiliera.invitaAzienda(invito);

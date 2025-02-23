@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class MarketplaceTest {
 
     Marketplace marketplace = new Marketplace();
-    Produttore produttore = new Produttore("nome", "cognome",null,null);
-    Prodotto prodotto = new Prodotto(10.0, "Prodotto1", "Descrizione1", produttore);
+    Produttore produttore = new Produttore("id1","nome", "cognome",null,null);
+    Prodotto prodotto = new Prodotto("id2",10.0, "Prodotto1", "Descrizione1", produttore);
     ElementoMarketplace elementoMarketplace = new ElementoMarketplace(new Stock(prodotto));
 
     @Test
@@ -48,7 +48,7 @@ class MarketplaceTest {
         assertTrue(marketplace.getElementiDisponibiliMarketplace().contains(elementoMarketplace));
         assertEquals(1, marketplace.getElementiDisponibiliMarketplace().size());
         assertThrows(IllegalArgumentException.class, () -> marketplace.removeElementoMarketplace
-                (new ElementoMarketplace(new Stock(new Prodotto(10.0, "Prodotto2",
+                (new ElementoMarketplace(new Stock(new Prodotto("id3",10.0, "Prodotto2",
                         "Descrizione2", produttore)))));
         marketplace.removeElementoMarketplace(elementoMarketplace);
         assertTrue(marketplace.getElementiDisponibiliMarketplace().isEmpty());

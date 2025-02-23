@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EventoTest {
     LocalDate data1 = LocalDate.of(2018, 1, 1);
     Evento evento = new Evento("1", "nome", data1,"luogo","descrizione", 100);
-    Azienda azienda = new Produttore("nomeProduttore","mailProduttore",null,null);
+    Azienda azienda = new Produttore("id1","nomeProduttore","mailProduttore",null,null);
     @Test
     void addPartecipante() {
         assertTrue(evento.getNome().equals("nome"));

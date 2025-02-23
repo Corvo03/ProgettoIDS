@@ -21,29 +21,8 @@ public class GestoreMetodoProduzione {
         this.listMetodiProduzione = new ArrayList<MetodoProduzione>();
     }
 
-    public List<MetodoProduzione> getListMetodiProduzione() {
-        return listMetodiProduzione;
-    }
 
-    /**
-     * Restituisce un Metodo di produzione a partire dal nome, null se non viene trovato.
-     * @param nome del Metodo di produzione da ricercare.
-     * @return il metodo di produzione, null se non è stato trovato.
-     *
-     * @throws NullPointerException se il nome del metodo di produzione è vuoto
-     */
-    public MetodoProduzione getMetodoProduzione(String nome) {
-        if(listMetodiProduzione.isEmpty())
-            return null;
-        if(nome.isEmpty())
-            throw new NullPointerException("Nome del metodo di produzione non valido");
 
-        for(MetodoProduzione metodoProduzione : listMetodiProduzione) {
-            if(metodoProduzione.getNome().equals(nome))
-                return metodoProduzione;
-        }
-        return null;
-    }
 
     /**
      * Aggiunge un metodo di produzione alla lista.
@@ -87,5 +66,29 @@ public class GestoreMetodoProduzione {
             throw new NullPointerException("Non del metodo di produzione non valido");
 
         listMetodiProduzione.removeIf(metodoProduzione -> metodoProduzione.getNome().equals(nome));
+    }
+
+    /**
+     * Restituisce un Metodo di produzione a partire dal nome, null se non viene trovato.
+     * @param nome del Metodo di produzione da ricercare.
+     * @return il metodo di produzione, null se non è stato trovato.
+     *
+     * @throws NullPointerException se il nome del metodo di produzione è vuoto
+     */
+    public MetodoProduzione getMetodoProduzione(String nome) {
+        if(listMetodiProduzione.isEmpty())
+            return null;
+        if(nome.isEmpty())
+            throw new NullPointerException("Nome del metodo di produzione non valido");
+
+        for(MetodoProduzione metodoProduzione : listMetodiProduzione) {
+            if(metodoProduzione.getNome().equals(nome))
+                return metodoProduzione;
+        }
+        return null;
+    }
+
+    public List<MetodoProduzione> getListMetodiProduzione() {
+        return listMetodiProduzione;
     }
 }

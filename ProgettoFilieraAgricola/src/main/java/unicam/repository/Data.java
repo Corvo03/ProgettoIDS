@@ -4,19 +4,21 @@ import unicam.modelli.actors.*;
 import unicam.modelli.actors.azienda.Azienda;
 import unicam.modelli.actors.azienda.InformazioniSensibili;
 import unicam.modelli.actors.azienda.Profilo;
-import unicam.modelli.elements.Biglietto;
-import unicam.modelli.elements.Item;
-import unicam.modelli.elements.Prodotto;
+import unicam.modelli.elements.*;
 
-import unicam.modelli.elements.ElementoMarketplace;
+import unicam.modelli.gestori.GestoreInformazioni;
 import unicam.modelli.gestori.GestoreSistema;
 import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
 import unicam.modelli.informazioniAggiuntive.ProcessoTrasformazione;
 import unicam.modelli.inviti.Evento;
 import unicam.modelli.inviti.Invito;
+import unicam.modelli.marketplace.InformazioneDaApprovare;
+import unicam.modelli.marketplace.Marketplace;
 
 import java.time.LocalDate;
 import java.util.*;
+
+import static unicam.modelli.gestori.GestoreSistema.getInstance;
 
 public class Data {
     public List<Biglietto> biglietti;
@@ -30,8 +32,11 @@ public class Data {
     private static Data istance;
     public static List<MetodoProduzione> metodiProduzione = new ArrayList<>();
     public static List<ProcessoTrasformazione> processiTrasformazione = new ArrayList<>();
-    public static GestoreSistema gestoreSistema = GestoreSistema.getInstance();
-
+    public static GestoreSistema gestoreSistema = getInstance();
+    public static ResponsabilePiattaforma responsabilePiattaforma = new ResponsabilePiattaforma("mail","nomeUtente");
+    private Curatore curatore = new Curatore();
+    private List<InformazioneDaApprovare> informazioniDaApprovare = new ArrayList<>();
+    Marketplace marketplace = gestoreSistema.getGestoreMarketplace().getMarketPlace();
 
     private Data() {
         animatori = new ArrayList<>();
@@ -47,6 +52,21 @@ public class Data {
         riempiInviti();
         riempiBiglietti();
         riempiAziendeDiProdotti();
+        riempiCertificati();
+        riempiMetodiProduzioneDelleAziende();
+        riempiProcessiTrasformazioneDelleAziende();
+        creaProdotti();
+        caricaProdottiSuMarketplace();
+
+    }
+
+    private void caricaProdottiSuMarketplace(){
+        ;
+        curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
+        for(InformazioneDaApprovare informazioneDaApprovare : GestoreInformazioni.getInstance().getInformazioniDaApprovare()){
+            curatore.approvaInformazione(informazioneDaApprovare);
+            this.informazioniDaApprovare.add(informazioneDaApprovare);
+        }
     }
 
     private void riempiAziendeDiProdotti() {
@@ -95,6 +115,12 @@ public class Data {
                 }
             }
         }
+    }
+
+    private void riempiCertificati(){
+        gestoreSistema.creaCertificato(new Certificato("aaa","aaa","ddadafggrg"), responsabilePiattaforma);
+        gestoreSistema.creaCertificato(new Certificato("bbb","bbb","dfggg"), responsabilePiattaforma);
+        gestoreSistema.creaCertificato(new Certificato("ccc","ccc","adfffes"), responsabilePiattaforma);
     }
 
     private void riempiEventi() {
@@ -156,12 +182,31 @@ public class Data {
             metodiProduzione.add(new MetodoProduzione("Metodo" + i, "DescrizioneMetodo" + i));
         }
     }
+    private void riempiMetodiProduzioneDelleAziende(){
+        int i = 0;
+        for(Azienda azienda : aziende){
+            if(azienda instanceof Produttore){
+                i++;
+                ((Produttore) azienda).creaMetodoProduzione("metodo"+i, "descrizione");
+            }
+        }
+    }
 
     private void riempiProcessiTrasformazione() {
         for (int i = 1; i <= 15; i++) {
             processiTrasformazione.add(new ProcessoTrasformazione("Processo" + i, "DescrizioneProcesso" + i));
         }
     }
+    private void riempiProcessiTrasformazioneDelleAziende(){
+        int i = 0;
+        for(Azienda azienda : aziende){
+            if(azienda instanceof Trasformatore){
+                i++;
+                ((Trasformatore) azienda).creaProcesso("Processo"+i, "descrizione");
+            }
+        }
+    }
+
 
     private void riempiAcquirenti(){
         for (int i = 1; i <= 5; i++) {
@@ -186,6 +231,7 @@ public class Data {
             }
         }
     }
+
 
     public static Data getIstance() {
         if (istance == null) {
@@ -227,15 +273,16 @@ public class Data {
 //    }
 
     public Prodotto getProdottoById(String id) {
-        Prodotto prodotto = null;
-        for (Azienda azienda : aziende) {
-            for (ElementoMarketplace elementoMarketplace : gestoreSistema.getElementiDisponibiliMarketplace()) {
-                prodotto = (Prodotto) elementoMarketplace.getStock().getItem();
-                if (Objects.equals(prodotto.getNomeItem(), id))
-                    return prodotto;
-            }
+        return (Prodotto) GestoreSistema.getInstance().getGestoreMarketplace().getMarketPlace().getElementoMarketplaceDaId(id).getStock().getItem();
+
+    }
+
+    public List<Prodotto> getProdottiMarketplace(){
+        List<Prodotto> prodotti = new ArrayList<>();
+        for(ElementoMarketplace elemento : GestoreSistema.getInstance().getGestoreMarketplace().getMarketPlace().getListaElementiMarketplace()){
+            prodotti.add((Prodotto) elemento.getStock().getItem());
         }
-        return null;
+        return prodotti;
     }
 
     public Item getProdottoByAzienda(String idAzienda, String idProdotto) {
@@ -256,4 +303,6 @@ public class Data {
         }
         return null;
     }
+
+
 }

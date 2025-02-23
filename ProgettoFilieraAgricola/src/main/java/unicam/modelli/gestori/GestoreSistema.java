@@ -27,16 +27,6 @@ public class GestoreSistema {
         gestoreCertificato = new GestoreCertificato();
     }
 
-    /**
-     * Ritorna il puntatore all'istanza dell'oggetto (se esiste), altrimenti ne crea uno.
-     *
-     * @return
-     */
-    public static GestoreSistema getInstance() {
-        if (istanza == null)
-            istanza = new GestoreSistema();
-        return istanza;
-    }
 
     /**
      * Delega a gestoreMarketplace la creazione di un elemento del marketplace.
@@ -47,32 +37,8 @@ public class GestoreSistema {
         gestoreMarketplace.creaElementoMarketPlace(stock);
     }
 
-    /**
-     * Delega a sezioneProfili di ottenere la lista di tutti i profili.
-     *
-     * @return lista di tutti i profili
-     */
-    public List<Profilo> getListaProfili() {
-        return sezioneProfili.getListaProfili();
-    }
 
-    /**
-     * Delega a gestoreCertificatoLettura di ottenere la lista di tutti i certificati.
-     *
-     * @return lista di tutti i certificati disponibili
-     */
-    public List<Certificato> getListaCertificati(){
-        return gestoreCertificato.getListaCertificati();
-    }
 
-    /**
-     * Delega a gestoreMarketplace di ottenere la lista di tutti gli elementi disponibili nel marketplace.
-     *
-     * @return lista di tutti gli elementi disponibili nel marketplace
-     */
-    public List<ElementoMarketplace> getElementiDisponibiliMarketplace() {
-        return gestoreMarketplace.getElementiDisponibiliMarketplace();
-    }
 
     /**
      * Delega a gestoreMarketplace di aggiornare la quantità degli elementi del marketplace.
@@ -99,6 +65,21 @@ public class GestoreSistema {
     public boolean containsCertificato(Certificato certificato) {return getListaCertificati().contains(certificato);
     }
 
+
+    public void eliminaElementoMarketplace(Stock stock) {
+        gestoreMarketplace.eliminaElementoMarketplace(stock);
+    }
+
+    public void creaCertificato(Certificato certificato, UtenteAutenticato utenteAutenticato) {
+        if (utenteAutenticato instanceof ResponsabilePiattaforma)
+            gestoreCertificato.creaCertificato(certificato);
+    }
+
+    public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
+        return gestoreMarketplace.getElementoMarketplaceDaId(idElemento);
+    }
+
+
     /**
      * Metodo per ottenere la scheda dell'item di uno speciale elemento marketplace a partire dall'id.
      * @param id da ricercare.
@@ -110,20 +91,60 @@ public class GestoreSistema {
         return this.gestoreMarketplace.getItemById(id);
     }
 
-    public void eliminaElementoMarketplace(Stock stock) {
-        gestoreMarketplace.eliminaElementoMarketplace(stock);
+    /**
+     * Delega a gestoreMarketplace di ottenere la lista di tutti gli elementi disponibili nel marketplace.
+     *
+     * @return lista di tutti gli elementi disponibili nel marketplace
+     */
+    public List<ElementoMarketplace> getElementiDisponibiliMarketplace() {
+        return gestoreMarketplace.getElementiDisponibiliMarketplace();
     }
 
-    public void creaCertificato(Certificato certificato, UtenteAutenticato utenteAutenticato) {
-        if (utenteAutenticato instanceof ResponsabilePiattaforma)
-            gestoreCertificato.creaCertificato(certificato);
+    /**
+     * Delega a gestoreCertificatoLettura di ottenere la lista di tutti i certificati.
+     *
+     * @return lista di tutti i certificati disponibili
+     */
+    public List<Certificato> getListaCertificati(){
+        return gestoreCertificato.getListaCertificati();
+    }
+
+    /**
+     * Delega a sezioneProfili di ottenere la lista di tutti i profili.
+     *
+     * @return lista di tutti i profili
+     */
+    public List<Profilo> getListaProfili() {
+        return sezioneProfili.getListaProfili();
     }
 
     public Azienda getAzienda(String id) {
         return sezioneProfili.getProfilo(id).getAzienda();
     }
+    /**
+     * Ritorna il puntatore all'istanza dell'oggetto (se esiste), altrimenti ne crea uno.
+     *
+     * @return
+     */
+    public static GestoreSistema getInstance() {
+        if (istanza == null)
+            istanza = new GestoreSistema();
+        return istanza;
+    }
 
-    public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
-        return gestoreMarketplace.getElementoMarketplaceDaId(idElemento);
+    public static GestoreSistema getIstanza() {
+        return istanza;
+    }
+
+    public GestoreCertificato getGestoreCertificato() {
+        return gestoreCertificato;
+    }
+
+    public SezioneProfili getSezioneProfili() {
+        return sezioneProfili;
+    }
+
+    public GestoreMarketplace getGestoreMarketplace() {
+        return gestoreMarketplace;
     }
 }

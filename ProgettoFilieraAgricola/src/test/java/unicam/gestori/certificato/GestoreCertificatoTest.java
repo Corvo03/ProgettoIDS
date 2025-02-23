@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GestoreCertificatoTest {
 
-    Produttore p = new Produttore("abc", "abc@de.f",null, null);
+    Produttore p = new Produttore("id1","nome", "cognome", null, null);
     GestoreCertificato gestoreCertificato = new GestoreCertificato();
     @Test
     void creaCertificato() {

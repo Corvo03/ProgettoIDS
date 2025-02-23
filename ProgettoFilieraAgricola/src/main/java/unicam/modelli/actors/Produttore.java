@@ -45,14 +45,6 @@ public class Produttore extends Azienda {
         return prodotto;
     }
 
-    /**
-     * Restituisce un metodo di produzione
-     * @param nome del metodo di produzione da restituire
-     * @return il metodo di produzione trovato
-     */
-    public MetodoProduzione getMetodoProduzione(String nome) {
-        return this.gestoreMetodoProduzione.getMetodoProduzione(nome);
-    }
 
     /**
      * Crea un Metodo di Produzione con le seguenti caratteristiche
@@ -96,6 +88,15 @@ public class Produttore extends Azienda {
         if(!GestoreSistema.getInstance().containsCertificato(certificato))
             throw new IllegalArgumentException("Certificato non trovato");
         prodotto.addCertificato(certificato);
+    }
+
+    /**
+     * Restituisce un metodo di produzione
+     * @param nome del metodo di produzione da restituire
+     * @return il metodo di produzione trovato
+     */
+    public MetodoProduzione getMetodoProduzione(String nome) {
+        return this.gestoreMetodoProduzione.getMetodoProduzione(nome);
     }
 
     public GestoreMetodoProduzione getGestoreMetodoProduzione() {

@@ -28,11 +28,11 @@ public class GestoreMarketplace {
     }
 
     /**
-     * Metodo per ottenere l'istanza del marketplace
-     * @return l'istanza del marketplace.
+     * Elimina un elemento dal marketplace.
+     * @param stock
      */
-    public Marketplace getMarketPlace() {
-        return marketPlace;
+    public void eliminaElementoMarketplace(Stock stock) {
+        marketPlace.eliminaElementoMarketplace(stock);
     }
 
     /**
@@ -44,6 +44,15 @@ public class GestoreMarketplace {
             elemento.decrementaQuantita(elementiCarrello.get(elemento));
         }
     }
+
+    /**
+     * Metodo per ottenere l'istanza del marketplace
+     * @return l'istanza del marketplace.
+     */
+    public Marketplace getMarketPlace() {
+        return marketPlace;
+    }
+
 
     public List<ElementoMarketplace> getElementiDisponibiliMarketplace() {
         return marketPlace.getElementiDisponibiliMarketplace();
@@ -62,11 +71,10 @@ public class GestoreMarketplace {
         return null;
     }
 
-    public void eliminaElementoMarketplace(Stock stock) {
-        marketPlace.eliminaElementoMarketplace(stock);
-    }
+
 
     public ElementoMarketplace getElementoMarketplaceDaId(String idElemento) {
         return marketPlace.getElementoMarketplaceDaId(idElemento);
     }
+
 }

@@ -10,9 +10,10 @@ public class Certificato {
     private String nome;
     private String descrizione;
 
-    public Certificato(String nome, String descrizione) {
+    public Certificato(String id,String nome, String descrizione) {
         this.nome = nome;
         this.descrizione = descrizione;
+        this.Id = id;
     }
 
     public Certificato() {
