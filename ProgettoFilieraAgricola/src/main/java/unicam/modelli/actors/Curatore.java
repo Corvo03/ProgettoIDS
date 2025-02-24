@@ -8,8 +8,9 @@ import unicam.modelli.marketplace.InformazioneDaApprovare;
 public class Curatore extends UtenteAutenticato {
     @Id
     private String id;
-    public Curatore(String nomeUtente, String mail){
+    public Curatore(String id, String nomeUtente, String mail){
         super(mail, nomeUtente);
+        this.id = id;
     }
 
     public Curatore() {
@@ -21,5 +22,9 @@ public class Curatore extends UtenteAutenticato {
 
     public void rifiutaInformazione(InformazioneDaApprovare informazione) {
         GestoreInformazioni.getInstance().informazioneRifiutata(informazione);
+    }
+
+    public Object getId() {
+        return id;
     }
 }

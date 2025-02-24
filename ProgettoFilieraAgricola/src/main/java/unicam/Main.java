@@ -26,7 +26,7 @@ public class Main {
         }
 
         //curatore approva prodotti e verifico che siano stati aggiunti a marketplace
-        Curatore curatore = new Curatore("Cur1", "cur1@abc.com");
+        Curatore curatore = new Curatore("1","Cur1", "cur1@abc.com");
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         //ricarica elementi e diventano disponibili nel marketplace

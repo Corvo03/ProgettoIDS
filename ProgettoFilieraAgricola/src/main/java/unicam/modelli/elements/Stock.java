@@ -60,4 +60,12 @@ public class Stock {
     public void setId(String id) {
         this.id = id;
     }
+
+    public void removeQuantita(Integer quantita) {
+        if (quantita < 0)
+            throw new IllegalArgumentException("Quantita negativo");
+        if (getQuantita() - quantita < 0)
+            throw new IllegalArgumentException("Quantita errata");
+        setQuantita(getQuantita() - quantita);
+    }
 }

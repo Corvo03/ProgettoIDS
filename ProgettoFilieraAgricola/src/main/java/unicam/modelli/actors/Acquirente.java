@@ -60,6 +60,10 @@ public class Acquirente extends UtenteAutenticato {
         gestoreCarrello.getCarrello().rimuoviElementoDalCarrello(elemento, quantita);
     }
 
+    public void eliminaElementoDalCarrello(ElementoMarketplace elemento) {
+        gestoreCarrello.getCarrello().rimuoviElementoDalCarrello(elemento);
+    }
+
     /**
      * Ottiene la lista di tutti gli elementi disponibili nel marketplace.
      *

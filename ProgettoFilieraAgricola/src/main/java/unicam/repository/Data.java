@@ -27,6 +27,7 @@ public class Data {
     public List<AnimatoreFiliera> animatori;
     public List<Profilo> profili;
     public List<Acquirente> acquirenti;
+    public List<Curatore> curatori;
     private static int idItem = 1;
     private int idAziende = 1;
     private static Data istance;
@@ -45,12 +46,14 @@ public class Data {
         biglietti = new ArrayList<>();
         profili = new ArrayList<>();
         acquirenti = new ArrayList<>();
+        curatori = new ArrayList<>();
         riempiAnimatore();
         riempiAzienda();
         riempiEventi();
         riempiAcquirenti();
         riempiInviti();
         riempiBiglietti();
+        riempiCuratori();
         riempiAziendeDiProdotti();
         riempiCertificati();
         riempiMetodiProduzioneDelleAziende();
@@ -61,8 +64,8 @@ public class Data {
     }
 
     private void caricaProdottiSuMarketplace(){
-        curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
-        for(InformazioneDaApprovare informazioneDaApprovare : GestoreInformazioni.getInstance().getInformazioniDaApprovare()){
+        for(int i = 1; i <= 20; i++){
+            InformazioneDaApprovare informazioneDaApprovare = GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst();
             curatore.approvaInformazione(informazioneDaApprovare);
             this.informazioniDaApprovare.add(informazioneDaApprovare);
         }
@@ -286,7 +289,10 @@ public class Data {
 
     public Item getProdottoByAzienda(String idAzienda, String idProdotto) {
         Azienda azienda = getAziendaById(idAzienda);
-        return azienda.getGestoreStock().getStock(idProdotto).getItem();
+        if (azienda == null)
+            return null;
+        Stock stock = azienda.getGestoreStock().getStock(idProdotto);
+        return (stock != null) ? stock.getItem() : null;
     }
 
     public Invito getInvitoById(String idInvito, String idAzienda){
@@ -294,10 +300,25 @@ public class Data {
         return azienda.getInvito(idInvito);
     }
 
+
     public Acquirente getAcquirenteById(String idAcquirente) {
         for (Acquirente acquirente : acquirenti) {
             if (Objects.equals(acquirente.getId(), idAcquirente))
                 return acquirente;
+        }
+        return null;
+    }
+
+    public void riempiCuratori(){
+        for(int i = 1; i <= 5; i++){
+            curatori.add(new Curatore(Integer.toString(i), "curatore" + i + "@some.thing", "utCuratore" + i));
+        }
+    }
+
+    public Curatore getCuratoreById(String idCuratore) {
+        for (Curatore curatore : curatori) {
+            if (Objects.equals(curatore.getId(), idCuratore))
+                return curatore;
         }
         return null;
     }

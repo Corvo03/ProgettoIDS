@@ -1,5 +1,6 @@
 package unicam.modelli.gestori;
 
+import unicam.modelli.actors.Curatore;
 import unicam.modelli.elements.Item;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
 import unicam.modelli.actors.azienda.InformazioniSensibili;

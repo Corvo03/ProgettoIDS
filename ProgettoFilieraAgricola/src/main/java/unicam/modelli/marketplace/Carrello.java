@@ -31,18 +31,19 @@ public class Carrello {
     /**
      * Svuota il carrello
      */
-    public void svuotaCarrello(){
+    public void svuotaCarrello() {
         this.elementiCarrello.clear();
         this.totalePrezzo = 0;
     }
 
     /**
      * Aggiunge un elemento al carrello
-     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
+     *
      * @param elemento
      * @param quantita
+     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
      */
-    public void aggiungiElementoAlCarrello(ElementoMarketplace elemento,int quantita){
+    public void aggiungiElementoAlCarrello(ElementoMarketplace elemento, int quantita) {
         if (quantita > elemento.getStock().getQuantita() || quantita < 0)
             throw new IllegalArgumentException("Quantità non disponibile");
         elementiCarrello.put(elemento, quantita);
@@ -50,16 +51,31 @@ public class Carrello {
 
     /**
      * Rimuove un elemento dal carrello
-     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
-     * @throws IllegalArgumentException se l'elemento non è presente nel carrello
+     *
      * @param elemento
      * @param quantita
+     * @throws IllegalArgumentException se la quantità è maggiore di quella disponibile
+     * @throws IllegalArgumentException se l'elemento non è presente nel carrello
      */
-    public void rimuoviElementoDalCarrello(ElementoMarketplace elemento, int quantita){
+    public void rimuoviElementoDalCarrello(ElementoMarketplace elemento, int quantita) {
         if (!elementiCarrello.containsKey(elemento))
             throw new IllegalArgumentException("Elemento non presente nel carrello");
         if (quantita > elementiCarrello.get(elemento) || quantita < 0)
             throw new IllegalArgumentException("Quantità non disponibile");
+        if (elementiCarrello.get(elemento) == quantita)
+            elementiCarrello.remove(elemento);
+        else
+            elementiCarrello.put(elemento, elementiCarrello.get(elemento) - quantita);
+    }
+
+    /**
+     * Rimuove un elemento dal carrello a prescindere dalla quantità
+     * @param elemento
+     * @throws IllegalArgumentException se l'elemento non è presente nel carrello
+     */
+    public void rimuoviElementoDalCarrello(ElementoMarketplace elemento) {
+        if (!elementiCarrello.containsKey(elemento))
+            throw new IllegalArgumentException("Elemento non presente nel carrello");
         elementiCarrello.remove(elemento);
     }
 

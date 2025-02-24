@@ -10,6 +10,7 @@ import unicam.modelli.elements.Pacchetto;
 import unicam.modelli.elements.Prodotto;
 import unicam.modelli.gestori.GestoreInformazioni;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
+import unicam.repository.Data;
 import unicam.springboot.dto.BigliettoDTO;
 import unicam.springboot.dto.PacchettoDTO;
 import unicam.springboot.dto.ProdottoDTO;
@@ -20,7 +21,6 @@ import java.util.List;
 
 @RestController
 public class InformazioneDaApprovareServiceController {
-    private final Curatore curatore = new Curatore("nome", "mail");
     private final GestoreInformazioni gi = GestoreInformazioni.getInstance();
 
     @GetMapping("/infoDaApprovare")
@@ -45,12 +45,19 @@ public class InformazioneDaApprovareServiceController {
         return dtoList;
     }
 
-    @PostMapping("/infoDaApprovare/approvaInfo/{id}")
-    public ResponseEntity<Object> approvaInformazione(@PathVariable String id) {
-        if (id == null) {
-            return new ResponseEntity<>("Id non iserito correattamente", HttpStatus.BAD_REQUEST);
+    @PostMapping("/infoDaApprovare/approvaInfo/{idCuratore}/{idInfo}")
+    public ResponseEntity<Object> approvaInformazione(@PathVariable String idCuratore ,@PathVariable String idInfo) {
+        if (idInfo == null) {
+            return new ResponseEntity<>("IdInfo non iserita correattamente", HttpStatus.BAD_REQUEST);
         }
-        InformazioneDaApprovare infoDaApprovare = gi.getInformazioneDaApprovareDaId(id);
+        if (idCuratore == null) {
+            return new ResponseEntity<>("IdCuratore non iserito correattamente", HttpStatus.BAD_REQUEST);
+        }
+        Curatore curatore = Data.getIstance().getCuratoreById(idCuratore);
+        if (curatore == null) {
+            return new ResponseEntity<>("Curatore non trovato", HttpStatus.BAD_REQUEST);
+        }
+        InformazioneDaApprovare infoDaApprovare = gi.getInformazioneDaApprovareDaId(idInfo);
         if (infoDaApprovare == null) {
             return new ResponseEntity<>("Informazione non trovata", HttpStatus.BAD_REQUEST);
         }
@@ -58,12 +65,19 @@ public class InformazioneDaApprovareServiceController {
         return new ResponseEntity<>("Informazione approvata", HttpStatus.OK);
     }
 
-    @PostMapping("/infoDaApprovare/rifiutaInfo/{id}")
-    public ResponseEntity<Object> rifiutaInformazione(@PathVariable String id) {
-        if (id == null) {
+    @PostMapping("/infoDaApprovare/rifiutaInfo/{idCuratore}/{idInfo}")
+    public ResponseEntity<Object> rifiutaInformazione(@PathVariable String idCuratore ,@PathVariable String idInfo) {
+        if (idInfo == null) {
             return new ResponseEntity<>("Id non iserito correattamente", HttpStatus.BAD_REQUEST);
         }
-        InformazioneDaApprovare infoDaApprovare = gi.getInformazioneDaApprovareDaId(id);
+        if (idCuratore == null) {
+            return new ResponseEntity<>("Id non iserito correattamente", HttpStatus.BAD_REQUEST);
+        }
+        Curatore curatore = Data.getIstance().getCuratoreById(idCuratore);
+        if (curatore == null) {
+            return new ResponseEntity<>("Curatore non trovato", HttpStatus.BAD_REQUEST);
+        }
+        InformazioneDaApprovare infoDaApprovare = gi.getInformazioneDaApprovareDaId(idInfo);
         if (infoDaApprovare == null) {
             return new ResponseEntity<>("Informazione non trovata", HttpStatus.BAD_REQUEST);
         }
