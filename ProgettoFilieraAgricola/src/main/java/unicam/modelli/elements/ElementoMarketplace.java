@@ -48,4 +48,8 @@ public class ElementoMarketplace {
             throw new IllegalArgumentException("Si cerca di decrementare più di quanto è disponibile");
         this.stock.setQuantita(newQuantita);
     }
+
+    public Item getItem() {
+        return this.stock.getItem();
+    }
 }

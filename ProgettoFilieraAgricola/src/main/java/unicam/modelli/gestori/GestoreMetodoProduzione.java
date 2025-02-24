@@ -21,9 +21,6 @@ public class GestoreMetodoProduzione {
         this.listMetodiProduzione = new ArrayList<MetodoProduzione>();
     }
 
-
-
-
     /**
      * Aggiunge un metodo di produzione alla lista.
      * @param metodoProduzione da aggiungere

@@ -28,7 +28,6 @@ public class DistributoreTipicita extends Azienda {
     public DistributoreTipicita(String id, String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(id, mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili);
-
     }
 
     public DistributoreTipicita() {

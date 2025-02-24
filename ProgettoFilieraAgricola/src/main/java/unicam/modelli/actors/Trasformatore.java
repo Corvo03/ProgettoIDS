@@ -16,9 +16,7 @@ import unicam.modelli.creators.ItemFactory;
 
 import java.util.List;
 
-@Entity
 public class Trasformatore extends Azienda {
-    @Transient
     private GestoreProcessoTrasformazione gestoreProcessoTrasformazione;
 
     public Trasformatore(String id,String nome, String mail, List<String> indirizzoSediProduttive

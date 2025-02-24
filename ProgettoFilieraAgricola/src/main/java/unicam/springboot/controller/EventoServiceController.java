@@ -33,7 +33,6 @@ public class EventoServiceController {
         return new ResponseEntity<>("eventi non trovati", HttpStatus.OK);
     }
 
-
     @PostMapping(value = "/evento/{id}")
     public ResponseEntity<Object> addEvento(@PathVariable("id") String idAnimatore,
                                             @RequestBody Evento evento){

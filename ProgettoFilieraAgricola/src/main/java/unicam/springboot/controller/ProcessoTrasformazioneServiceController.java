@@ -60,5 +60,4 @@ public class ProcessoTrasformazioneServiceController {
         trasformatore.getGestoreProcessoTrasformazione().setListaProcessiTrasformazione(listaProcessiTrasformazione);
         return new ResponseEntity<>("Lista metodi impostata", HttpStatus.OK);
     }
-
 }

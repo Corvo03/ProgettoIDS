@@ -61,7 +61,6 @@ public class Data {
     }
 
     private void caricaProdottiSuMarketplace(){
-        ;
         curatore.approvaInformazione(GestoreInformazioni.getInstance().getInformazioniDaApprovare().getFirst());
         for(InformazioneDaApprovare informazioneDaApprovare : GestoreInformazioni.getInstance().getInformazioniDaApprovare()){
             curatore.approvaInformazione(informazioneDaApprovare);
@@ -295,7 +294,6 @@ public class Data {
         return azienda.getInvito(idInvito);
     }
 
-
     public Acquirente getAcquirenteById(String idAcquirente) {
         for (Acquirente acquirente : acquirenti) {
             if (Objects.equals(acquirente.getId(), idAcquirente))
@@ -303,6 +301,4 @@ public class Data {
         }
         return null;
     }
-
-
 }

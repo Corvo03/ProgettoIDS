@@ -8,13 +8,9 @@ import unicam.modelli.actors.azienda.Azienda;
 
 import java.util.ArrayList;
 import java.util.List;
-@Entity
+
 public class Pacchetto extends Item {
-    @Id
-    private String id;
-    @OneToOne
     private Azienda aziendaProduttrice;
-    @OneToMany
     private List<Prodotto> listaProdotti;
 
 
