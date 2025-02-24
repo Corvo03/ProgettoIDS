@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class ProcessoTrasformazione extends InformazioneAggiuntiva {
-    @Id
-    private String id;
+
     private String nome;
     private String descrizione;
     @OneToMany
     private List<Fase> fasiTrasformazione;
 
-    public ProcessoTrasformazione(String nome, String descrizione) {
+    public ProcessoTrasformazione(String id,String nome, String descrizione) {
+        super(id);
         this.nome = nome;
         this.descrizione = descrizione;
         fasiTrasformazione = new ArrayList<Fase>();

@@ -16,6 +16,9 @@ public abstract class InformazioneAggiuntiva {
     @Id
     private String id;
 
+    public InformazioneAggiuntiva(String id) {
+        this.id = id;
+    }
     public InformazioneAggiuntiva() {
     }
 }

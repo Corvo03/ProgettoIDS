@@ -13,6 +13,8 @@ public class PacchettoDTO extends Item implements InformazioneDaApprovare {
     private String idAzienda;
     private List<ProdottoDTO> listaProdotti;
 
+
+
     public PacchettoDTO(Pacchetto pacchetto) {
         super(pacchetto.getId(), pacchetto.getPrezzo(), pacchetto.getNomeItem(), pacchetto.getDescrizione());
         this.listaProdotti = new ArrayList<>();
@@ -41,5 +43,9 @@ public class PacchettoDTO extends Item implements InformazioneDaApprovare {
 
     public List<ProdottoDTO> getListaProdotti() {
         return listaProdotti;
+    }
+
+    public String getIdAzienda() {
+        return idAzienda;
     }
 }

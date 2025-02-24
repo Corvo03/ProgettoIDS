@@ -3,16 +3,18 @@ package unicam.springboot.dto;
 import unicam.modelli.informazioniAggiuntive.InformazioneAggiuntiva;
 
 public class AddProdottoDTO {
+    private String idProdotto;
     private String idAzienda;
     private float prezzo;
     private String nome;
     private String descrizione;
     private InformazioneAggiuntiva informazioneAggiuntiva;
-    private String id;
 
-    public AddProdottoDTO(String idAzienda, float prezzo,
+
+    public AddProdottoDTO(String idProdotto, String idAzienda, float prezzo,
                           String nome, String descrizione,
                           InformazioneAggiuntiva informazioneAggiuntiva) {
+        this.idProdotto = idProdotto;
         this.idAzienda = idAzienda;
         this.prezzo = prezzo;
         this.nome = nome;
@@ -45,8 +47,7 @@ public class AddProdottoDTO {
         return prezzo;
     }
 
-    public String getId() {
-        return id;
+    public String getIdProdotto() {
+        return idProdotto;
     }
-    
 }

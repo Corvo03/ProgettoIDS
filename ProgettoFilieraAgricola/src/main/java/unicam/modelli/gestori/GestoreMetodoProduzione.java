@@ -49,7 +49,7 @@ public class GestoreMetodoProduzione {
             throw new NullPointerException("Nome del metodo non valido");
         if(descrizioneMetodo.isEmpty())
             throw new NullPointerException("Descrizione non valida");
-        this.aggiungiMetodoProduzione(new MetodoProduzione(nomeMetodo, descrizioneMetodo));
+        this.aggiungiMetodoProduzione(new MetodoProduzione("aaa",nomeMetodo, descrizioneMetodo));
     }
 
     /**
@@ -62,7 +62,10 @@ public class GestoreMetodoProduzione {
         if(nome.isEmpty())
             throw new NullPointerException("Non del metodo di produzione non valido");
 
-        listMetodiProduzione.removeIf(metodoProduzione -> metodoProduzione.getNome().equals(nome));
+        if(!listMetodiProduzione.removeIf(
+                metodoProduzione -> metodoProduzione.getNome().equals(nome))){
+            throw new IllegalArgumentException("Metodo di produzione non trovato");
+        }
     }
 
     /**

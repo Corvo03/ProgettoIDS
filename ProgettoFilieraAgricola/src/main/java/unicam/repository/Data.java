@@ -181,7 +181,7 @@ public class Data {
 
     private void riempiMetodiProduzione() {
         for (int i = 1; i <= 15; i++) {
-            metodiProduzione.add(new MetodoProduzione("Metodo" + i, "DescrizioneMetodo" + i));
+            metodiProduzione.add(new MetodoProduzione("aaa","Metodo" + i, "DescrizioneMetodo" + i));
         }
     }
     private void riempiMetodiProduzioneDelleAziende(){
@@ -196,7 +196,7 @@ public class Data {
 
     private void riempiProcessiTrasformazione() {
         for (int i = 1; i <= 15; i++) {
-            processiTrasformazione.add(new ProcessoTrasformazione("Processo" + i, "DescrizioneProcesso" + i));
+            processiTrasformazione.add(new ProcessoTrasformazione("aa"+1,"Processo" + i, "DescrizioneProcesso" + i));
         }
     }
     private void riempiProcessiTrasformazioneDelleAziende(){

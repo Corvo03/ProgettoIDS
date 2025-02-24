@@ -30,13 +30,13 @@ public class ProdottoServiceController {
         if(azienda != null){
             switch (azienda) {
                 case Produttore produttore -> {
-                    produttore.creaProdotto( addProdottoDTO.getId(),addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (MetodoProduzione) addProdottoDTO.getInformazioneAggiuntiva());
+                    produttore.creaProdotto( addProdottoDTO.getIdProdotto(),addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (MetodoProduzione) addProdottoDTO.getInformazioneAggiuntiva());
                 }
                 case Trasformatore trasformatore -> {
-                    trasformatore.creaProdotto(addProdottoDTO.getId(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (ProcessoTrasformazione) addProdottoDTO.getInformazioneAggiuntiva());
+                    trasformatore.creaProdotto(addProdottoDTO.getIdProdotto(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione(), (ProcessoTrasformazione) addProdottoDTO.getInformazioneAggiuntiva());
                 }
                 case DistributoreTipicita distributoreTipicita -> {
-                    distributoreTipicita.creaProdotto(addProdottoDTO.getId(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione());
+                    distributoreTipicita.creaProdotto(addProdottoDTO.getIdProdotto(), addProdottoDTO.getPrezzo(), addProdottoDTO.getNome(), addProdottoDTO.getDescrizione());
                 }
                 default -> {
                     return ResponseEntity.badRequest().body("Tipo di azienda non esistente");

@@ -8,13 +8,12 @@ import jakarta.persistence.Id;
 import java.util.Objects;
 @Entity
 public class MetodoProduzione extends InformazioneAggiuntiva {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+
     private String nome;
     private String descrizione;
 
-    public MetodoProduzione(String nome, String descrizione) {
+    public MetodoProduzione(String id,String nome, String descrizione) {
+        super(id);
         this.nome = nome;
         this.descrizione = descrizione;
     }

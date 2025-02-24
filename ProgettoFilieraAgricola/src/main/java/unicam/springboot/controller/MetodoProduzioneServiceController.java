@@ -14,6 +14,9 @@ public class MetodoProduzioneServiceController {
     @GetMapping ("/metodoProduzione")
     public ResponseEntity<Object> getMetodoProduzione(@RequestParam String idProduttore,@RequestParam String nome) {
         if(data.getAziendaById(idProduttore) instanceof Produttore produttore){
+            if(produttore.getMetodoProduzione(nome)==null){
+                return ResponseEntity.badRequest().body("Metodo non trovato");
+            }
             return ResponseEntity.ok(produttore.getMetodoProduzione(nome));
         }else {
             return ResponseEntity.badRequest().body("Errore");
@@ -32,7 +35,7 @@ public class MetodoProduzioneServiceController {
         return ResponseEntity.badRequest().body("Errore");
     }
 
-    @PostMapping("/metodoProduzione/eliminaMetodoProduzione")
+    @DeleteMapping("/metodoProduzione/eliminaMetodoProduzione")
     public ResponseEntity<Object> eliminaMetodoProduzione(@RequestParam String idProduttore,@RequestParam String nomeMetodoProduzione) {
         if (data.getAziendaById(idProduttore) instanceof Produttore produttore) {
             produttore.getGestoreMetodoProduzione().eliminaMetodoProduzione(nomeMetodoProduzione);
@@ -46,9 +49,18 @@ public class MetodoProduzioneServiceController {
     @PostMapping("/metodoProduzione/aggiungiMetodoProduzione/metodoProduzione")
     public ResponseEntity<Object> aggiungiMetodoProduzione(@RequestBody MetodoProduzioneAggiungiMetodoDTO metodoProduzioneAggiungiMetodoDTO) {
         if(data.getAziendaById(metodoProduzioneAggiungiMetodoDTO.getId()) instanceof Produttore produttore){
-            produttore.getGestoreMetodoProduzione().aggiungiMetodoProduzione(metodoProduzioneAggiungiMetodoDTO.getMetodoProduzione());
+            MetodoProduzione metodo = new MetodoProduzione(metodoProduzioneAggiungiMetodoDTO.getId(), metodoProduzioneAggiungiMetodoDTO.getNome(), metodoProduzioneAggiungiMetodoDTO.getDescrizione());
+            produttore.getGestoreMetodoProduzione().aggiungiMetodoProduzione(metodo);
         }
-        return ResponseEntity.ok("Step aggiunto");
+        return ResponseEntity.ok("metodoProduzione aggiunto");
+    }
+
+    @GetMapping("/metodoProduzione/listaMetodiProduzione")
+    public ResponseEntity<Object> getMetodiProduzione(@RequestParam String idProduttore) {
+        if(data.getAziendaById(idProduttore) instanceof Produttore produttore){
+            return ResponseEntity.ok(produttore.getGestoreMetodoProduzione().getListMetodiProduzione());
+        }
+        return ResponseEntity.badRequest().body("Errore");
     }
 
 }

@@ -51,19 +51,6 @@ public class DistributoreTipicita extends Azienda {
         return pacchetto;
     }
 
-    /**
-     * Crea un pacchetto con le seguenti caratteristiche e una lista di prodotti vuota:
-     * @param prezzo prezzo del pacchetto.
-     * @param nome nome del pacchetto.
-     * @param descrizione descrizione del pacchetto.
-     * @return il pacchetto appena creato.
-     */
-    public Pacchetto creaPacchetto(String id, Double prezzo, String nome, String descrizione) {
-        CreatorPacchetto fact = new CreatorPacchetto(id, nome, descrizione, prezzo, this);
-        Pacchetto pacchetto = (Pacchetto) fact.createItem();
-        this.richiediVerificaInformazioni(pacchetto);
-        return pacchetto;
-    }
 
     /**
      * Crea un Prodotto con le seguenti caratteristiche:
@@ -79,18 +66,6 @@ public class DistributoreTipicita extends Azienda {
         return prodotto;
     }
 
-    /**
-     * Permette di aggiungere un prodotto a un pacchetto già esistente.
-     * @param pacchetto a cui si vuole aggiungere un prodotto.
-     * @param prodotto prodotto da aggiungere al pacchetto.
-     */
-    public void aggiungiItemAPacchetto(Pacchetto pacchetto, Prodotto prodotto) {
-        if (pacchetto == null)
-            throw new NullPointerException("pacchetto null");
-        if (prodotto == null)
-            throw new NullPointerException("prodotto null");
-        pacchetto.addProdotto(prodotto);
-    }
 
     public Prodotto getProdottoMarkeplace(String id) {
         //TODO fare in modo che azienda possa accedere ai prodotti del marketplace.

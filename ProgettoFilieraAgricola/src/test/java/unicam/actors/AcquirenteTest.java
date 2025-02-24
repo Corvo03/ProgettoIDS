@@ -11,7 +11,7 @@ import unicam.modelli.marketplace.Bancomat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AcquirenteTest {
-    Acquirente acquirente = new Acquirente("email", "nomeUtente");
+    Acquirente acquirente = new Acquirente("aaa","email", "nomeUtente");
     Produttore produttore = new Produttore();
     Prodotto prodotto = new Prodotto("id111",10.0f, "Prodotto1", "Descrizione1", produttore);
     ElementoMarketplace elementoMarketplace = new ElementoMarketplace(new Stock(prodotto));

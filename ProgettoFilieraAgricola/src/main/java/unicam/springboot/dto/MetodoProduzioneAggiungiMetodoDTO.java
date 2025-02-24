@@ -4,18 +4,30 @@ import unicam.modelli.informazioniAggiuntive.MetodoProduzione;
 
 public class MetodoProduzioneAggiungiMetodoDTO {
     private String id;
-    private MetodoProduzione metodoProduzione;
+    private String idProduttore;
+    private String nome;
+    private String descrizione;
 
-    public MetodoProduzioneAggiungiMetodoDTO(String id, MetodoProduzione metodoProduzione) {
+    public MetodoProduzioneAggiungiMetodoDTO(String idProduttore, String id, String nome, String descrizione) {
+        this.idProduttore = idProduttore;
         this.id = id;
-        this.metodoProduzione = metodoProduzione;
+        this.nome = nome;
+        this.descrizione = descrizione;
     }
 
     public String getId() {
         return id;
     }
 
-    public MetodoProduzione getMetodoProduzione() {
-        return metodoProduzione;
+    public String getIdProduttore() {
+        return idProduttore;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }

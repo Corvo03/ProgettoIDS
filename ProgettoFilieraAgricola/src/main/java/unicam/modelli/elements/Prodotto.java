@@ -13,8 +13,6 @@ import java.util.List;
 
 @Entity
 public class Prodotto extends Item {
-    @Id
-    private String id;
     @OneToOne
     private Azienda aziendaProduttrice;
     @OneToMany
@@ -27,14 +25,14 @@ public class Prodotto extends Item {
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
         informazioneAggiuntiva = informazione;
-        this.id = id;
+
     }
 
     public Prodotto(String id, double prezzo, String nome, String descrizione, Azienda aziendaProduttrice) {
         super(id, prezzo, nome, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
         listaCertificati = new ArrayList<Certificato>();
-        this.id = id;
+
     }
 
     public Prodotto() {
@@ -77,7 +75,4 @@ public class Prodotto extends Item {
         return aziendaProduttrice;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 }

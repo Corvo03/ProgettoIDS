@@ -52,7 +52,7 @@ public class GestoreProcessoTrasformazione {
     public void aggiungiProcessoTrasformazione(String nome, String descrizione) {
         if(nome.isEmpty() || descrizione.isEmpty())
             throw new NullPointerException("Processo di Trasformazione non valido");
-        this.aggiungiProcessoTrasformazione(new ProcessoTrasformazione(nome, descrizione));
+        this.aggiungiProcessoTrasformazione(new ProcessoTrasformazione("aaaaa",nome, descrizione));
     }
 
     /**
