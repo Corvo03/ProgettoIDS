@@ -13,10 +13,17 @@ import java.util.List;
 public class GestoreMetodoProduzione {
     private List<MetodoProduzione> listMetodiProduzione;
 
+    /**
+     * Crea un nuovo gestore di metodi di produzione passando una lista di metdo di produzione.
+     * @param listMetodiProduzione
+     */
     public GestoreMetodoProduzione(List<MetodoProduzione> listMetodiProduzione) {
         this.listMetodiProduzione = listMetodiProduzione;
     }
 
+    /**
+     * Crea un nuovo gestore di metodi di produzione con lista vuota
+     */
     public GestoreMetodoProduzione() {
         this.listMetodiProduzione = new ArrayList<MetodoProduzione>();
     }

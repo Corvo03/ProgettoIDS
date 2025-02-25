@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+/**
+ * Classe che rappresenta lo stock di un item
+ */
 @Entity
 public class Stock {
     @Id
@@ -12,6 +15,10 @@ public class Stock {
     private Item item;
     private int quantita;
 
+    /**
+     * Crea un oggetto Stock con L'item passato come parametro
+     * @param item
+     */
     public Stock(Item item) {
         this.item = item;
         this.quantita = 0;

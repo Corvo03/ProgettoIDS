@@ -14,11 +14,24 @@ import unicam.modelli.gestori.GestoreSistema;
 import unicam.modelli.elements.Certificato;
 
 import java.util.List;
+
+/**
+ * Un distributore tipicita è un'azienda che si occupa di distribuire prodotti tipici
+ * puo creare pacchetti e prodotti
+ */
 @Entity
 public class DistributoreTipicita extends Azienda {
-    @Id
-    private String id;
 
+    /**
+     * Crea un distrbutore tipicita con i dati passati
+     * @param id
+     * @param mail
+     * @param nomeUtente
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     * @param nomeProfilo
+     * @param descrProfilo
+     */
     public DistributoreTipicita(String id,String mail, String nomeUtente, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
         super(id,mail, nomeUtente, indirizzoSediProduttive, informazioniSensibili,nomeProfilo, descrProfilo);

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Gestore degli Stock.
+ */
 public class GestoreStock{
     private final List<Stock> listaStock;
 

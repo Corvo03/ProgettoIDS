@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * SINGLETON
  * Classe che fa da tramite tra le sezioni del sistema disponibili a tutti gli utenti.
  */
 public class GestoreSistema {
@@ -21,6 +22,9 @@ public class GestoreSistema {
     private final SezioneProfili sezioneProfili;
     private final GestoreMarketplace gestoreMarketplace;
 
+    /**
+     * Costruttore privato per evitare che vengano create più istanze della classe
+     */
     private GestoreSistema() {
         gestoreMarketplace = new GestoreMarketplace();
         sezioneProfili = new SezioneProfili();

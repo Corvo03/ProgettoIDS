@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Rappresenta un processo di trasformazione che può essere associato ad un prodotto
+ * creato da un trasformatore
+ */
 @Entity
 public class ProcessoTrasformazione extends InformazioneAggiuntiva {
 
@@ -12,17 +17,30 @@ public class ProcessoTrasformazione extends InformazioneAggiuntiva {
     @OneToMany
     private List<Fase> fasiTrasformazione;
 
+    /**
+     * Crea un processo di trasformazione con i dati passati
+     * @param id
+     * @param nome
+     * @param descrizione
+     */
     public ProcessoTrasformazione(String id,String nome, String descrizione) {
         super(id);
         this.nome = nome;
         this.descrizione = descrizione;
         fasiTrasformazione = new ArrayList<Fase>();
     }
+    /**
+     * Crea un processo di trasformazione con i dati passati e la fase
+     * @param nome
+     * @param descrizione
+     */
 
-    public ProcessoTrasformazione(String nome, String descrizione, Fase fase) {
+    public ProcessoTrasformazione(String id,String nome, String descrizione, Fase fase) {
+        super(id);
         this.nome = nome;
         this.descrizione = descrizione;
-        this.fasiTrasformazione = new ArrayList<>();
+        fasiTrasformazione = new ArrayList<Fase>();
+        fasiTrasformazione.add(fase);
     }
 
     public ProcessoTrasformazione() {

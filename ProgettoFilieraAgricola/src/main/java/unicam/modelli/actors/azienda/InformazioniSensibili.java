@@ -4,6 +4,10 @@ package unicam.modelli.actors.azienda;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
+
+/**
+ * Informazione sensibile dell'azienda, è una informazione che va approvata
+ */
 @Entity
 public class InformazioniSensibili implements InformazioneDaApprovare {
     @Id
@@ -14,6 +18,14 @@ public class InformazioniSensibili implements InformazioneDaApprovare {
     private String pIva;
     private String codiceFiscale;
 
+    /**
+     * Crea un'informazione sensibile
+     * @param sedeLegale
+     * @param pec
+     * @param nomeAzienda
+     * @param pIva
+     * @param codiceFiscale
+     */
     public InformazioniSensibili(String sedeLegale, String pec, String nomeAzienda, String pIva, String codiceFiscale) {
         this.sedeLegale = sedeLegale;
         this.pec = pec;

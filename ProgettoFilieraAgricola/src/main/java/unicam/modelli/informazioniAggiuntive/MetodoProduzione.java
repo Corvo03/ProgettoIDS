@@ -6,12 +6,23 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.Objects;
+
+/**
+ * Rappresenta un metodo di produzione di un prodotto
+ * creato da un produttore
+ */
 @Entity
 public class MetodoProduzione extends InformazioneAggiuntiva {
 
     private String nome;
     private String descrizione;
 
+    /**
+     * Crea un metodo di produzione con i dati passati
+     * @param id
+     * @param nome
+     * @param descrizione
+     */
     public MetodoProduzione(String id,String nome, String descrizione) {
         super(id);
         this.nome = nome;

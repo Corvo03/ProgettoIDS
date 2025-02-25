@@ -34,7 +34,7 @@ public class Data {
     public static List<MetodoProduzione> metodiProduzione = new ArrayList<>();
     public static List<ProcessoTrasformazione> processiTrasformazione = new ArrayList<>();
     public static GestoreSistema gestoreSistema = getInstance();
-    public static ResponsabilePiattaforma responsabilePiattaforma = new ResponsabilePiattaforma("mail","nomeUtente");
+    public static ResponsabilePiattaforma responsabilePiattaforma = new ResponsabilePiattaforma("ggg","mail","nomeUtente");
     private Curatore curatore = new Curatore();
     private List<InformazioneDaApprovare> informazioniDaApprovare = new ArrayList<>();
     Marketplace marketplace = gestoreSistema.getGestoreMarketplace().getMarketPlace();

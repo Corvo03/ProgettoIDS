@@ -22,8 +22,7 @@ import java.util.List;
  */
 @Entity
 public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVerificaInformazione {
-    @Id
-    private String id;
+
     /**
      * Lista di tutti gli eventi creati dall'animatore
      */
@@ -50,12 +49,12 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
      * @param nomeUtente associato all'animatore
      */
     public AnimatoreFiliera(String id,String email, String nomeUtente) {
-        super(email, nomeUtente);
+        super(id,email, nomeUtente);
         this.gestoreInvitiInviati = new GestoreInvitiInviati(MediatorInviti.getInstance());
         this.gestoreStock = new GestoreStock();
         this.listaEventi = new ArrayList<Evento>();
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
-        this.id = id;
+
     }
 
     public AnimatoreFiliera() {
@@ -87,17 +86,7 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
         this.gestoreStock.ricaricaProdotto(stock, quantita);
     }
 
-    /**
-     * Delega l'invito di un'azienda al mittente
-     *
-     * @param evento             al quale invitare l'azienda
-     * @param partecipanteEvento da invitare all'evento
-     * @param messaggio          col quale mandare l'invito.
-     */
-    public void invitaAzienda(Evento evento, Azienda partecipanteEvento, String messaggio) {
-        Invito invito = new Invito(this, evento, partecipanteEvento, messaggio);
-        this.gestoreInvitiInviati.InviaInvito(invito);
-    }
+
 
     public void invitaAzienda(Invito invito) {
         this.gestoreInvitiInviati.InviaInvito(invito);
@@ -121,10 +110,27 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
         }
     }
 
+    /**
+     * Crea l'evento e lo mette nella lista
+     *
+     * @param evento da creare
+     */
     public void creaEvento(Evento evento) {
         if(evento == null)
             throw new NullPointerException("Evento non trovato");
         this.listaEventi.add(evento);
+    }
+
+    /**
+     * Crea un invito con le info passate e lo invia tramite gestoreInvitiInviati
+     * @param id
+     * @param evento
+     * @param partecipanteEvento
+     * @param messaggio
+     */
+    public void invitaAzienda(String id,Evento evento, Azienda partecipanteEvento, String messaggio) {
+        Invito invito = new Invito(id,this, evento, partecipanteEvento, messaggio);
+        this.gestoreInvitiInviati.InviaInvito(invito);
     }
 
     public List<Evento> getListaEventi() {
@@ -144,14 +150,7 @@ public class AnimatoreFiliera extends UtenteAutenticato implements RichiedenteVe
         return this.gestoreItemRifiutati;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void invitaAzienda(String id,Evento evento, Azienda partecipanteEvento, String messaggio) {
-        Invito invito = new Invito(id,this, evento, partecipanteEvento, messaggio);
-        this.gestoreInvitiInviati.InviaInvito(invito);
-    }
 
     /**
      * @return la lista degli inviti inviati

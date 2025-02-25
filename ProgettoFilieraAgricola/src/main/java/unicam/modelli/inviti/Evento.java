@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * specifica cosa deve avere un evento
+ * Classe che rappresenta un evento
  */
 @Entity
 public class Evento {

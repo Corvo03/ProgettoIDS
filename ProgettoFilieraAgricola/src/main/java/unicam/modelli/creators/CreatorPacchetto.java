@@ -8,6 +8,10 @@ import unicam.modelli.actors.azienda.Azienda;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che rappresenta la logica di creazione di un pacchetto.
+ */
+
 public class CreatorPacchetto extends ItemFactory {
     private List<Prodotto> listaProdotti;
     private Azienda aziendaProduttrice;

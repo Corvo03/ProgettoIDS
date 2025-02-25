@@ -5,6 +5,9 @@ import unicam.modelli.elements.Certificato;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che rappresenta la logica di gestione dei certificati.
+ */
 public class GestoreCertificato{
     protected final static List<Certificato> listaCertificati = new ArrayList<>();
 

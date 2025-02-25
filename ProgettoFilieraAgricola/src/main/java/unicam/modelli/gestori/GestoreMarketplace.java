@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Classe che rappresenta il gestore del marketplace
+ */
 public class GestoreMarketplace {
     private Marketplace marketPlace;
 

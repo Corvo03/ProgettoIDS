@@ -11,6 +11,10 @@ import unicam.modelli.actors.azienda.Azienda;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Rappresenta un prodotto che può essere venduto nel marketplace
+ * dopo essere stato approvato e caricato
+ */
 @Entity
 public class Prodotto extends Item {
     @OneToOne
@@ -20,6 +24,15 @@ public class Prodotto extends Item {
     @OneToOne
     private InformazioneAggiuntiva informazioneAggiuntiva;
 
+    /**
+     * Crea un prodotto con i dati passati
+     * @param id
+     * @param prezzo
+     * @param nomeItem
+     * @param descrizione
+     * @param aziendaProduttrice
+     * @param informazione
+     */
     public Prodotto(String id, double prezzo, String nomeItem, String descrizione, Azienda aziendaProduttrice, InformazioneAggiuntiva informazione) {
         super(id, prezzo, nomeItem, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;
@@ -28,6 +41,14 @@ public class Prodotto extends Item {
 
     }
 
+    /**
+     * Crea un prodotto con i dati passati
+     * @param id
+     * @param prezzo
+     * @param nome
+     * @param descrizione
+     * @param aziendaProduttrice
+     */
     public Prodotto(String id, double prezzo, String nome, String descrizione, Azienda aziendaProduttrice) {
         super(id, prezzo, nome, descrizione);
         this.aziendaProduttrice = aziendaProduttrice;

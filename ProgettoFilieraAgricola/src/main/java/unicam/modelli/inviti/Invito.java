@@ -57,16 +57,6 @@ public class Invito {
         this.accettato = false;
     }
 
-    public Invito(AnimatoreFiliera organizzatoreEvento, Evento evento, Azienda partecipanteEvento, String messaggio) {
-        this.animatoreFiliera = organizzatoreEvento ;
-        this.evento = evento ;
-        this.partecipanteEvento = partecipanteEvento;
-        this.dataCreazione = LocalDate.now() ;
-        this.dataScadenza = LocalDate.now().plusDays(2) ;
-        this.messaggio = messaggio ;
-        this.accettato = false;
-    }
-
 
 
     public Invito() {

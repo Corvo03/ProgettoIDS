@@ -11,6 +11,9 @@ import java.util.List;
 public class SezioneProfili {
     private List<Profilo> listaProfili;
 
+    /**
+     * costruttore, crea lsta profili vuota
+     */
     public SezioneProfili() {
         listaProfili = new ArrayList<Profilo>();
     }
@@ -19,16 +22,19 @@ public class SezioneProfili {
         return listaProfili;
     }
 
+    /**
+     * aggiunge un profilo alla lista
+     * @param profilo
+     */
+    public void addProfilo(Profilo profilo) {
+        if(!listaProfili.contains(profilo))
+            listaProfili.add(profilo);
+    }
     public Profilo getProfilo(String id){
         for(Profilo profilo : listaProfili){
             if(profilo.getId().equals(id))
                 return profilo;
         }
         return null;
-    }
-
-    public void addProfilo(Profilo profilo) {
-        if(!listaProfili.contains(profilo))
-            listaProfili.add(profilo);
     }
 }

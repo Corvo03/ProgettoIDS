@@ -8,6 +8,9 @@ import unicam.modelli.informazioniAggiuntive.InformazioneAggiuntiva;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe che rappresenta la logica di creazione di un Prodotto.
+ */
 public class CreatorProdotto extends ItemFactory {
     private InformazioneAggiuntiva informazioneAggiuntiva;
     private List<Certificato> certificati;
@@ -49,6 +52,14 @@ public class CreatorProdotto extends ItemFactory {
         this.certificati = new ArrayList<Certificato>();
     }
 
+    /**
+     * Permette di creare la classe che contiene la logica di creazione del Prodotto.
+     * @param id
+     * @param nome
+     * @param descrizione
+     * @param prezzo
+     * @param aziendaProduttrice
+     */
     public CreatorProdotto(String id, String nome, String descrizione, double prezzo, Azienda aziendaProduttrice) {
         super(id, nome, descrizione, prezzo);
         this.informazioneAggiuntiva = null;

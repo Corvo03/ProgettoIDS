@@ -23,10 +23,15 @@ public class Acquirente extends UtenteAutenticato {
     @Transient
     private GestoreCarrello gestoreCarrello;
 
+    /**
+     * Crea un acquirente con una determinata mail e nomeUtente
+     * @param id
+     * @param email
+     * @param nomeUtente
+     */
     public Acquirente(String id,String email, String nomeUtente) {
-        super(email, nomeUtente);
+        super(id,email, nomeUtente);
         this.gestoreCarrello = new GestoreCarrello();
-        this.id = id;
     }
 
     public Acquirente() {}
@@ -80,10 +85,6 @@ public class Acquirente extends UtenteAutenticato {
      */
     public List<ElementoMarketplace> getListaElementiCarrello(){
         return new ArrayList<>(gestoreCarrello.getCarrello().getElementiCarrello().keySet());
-    }
-
-    public Object getId() {
-        return id;
     }
 
     public Carrello getCarrello() {

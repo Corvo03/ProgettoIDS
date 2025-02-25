@@ -11,6 +11,10 @@ public class GestoreInvitiInviati implements UtilizzatoreInviti {
     private Mediator mediator;
     private List<Invito> listaInvito;
 
+    /**
+     * costruttore del gestore di inviti inviati
+     * @param mediator
+     */
     public GestoreInvitiInviati(Mediator mediator) {
         this.mediator = mediator;
         this.listaInvito = new ArrayList<Invito>();

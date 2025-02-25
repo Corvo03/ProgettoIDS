@@ -9,6 +9,9 @@ import unicam.modelli.actors.azienda.Azienda;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Rappresenta un pacchetto di prodotti, ovvero un insieme di prodotti venduti
+ */
 public class Pacchetto extends Item {
     private Azienda aziendaProduttrice;
     private List<Prodotto> listaProdotti;

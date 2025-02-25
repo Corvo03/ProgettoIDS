@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * SINGLETON<<<<
+ * SINGLETON
  * mediatore tra gestore invitiInviati, GestoreInvitiRicevuti e GestoreEsitoInvito
  * (AnimatoreFiliera, Azienda ed Evento)
  */

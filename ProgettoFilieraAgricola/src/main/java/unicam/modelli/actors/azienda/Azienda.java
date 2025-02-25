@@ -16,10 +16,12 @@ import unicam.repository.Data;
 
 import java.util.List;
 
+/**
+ * Rappresenta un'azienda che può partecipare a eventi e richiedere la verifica delle informazioni sensibili
+ * e delle informazioneDaApprovare.
+ */
 @Entity
 public abstract class Azienda extends UtenteAutenticato implements RichiedenteVerificaInformazione, PartecipanteEvento {
-    @Id
-    private String id;
     @ElementCollection
     private List<String> indirizzoSediProduttive;
     @Transient
@@ -40,8 +42,8 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
      */
     public Azienda(String id,String email, String nomeUtente, List<String> indirizzoSediProduttive,
                    InformazioniSensibili informazioniSensibili) {
-        super(email, nomeUtente);
-        this.id = id;
+        super(id,email, nomeUtente);
+
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
@@ -50,11 +52,26 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         modificaProfilo(nomeUtente, "Profilo aziendale");
 
     }
+    /**
+     * Crea un azienda con una determinata mail e nomeUtente
+     * @param id
+     * @param email
+     * @param nomeUtente
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     * @param nomeProfilo
+     * @param descProfilo
+     * @throws NullPointerException se il nomeProfilo o la descProfilo sono nulli.
+     *
+     *
+     */
 
     public Azienda(String id, String email, String nomeUtente, List<String> indirizzoSediProduttive,
                    InformazioniSensibili informazioniSensibili, String nomeProfilo, String descProfilo) {
-        super(email, nomeUtente);
-        this.id = id;
+        super(id,email, nomeUtente);
+        if(nomeProfilo == null || id == null || nomeUtente == null)
+            throw new NullPointerException("Nome profilo null");
+
         this.gestoreStock = new GestoreStock();
         this.gestoreInvitiRicevuti = new GestoreInvitiRicevuti(MediatorInviti.getInstance());
         this.gestoreItemRifiutati = new GestoreItemRifiutati();
@@ -219,13 +236,6 @@ public abstract class Azienda extends UtenteAutenticato implements RichiedenteVe
         this.modificaItemRifiutato(itemRifiutato, nome, descrizione, 0);
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Invito getInvito(String idInvito) {
         return this.getGestoreInvitiRicevuti().getInvitoById(idInvito);

@@ -5,6 +5,9 @@ import unicam.modelli.inviti.Evento;
 import unicam.modelli.elements.Item;
 import unicam.modelli.actors.AnimatoreFiliera;
 
+/**
+ * Classe che rappresenta la logica di creazione di un Biglietto.
+ */
 public class CreatorBiglietto extends ItemFactory {
     private AnimatoreFiliera animatoreFiliera;
     private Evento evento;

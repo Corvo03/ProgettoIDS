@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+/**
+ * Rappresenta un elemento del marketplace,
+ * con all'interno uno stock di un tipo di item
+ */
 @Entity
 public class ElementoMarketplace {
     @Id
@@ -11,6 +15,10 @@ public class ElementoMarketplace {
     @OneToOne
     private Stock stock;
 
+    /**
+     * Crea un elementoMarketplace partendo dallo Stock passato
+     * @param stock
+     */
     public ElementoMarketplace(Stock stock) {
         this.stock = stock;
         this.id = stock.getId();

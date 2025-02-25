@@ -6,6 +6,10 @@ import unicam.modelli.informazioniAggiuntive.ProcessoTrasformazione;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il gestore dei Processi di Trasformazione
+ * dei Trasformatori
+ */
 public class GestoreProcessoTrasformazione {
     private List<ProcessoTrasformazione> listaProcessiTrasformazione;
 

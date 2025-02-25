@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+/**
+ * Classe astratta che rappresenta un'informazione aggiuntiva,
+ * come ad esempio Metodi di Produzione o Processi di Trasformazione.
+ */
 @Entity
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
 @JsonSubTypes({

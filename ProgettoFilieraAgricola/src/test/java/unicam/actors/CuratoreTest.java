@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CuratoreTest {
 
-    Curatore curatore = new Curatore("nomeUtente", "email");
+    Curatore curatore = new Curatore("111","nomeUtente", "email");
     Produttore produttore = new Produttore("2", "nome", "cognome", null, null);
 
     @Test

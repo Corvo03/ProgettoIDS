@@ -9,6 +9,9 @@ import unicam.modelli.actors.azienda.Azienda;
 
 import java.util.*;
 
+/**
+ * Classe che si occupa di gestire le informazioni da approvare.
+ */
 public class GestoreInformazioni {
     private static GestoreInformazioni istanza;
     private final Map<InformazioneDaApprovare, RichiedenteVerificaInformazione> informazioniDaApprovare;

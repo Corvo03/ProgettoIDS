@@ -5,5 +5,10 @@ package unicam.modelli.inviti;
  */
 public interface Mediator
 {
-    public void notify(Invito invito, UtilizzatoreInviti utilizzatore);
+    /**
+     * il chimante notifica al mediator lo stato dell'invito dopo un'operazione
+     * @param invito
+     * @param sender
+     */
+    public void notify(Invito invito, UtilizzatoreInviti sender);
 }

@@ -11,16 +11,38 @@ import unicam.modelli.creators.ItemFactory;
 
 import java.util.List;
 
+/**
+ * Questa classe rappresenta un Produttore all'interno del sistema.
+ * crea prodotti con metodi di produzione specificati all'interno
+ */
 public class Produttore extends Azienda {
 
     private GestoreMetodoProduzione gestoreMetodoProduzione;
 
+    /**
+     * Crea un produttore con i dati passati
+     * @param id
+     * @param nome
+     * @param mail
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     * @param nomeProfilo
+     * @param descrProfilo
+     */
     public Produttore(String id, String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
         super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
         gestoreMetodoProduzione = new GestoreMetodoProduzione();
     }
 
+    /**
+     * Crea un produttore con i dati passati
+     * @param id
+     * @param nome
+     * @param mail
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     */
     public Produttore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili);

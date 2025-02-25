@@ -2,6 +2,9 @@ package unicam.modelli.creators;
 
 import unicam.modelli.elements.Item;
 
+/**
+ * Classe astratta che rappresenta il Factory Method per la creazione di un Item.
+ */
 public abstract class ItemFactory {
     protected String nome;
     protected String descrizione;

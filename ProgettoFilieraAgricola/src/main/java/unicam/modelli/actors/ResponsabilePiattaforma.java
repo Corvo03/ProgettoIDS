@@ -5,12 +5,16 @@ import jakarta.persistence.Id;
 import unicam.modelli.elements.Certificato;
 import unicam.modelli.gestori.GestoreSistema;
 
+/**
+ * Responsabile della piattaforma, può creare certificati che verranno
+ * usati dalle aziende
+ */
 @Entity
 public class ResponsabilePiattaforma extends UtenteAutenticato {
     @Id
     private String id;
-    public ResponsabilePiattaforma(String email, String nomeUtente) {
-        super(email, nomeUtente);
+    public ResponsabilePiattaforma(String id,String email, String nomeUtente) {
+        super(id,email, nomeUtente);
     }
 
     public ResponsabilePiattaforma() {

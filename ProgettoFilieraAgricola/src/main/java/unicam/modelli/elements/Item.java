@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import unicam.modelli.marketplace.InformazioneDaApprovare;
 
+/**
+ * Classe astratta che rappresenta un item
+ */
 @Entity
 public abstract class Item implements InformazioneDaApprovare {
     @Id
@@ -11,6 +14,14 @@ public abstract class Item implements InformazioneDaApprovare {
     private double prezzo;
     private String nomeItem;
     private String descrizione;
+
+    /**
+     * Crea un item con i paraemtri passati
+     * @param id
+     * @param prezzo
+     * @param nomeItem
+     * @param descrizione
+     */
     public Item(String id, double prezzo, String nomeItem, String descrizione) {
         this.prezzo = prezzo;
         this.nomeItem = nomeItem;

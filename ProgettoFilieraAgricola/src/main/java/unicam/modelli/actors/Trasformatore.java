@@ -16,15 +16,38 @@ import unicam.modelli.creators.ItemFactory;
 
 import java.util.List;
 
+/**
+ * Rappresenta un Trasformatore, puo creare prodotti con metid di trasformazione
+ * specificati al loro interno
+ */
+
 public class Trasformatore extends Azienda {
     private GestoreProcessoTrasformazione gestoreProcessoTrasformazione;
 
+    /**
+     * Crea un trasformatore con i dati passati
+     * @param id
+     * @param nome
+     * @param mail
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     * @param nomeProfilo
+     * @param descrProfilo
+     */
     public Trasformatore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili, String nomeProfilo, String descrProfilo) {
         super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili, nomeProfilo, descrProfilo);
         gestoreProcessoTrasformazione = new GestoreProcessoTrasformazione();
     }
 
+    /**
+     * Crea un trasformatore con i dati passati
+     * @param id
+     * @param nome
+     * @param mail
+     * @param indirizzoSediProduttive
+     * @param informazioniSensibili
+     */
     public Trasformatore(String id,String nome, String mail, List<String> indirizzoSediProduttive
             , InformazioniSensibili informazioniSensibili) {
         super(id,mail, nome, indirizzoSediProduttive, informazioniSensibili);
@@ -36,7 +59,6 @@ public class Trasformatore extends Azienda {
 
     /**
      * Crea un prodotto utilizzando le seguenti informazioni:
-     *
      * @param prezzo      del prodotto.
      * @param nome        del prodotto.
      * @param descrizione del prodotto.
