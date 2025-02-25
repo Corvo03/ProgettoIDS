@@ -319,7 +319,7 @@ public class Data {
 
     public Curatore getCuratoreById(String idCuratore) {
         for (Curatore curatore : curatori) {
-            if (Objects.equals(curatore.getId(), idCuratore))
+            if (curatore.getId().equals(idCuratore))
                 return curatore;
         }
         return null;

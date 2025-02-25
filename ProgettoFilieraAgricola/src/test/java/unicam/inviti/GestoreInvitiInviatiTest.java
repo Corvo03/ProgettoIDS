@@ -21,7 +21,7 @@ class GestoreInvitiInviatiTest {
         Evento evento = new Evento("id1","nome", data1,"luogo","descrizione", 100);
         Azienda azienda = new Produttore("id2","nomeProduttore","mailProduttore",null,null);
         AnimatoreFiliera animatoreFiliera = new AnimatoreFiliera("id3","nomeAnimatore","mailAnimatore");
-        Invito invito = new Invito(animatoreFiliera,evento,azienda,"messaggio");
+        Invito invito = new Invito("1",animatoreFiliera,evento,azienda,"messaggio");
         GestoreEsitoInvito gestore = new GestoreEsitoInvito();
 
         assertThrows(RuntimeException.class,() -> animatoreFiliera.getGestoreInvitiInviati().eliminaInvito(invito));

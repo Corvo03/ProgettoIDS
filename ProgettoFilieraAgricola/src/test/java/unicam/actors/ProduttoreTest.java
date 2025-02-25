@@ -44,7 +44,7 @@ class ProduttoreTest {
 
     private void aggiungiCertificati(){
         for(int i=1; i<=15; i++){
-            gcs.creaCertificato(new Certificato( "Cert"+i, "Descr"+i));
+            gcs.creaCertificato(new Certificato("100","Cert"+i, "Descr"+i));
         }
     }
 

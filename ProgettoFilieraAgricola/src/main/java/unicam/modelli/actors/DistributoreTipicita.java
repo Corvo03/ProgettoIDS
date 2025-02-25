@@ -79,9 +79,7 @@ public class DistributoreTipicita extends Azienda {
         return prodotto;
     }
 
-
     public Prodotto getProdottoMarkeplace(String id) {
-        //TODO fare in modo che azienda possa accedere ai prodotti del marketplace.
         if(GestoreSistema.getInstance().getItemById(id) instanceof Prodotto p)
             return p;
         throw new IllegalArgumentException("L'elemento non trovato");

@@ -22,6 +22,7 @@ public abstract class UtenteAutenticato {
      * @param nomeUtente
      */
     public UtenteAutenticato(String id,String email, String nomeUtente) {
+        this.id = id;
         this.email = email;
         this.nomeUtente = nomeUtente;
     }

@@ -45,14 +45,4 @@ class DistributoreTipicitaTest {
         assertEquals(p.getListaProdotti().getLast().getNomeItem(), p2.getNomeItem());
 
     }
-
-    @Test
-    void aggiungiItemAPacchetto() {
-
-    }
-
-    @Test
-    void getProdottoMarkeplace() {
-        //TODO
-    }
 }

@@ -87,6 +87,11 @@ public class Acquirente extends UtenteAutenticato {
         return new ArrayList<>(gestoreCarrello.getCarrello().getElementiCarrello().keySet());
     }
 
+    /**
+     * Ottiene il carrello dell'acquirente
+     *
+     * @return carrello dell'acquirente
+     */
     public Carrello getCarrello() {
         return gestoreCarrello.getCarrello();
     }

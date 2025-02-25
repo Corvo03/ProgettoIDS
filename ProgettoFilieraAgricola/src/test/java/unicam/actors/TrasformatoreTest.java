@@ -21,7 +21,6 @@ class TrasformatoreTest {
         CreatorProdotto creatorProdotto1 = new CreatorProdotto("prodotto1", "descr1", "descr1",25.1 ,pt, trasformatore);
 
         Prodotto p = (Prodotto) creatorProdotto1.createItem();
-        //TODO trasformatore.creaProdotto();
         assertEquals("prodotto1", p.getNomeItem());
         assertEquals("descr1", p.getDescrizione());
         assertEquals(25.1, p.getPrezzo());

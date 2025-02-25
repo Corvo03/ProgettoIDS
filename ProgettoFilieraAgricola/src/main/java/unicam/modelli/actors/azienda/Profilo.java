@@ -49,7 +49,6 @@ public class Profilo {
     }
     public Azienda getAzienda() {return azienda;}
 
-    //TODO vedere se i setter vanno su una parte apposita per la modifica profilo
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
     }
