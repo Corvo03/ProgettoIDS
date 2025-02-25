@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "76b1269c-867d-4f8c-8c6f-a569c58a6c7d",
+		"name": "Prodotti",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40495781",
+		"_collection_link": "https://progettoids.postman.co/workspace/Progetto-Filiera-Agricola~1268fcc0-28d1-40d3-abb9-1ad01827e6c3/collection/42533466-76b1269c-867d-4f8c-8c6f-a569c58a6c7d?action=share&source=collection_link&creator=40495781"
+	},
+	"item": [
+		{
+			"name": "Add Prodotto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"idProdotto\" : \"111\",\r\n  \"idAzienda\": \"1\",\r\n  \"prezzo\": 20.5,\r\n  \"nome\": \"Prodotto Esempio\",\r\n  \"descrizione\": \"Descrizione del prodotto esempio\",\r\n  \"informazioneAggiuntiva\": {\r\n    \"type\": \"MetodoProduzione\",\r\n    \"nome\": \"Metodo Biologico\",\r\n    \"descrizione\": \"Produzione biologica certificata\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/prodotto",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"prodotto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

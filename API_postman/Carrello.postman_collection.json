@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "5807f88a-ac45-4e15-bc58-935a1c22d678",
+		"name": "Carrello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40495781",
+		"_collection_link": "https://progettoids.postman.co/workspace/Progetto-Filiera-Agricola~1268fcc0-28d1-40d3-abb9-1ad01827e6c3/collection/40496800-5807f88a-ac45-4e15-bc58-935a1c22d678?action=share&source=collection_link&creator=40495781"
+	},
+	"item": [
+		{
+			"name": "Ottieni Carrello da Id Acquirente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carrello/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Aggiungi Elemento al carrello",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carrello/1/15/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"1",
+						"15",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rimuovi Elemento con quantità",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carrello/1/15/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"1",
+						"15",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rimuovi Elemento senza quantità",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carrello/1/15",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"1",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paga con PayPal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carrello/paga/paypal/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"paga",
+						"paypal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paga con Bancomat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/carrello/paga/paypal/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carrello",
+						"paga",
+						"paypal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

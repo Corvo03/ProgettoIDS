@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "34abeff9-a3bd-4b6d-8fbd-b2fad0e495a0",
+		"name": "Pacchetto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40495781",
+		"_collection_link": "https://progettoids.postman.co/workspace/Progetto-Filiera-Agricola~1268fcc0-28d1-40d3-abb9-1ad01827e6c3/collection/42533466-34abeff9-a3bd-4b6d-8fbd-b2fad0e495a0?action=share&source=collection_link&creator=40495781"
+	},
+	"item": [
+		{
+			"name": "Crea Pacchetto",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\" : 9,\n    \"prezzo\" : 10,\n    \"nomeItem\" : \"Nome Pacchetto\",\n    \"descrizione\" : \"Descrizione Pacchetto\",\n    \"listaProdotti\" : [\n        \"1\",\n        \"2\",\n        \"3\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pacchetto/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pacchetto",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "8a00c8ea-a388-45ba-b75c-7390cb5b6031",
+		"name": "Inviti",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40495781",
+		"_collection_link": "https://progettoids.postman.co/workspace/Progetto-Filiera-Agricola~1268fcc0-28d1-40d3-abb9-1ad01827e6c3/collection/40495781-8a00c8ea-a388-45ba-b75c-7390cb5b6031?action=share&source=collection_link&creator=40495781"
+	},
+	"item": [
+		{
+			"name": "Inviti Ricevuti",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/inviti/ricevuti/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inviti",
+						"ricevuti",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Azienda accetta Invito",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/invito/ricevuto/accetta?idAzienda=1&idInvito=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invito",
+						"ricevuto",
+						"accetta"
+					],
+					"query": [
+						{
+							"key": "idAzienda",
+							"value": "1"
+						},
+						{
+							"key": "idInvito",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Azienda rifiuta invito",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/invito/ricevuto/rifiuta?idAzienda=2&idInvito=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"invito",
+						"ricevuto",
+						"rifiuta"
+					],
+					"query": [
+						{
+							"key": "idAzienda",
+							"value": "2"
+						},
+						{
+							"key": "idInvito",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inviti Inviati",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/inviti/invitati/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inviti",
+						"invitati",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

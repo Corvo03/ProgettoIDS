@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "02bc199c-9e06-4689-9311-a841f2a9a6b8",
+		"name": "Azienda",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40495781",
+		"_collection_link": "https://progettoids.postman.co/workspace/Progetto-Filiera-Agricola~1268fcc0-28d1-40d3-abb9-1ad01827e6c3/collection/40495781-02bc199c-9e06-4689-9311-a841f2a9a6b8?action=share&source=collection_link&creator=40495781"
+	},
+	"item": [
+		{
+			"name": "Modifica Dati Sensibili",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"sedeLegale\": \"via sede Modificata Strada 3\",\n    \"pec\": \"distr201@pec.com\",\n    \"nomeAzienda\": \"AziendaDistrCesti1\",\n    \"pIva\": \"pIvaDistr1123\",\n    \"codiceFiscale\": \"codDistr1456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dati-sensibili/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dati-sensibili",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Informazioni Sensibili",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dati-sensibili/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dati-sensibili",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Visualizza DatiAzienda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/dati-azienda/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dati-azienda",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifica Profilo",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\" : \"NomeProfilo Modificato\",\n    \"descrizione\" : \"Descrizione profilo nuova\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/profilo/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profilo",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifica sedi produttive azienda",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n    [\n        \"Via gioberti 3\",\n        \"via modificata transenna quarta\",\n        \"Via Dante 190\",\n        \"Stradale duomo 1\"\n    ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/dati-azienda/sedi-produttive/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"dati-azienda",
+						"sedi-produttive",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
