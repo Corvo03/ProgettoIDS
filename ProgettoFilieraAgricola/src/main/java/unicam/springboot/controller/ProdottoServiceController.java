@@ -3,6 +3,7 @@ package unicam.springboot.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import unicam.modelli.actors.azienda.Azienda;
+import unicam.modelli.gestori.GestoreInformazioni;
 import unicam.springboot.dto.AddProdottoDTO;
 import unicam.modelli.actors.DistributoreTipicita;
 import unicam.modelli.actors.Produttore;
@@ -16,10 +17,6 @@ import unicam.repository.Data;
 public class ProdottoServiceController {
     Data data = Data.getIstance();
 
-    @GetMapping("/prodotto/{id}")
-    public ResponseEntity<Prodotto> getProdotto(String id) {
-        return ResponseEntity.ok(data.getProdottoById(id));
-    }
 
     @PostMapping("/prodotto")
     public ResponseEntity<Object> addProdotto(@RequestBody AddProdottoDTO addProdottoDTO) {
@@ -48,9 +45,13 @@ public class ProdottoServiceController {
         return ResponseEntity.ok("Prodotto aggiunto");
     }
 
-    @GetMapping("/prodotto")
-    public ResponseEntity<Object> getProdotti() {
-        return ResponseEntity.ok(data.getProdottiMarketplace());
-    }
 
+    @GetMapping("/prodotto")
+    public ResponseEntity<Object> getProdotto(@RequestParam String idProdotto) {
+        if(GestoreInformazioni.getInstance().getInformazioneDaApprovareDaId(idProdotto) != null){
+
+            return ResponseEntity.ok(GestoreInformazioni.getInstance().getInformazioneDaApprovareDaId(idProdotto));
+        }else
+            return ResponseEntity.badRequest().body("Prodotto non trovato");
+    }
 }
