@@ -275,6 +275,8 @@ public class Data {
 //    }
 
     public Prodotto getProdottoById(String id) {
+        if(marketplace.getElementoMarketplaceDaId(id) == null)
+            throw new IllegalArgumentException("Prodotto non trovato");
         return (Prodotto) GestoreSistema.getInstance().getGestoreMarketplace().getMarketPlace().getElementoMarketplaceDaId(id).getStock().getItem();
 
     }

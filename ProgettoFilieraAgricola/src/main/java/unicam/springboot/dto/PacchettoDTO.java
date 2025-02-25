@@ -33,10 +33,6 @@ public class PacchettoDTO extends Item implements InformazioneDaApprovare {
         }
     }
 
-    public String getIdAzienda() {
-        return idAzienda;
-    }
-
     public String getNomeAziendaProduttrice() {
         return nomeAziendaProduttrice;
     }
